@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BikeCell" rowHeight="138" id="KGk-i7-Jjw" customClass="BikeCell" customModule="LABikes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="439" height="138"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="137.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="723 Flower Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ5-ht-J9z">
+                        <rect key="frame" x="16" y="58" width="295" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33.5 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ps3-e1-KEr">
+                        <rect key="frame" x="323" y="56" width="75" height="25.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="wSX-Nd-5w7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 Bikes Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmE-9S-PCG">
+                        <rect key="frame" x="16" y="87" width="374" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7th &amp; Flower" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-WS-U1o">
+                        <rect key="frame" x="16" y="24.5" width="374" height="25.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="nmE-9S-PCG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="77K-Ww-csD"/>
+                    <constraint firstItem="SZ5-ht-J9z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="8fi-ym-BnJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hZz-WS-U1o" secondAttribute="trailing" constant="8" id="GLH-A2-T0A"/>
+                    <constraint firstItem="hZz-WS-U1o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="KVI-ui-UZX"/>
+                    <constraint firstItem="ps3-e1-KEr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Our-be-lsu"/>
+                    <constraint firstItem="SZ5-ht-J9z" firstAttribute="top" secondItem="hZz-WS-U1o" secondAttribute="bottom" constant="8" id="P27-sl-COn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ps3-e1-KEr" secondAttribute="trailing" id="baA-fH-Fmp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nmE-9S-PCG" secondAttribute="trailing" constant="8" id="boD-pc-KaO"/>
+                    <constraint firstItem="SZ5-ht-J9z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="l7r-9Y-1wp"/>
+                    <constraint firstItem="ps3-e1-KEr" firstAttribute="leading" secondItem="SZ5-ht-J9z" secondAttribute="trailing" constant="12" id="lWe-W3-IT1"/>
+                    <constraint firstItem="nmE-9S-PCG" firstAttribute="top" secondItem="SZ5-ht-J9z" secondAttribute="bottom" constant="8" id="rNI-zm-ErM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressLabel" destination="SZ5-ht-J9z" id="QrH-lW-Td7"/>
+                <outlet property="bikeAvailableLabel" destination="nmE-9S-PCG" id="fw9-Iy-vho"/>
+                <outlet property="distanceLabel" destination="ps3-e1-KEr" id="Szd-Wz-1mw"/>
+                <outlet property="nameLabel" destination="hZz-WS-U1o" id="Zei-cn-wyI"/>
+            </connections>
+            <point key="canvasLocation" x="-18.5" y="-4"/>
+        </tableViewCell>
+    </objects>
+</document>
