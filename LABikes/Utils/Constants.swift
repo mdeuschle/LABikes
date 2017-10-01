@@ -9,7 +9,7 @@
 import Foundation
 
 typealias BikeHandler = (Bool, [Bike]?) -> Void
-let URL_STRING = "https://github.com/mdeuschle/LABikes/blob/development/LABikes/Model/Bike.swift"
+let URL_STRING = "https://bikeshare.metro.net/stations/json/"
 
 enum NibName: String {
     case rootVC = "RootVC"

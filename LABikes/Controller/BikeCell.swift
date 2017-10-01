@@ -18,4 +18,10 @@ class BikeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    func configCell(bike: Bike) {
+        nameLabel.text = bike.name
+        addressLabel.text = bike.addressStreet
+        bikeAvailableLabel.text = String(bike.bikesAvailable)
+    }
 }
