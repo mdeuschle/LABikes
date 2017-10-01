@@ -21,11 +21,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Wy-ly-Ho5">
-                    <rect key="frame" x="0.0" y="280" width="375" height="387"/>
+                    <rect key="frame" x="0.0" y="360" width="375" height="307"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7JG-Ic-XI0">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,7 +33,7 @@
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9yC-B5-XcT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Wy-ly-Ho5" secondAttribute="bottom" id="E3F-mj-WlU"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ifh-Qk-wYK"/>
-                <constraint firstItem="0Wy-ly-Ho5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="260" id="TWu-Ta-Tbu"/>
+                <constraint firstItem="0Wy-ly-Ho5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="340" id="TWu-Ta-Tbu"/>
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Y8m-d3-w7Q"/>
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eG0-ft-7fq"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="top" secondItem="7JG-Ic-XI0" secondAttribute="bottom" id="wfT-cI-9AI"/>

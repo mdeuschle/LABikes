@@ -12,15 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var initialVC: UIViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
-        let mainView = RootVC(nibName: NibName.rootVC.rawValue, bundle: nil)
-        navigationController.viewControllers = [mainView]
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        initialVC = RootVC(nibName: NibName.rootVC.rawValue, bundle: nil)
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        window!.rootViewController = initialVC
+        window!.makeKeyAndVisible()
 
         return true
     }
