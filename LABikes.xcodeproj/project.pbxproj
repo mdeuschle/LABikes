@@ -12,6 +12,7 @@
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
 		A8BCA2A21F8077F200F330A5 /* LABikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2A11F8077F200F330A5 /* LABikesTests.swift */; };
 		A8BCA2AD1F8077F200F330A5 /* LABikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2AC1F8077F200F330A5 /* LABikesUITests.swift */; };
+		A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2C01F807CAB00F330A5 /* Bike.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		A8BCA2A81F8077F200F330A5 /* LABikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LABikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA2AC1F8077F200F330A5 /* LABikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABikesUITests.swift; sourceTree = "<group>"; };
 		A8BCA2AE1F8077F200F330A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8BCA2C01F807CAB00F330A5 /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		A8BCA2BC1F807A7B00F330A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A8BCA2C01F807CAB00F330A5 /* Bike.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
