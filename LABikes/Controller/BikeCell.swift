@@ -22,6 +22,6 @@ class BikeCell: UITableViewCell {
     func configCell(bike: Bike) {
         nameLabel.text = bike.name
         addressLabel.text = bike.addressStreet
-        bikeAvailableLabel.text = String(bike.bikesAvailable)
+        bikeAvailableLabel.text = bike.bikesAvailable.bikesString()
     }
 }
