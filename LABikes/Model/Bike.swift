@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Bike {
     private(set) public var latitude: Double!
@@ -25,9 +26,11 @@ struct Bike {
     private(set) public var totalDocks: Int!
     private(set) public var trikesAvailable: Int!
     private(set) public var kioskConnectionStatus: String!
+    private(set) public var coordinate2D: CLLocationCoordinate2D!
+    private(set) public var distance: Double!
 
-    init(coordinatesDic: [String: Any], propertiesDic: [String: Any]) {
-        guard let coordDic = coordinatesDic["coordinates"] as? [Double] else { return }
+    init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
+        let coordDic = coordinatesDic["coordinates"] as? [Double] ?? [0.0, 0.0]
         latitude = coordDic[0]
         longitude = coordDic[1]
         addressStreet = propertiesDic["addressStreet"] as? String ?? ""
@@ -44,6 +47,9 @@ struct Bike {
         totalDocks = propertiesDic["totalDocks"] as? Int ?? 0
         trikesAvailable = propertiesDic["trikesAvailalbe"] as? Int ?? 0
         kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String ?? ""
+        coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
     }
 }
+
 

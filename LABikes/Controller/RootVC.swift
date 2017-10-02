@@ -7,35 +7,81 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class RootVC: UIViewController {
+class RootVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var bikeTableView: UITableView!
+    @IBOutlet weak var bikeMapView: MKMapView!
+
     var bikes = [Bike]()
+    var locationManager: CLLocationManager!
+    var currentLocation = CLLocation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
         bikeTableView.delegate = self
         bikeTableView.dataSource = self
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
-        DataService.instance.getBikeData { (success, bikes) in
+        downloadBikeData()
+    }
+
+    func downloadBikeData() {
+        DataService.instance.getBikesData { (success, bikes) in
             DispatchQueue.main.async {
                 if success {
                     if let bikes = bikes {
                         for bike in bikes {
-                            self.bikes.append(bike)
-                            self.bikeTableView.reloadData()
+                            if let coordinatesDic = bike["geometry"] as? [String: Any],
+                                let propertiesDic = bike["properties"] as? [String: Any] {
+                                let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic, currentLocation: self.currentLocation)
+                                self.bikes.append(bike)
+                                self.bikeTableView.reloadData()
+                            } else {
+                                print("Bike Dics are NIL")
+                            }
                         }
                     } else {
-                        print("BIKES NIL")
+                        print("Bike Object NIL")
                     }
                 } else {
-                    print("UNABLE TO DOWNLOAD DATA")
+                    print("Unable to download data")
                 }
             }
         }
     }
+
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
+        bikeMapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if let location = userLocation.location {
+            centerMapOnLocation(location: location)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLoc = locations.first {
+            currentLocation = currentLoc
+            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
+                locationManager.stopUpdatingLocation()
+                centerMapOnLocation(location: currentLocation)
+            }
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+
 }
 
 extension RootVC: UITableViewDelegate, UITableViewDataSource {
@@ -61,6 +107,7 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
 
 
 

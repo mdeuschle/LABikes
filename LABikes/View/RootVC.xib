@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootVC" customModule="LABikes" customModuleProvider="target">
             <connections>
+                <outlet property="bikeMapView" destination="7JG-Ic-XI0" id="Xnt-fX-vgZ"/>
                 <outlet property="bikeTableView" destination="0Wy-ly-Ho5" id="UPR-Wl-EUI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

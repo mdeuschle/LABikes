@@ -11,25 +11,18 @@ import Foundation
 class DataService {
 
     static let instance = DataService()
-    func getBikeData(completion: @escaping BikeHandler) {
+
+    func getBikesData(completion: @escaping BikeHandler) {
         guard let url = URL(string: URL_STRING) else {
             completion(false, nil)
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            var bikes = [Bike]()
             if data != nil && error == nil {
                 do {
                     if let object = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                        if let features = object["features"] as? [[String: Any]] {
-                            for feature in features {
-                                if let coordinatesDic = feature["geometry"] as? [String: Any], let propertiesDic = feature["properties"] as? [String: Any]  {
-                                    let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic)
-                                    bikes.append(bike)
-                                } else {
-                                    completion(false, nil)
-                                }
-                            }
+                        if let objects = object["features"] as? [[String: Any]] {
+                            completion(true, objects)
                         } else {
                             completion(false, nil)
                         }
@@ -40,7 +33,6 @@ class DataService {
                     print(error.localizedDescription)
                     completion(false, nil)
                 }
-                completion(true, bikes)
             } else {
                 print(error.debugDescription)
                 completion(false, nil)

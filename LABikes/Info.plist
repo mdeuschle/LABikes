@@ -37,5 +37,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Share your location with LABikes to locate closest bike stations</string>
 </dict>
 </plist>

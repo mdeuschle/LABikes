@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias BikeHandler = (Bool, [Bike]?) -> Void
+typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
 let URL_STRING = "https://bikeshare.metro.net/stations/json/"
 
 enum NibName: String {
