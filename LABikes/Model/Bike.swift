@@ -31,8 +31,8 @@ struct Bike {
 
     init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
         let coordDic = coordinatesDic["coordinates"] as? [Double] ?? [0.0, 0.0]
-        latitude = coordDic[0]
-        longitude = coordDic[1]
+        longitude = coordDic[0]
+        latitude = coordDic[1]
         addressStreet = propertiesDic["addressStreet"] as? String ?? ""
         addressCity = propertiesDic["addressCity"] as? String ?? ""
         addressState = propertiesDic["addressState"] as? String ?? ""
@@ -47,8 +47,8 @@ struct Bike {
         totalDocks = propertiesDic["totalDocks"] as? Int ?? 0
         trikesAvailable = propertiesDic["trikesAvailalbe"] as? Int ?? 0
         kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String ?? ""
-        coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
+        coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
     }
 }
 

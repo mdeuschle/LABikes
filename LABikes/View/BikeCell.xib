@@ -47,7 +47,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="nmE-9S-PCG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="77K-Ww-csD"/>
                     <constraint firstItem="SZ5-ht-J9z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="8fi-ym-BnJ"/>
@@ -62,7 +61,6 @@
                     <constraint firstItem="nmE-9S-PCG" firstAttribute="top" secondItem="SZ5-ht-J9z" secondAttribute="bottom" constant="8" id="rNI-zm-ErM"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="SZ5-ht-J9z" id="QrH-lW-Td7"/>

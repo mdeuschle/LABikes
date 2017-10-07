@@ -15,13 +15,14 @@ class BikeCell: UITableViewCell {
     @IBOutlet weak var bikeAvailableLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     func configCell(bike: Bike) {
         nameLabel.text = bike.name
         addressLabel.text = bike.addressStreet
         bikeAvailableLabel.text = bike.bikesAvailable.bikesString()
+        let miles = bike.distance * 0.000621371
+        let bikeMiles = Double(round(10 * miles)/10)
+        distanceLabel.text = "\(bikeMiles) mi"
     }
 }
+
+

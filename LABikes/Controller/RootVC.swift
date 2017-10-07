@@ -10,26 +10,26 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class RootVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class RootVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
     @IBOutlet weak var bikeMapView: MKMapView!
 
     var bikes = [Bike]()
-    var locationManager: CLLocationManager!
+    let locationManager = CLLocationManager()
     var currentLocation = CLLocation()
+    let authorizationStatus = CLLocationManager.authorizationStatus()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
         bikeTableView.delegate = self
         bikeTableView.dataSource = self
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        bikeMapView.delegate = self
+        configureLocationServices()
         locationManager.startUpdatingLocation()
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
-        downloadBikeData()
     }
 
     func downloadBikeData() {
@@ -47,6 +47,8 @@ class RootVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                                 print("Bike Dics are NIL")
                             }
                         }
+                        self.bikes.sort(by: { $0.distance < $1.distance })
+                        self.dropPins()
                     } else {
                         print("Bike Object NIL")
                     }
@@ -56,32 +58,6 @@ class RootVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
     }
-
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
-        bikeMapView.setRegion(coordinateRegion, animated: true)
-    }
-
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        if let location = userLocation.location {
-            centerMapOnLocation(location: location)
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let currentLoc = locations.first {
-            currentLocation = currentLoc
-            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
-                locationManager.stopUpdatingLocation()
-                centerMapOnLocation(location: currentLocation)
-            }
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-
 }
 
 extension RootVC: UITableViewDelegate, UITableViewDataSource {
@@ -105,6 +81,58 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         let bike = bikes[indexPath.row]
         cell.configCell(bike: bike)
         return cell
+    }
+}
+
+extension RootVC: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLoc = locations.first {
+            currentLocation = currentLoc
+            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
+                locationManager.stopUpdatingLocation()
+                centerMapOnLocation(location: currentLocation)
+                downloadBikeData()
+            }
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}
+
+extension RootVC: MKMapViewDelegate {
+
+    func configureLocationServices() {
+        if authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil }
+        let mapPin = MKAnnotationView()
+        mapPin.canShowCallout = true
+        mapPin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        mapPin.image = #imageLiteral(resourceName: "bikePin")
+        return mapPin
+    }
+
+    func dropPins() {
+        for bike in bikes {
+            let newPin = BikePointAnnotation()
+            newPin.coordinate = bike.coordinate2D
+            newPin.title = bike.name
+            newPin.subtitle = "Bikes Available: \(bike.bikesAvailable)"
+            newPin.bikeStation = bike
+            bikeMapView.addAnnotation(newPin)
+        }
+    }
+
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 20000, 20000)
+        bikeMapView.setRegion(coordinateRegion, animated: true)
     }
 }
 

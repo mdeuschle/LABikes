@@ -20,6 +20,7 @@
 		A8BCA2CC1F80BE2700F330A5 /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */; };
 		A8BCA2CD1F80BE2700F330A5 /* BikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2CB1F80BE2700F330A5 /* BikeCell.xib */; };
 		A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */; };
+		A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
 		A8BCA2CB1F80BE2700F330A5 /* BikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeCell.xib; sourceTree = "<group>"; };
 		A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikePointAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA2C01F807CAB00F330A5 /* Bike.swift */,
+				A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
+				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A8BCA2CC1F80BE2700F330A5 /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,
