@@ -16,6 +16,7 @@ class RootVC: UIViewController {
     @IBOutlet weak var bikeMapView: MKMapView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var mapHeight: NSLayoutConstraint!
+    @IBOutlet weak var searchBarBackgroundView: UIView!
     
     var bikes = [Bike]()
     var filteredBikes = [Bike]()
@@ -31,6 +32,7 @@ class RootVC: UIViewController {
         locationManager.delegate = self
         bikeMapView.delegate = self
         searchBar.delegate = self
+        searchBarBackgroundView.backgroundColor = .clear
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.returnKeyType = .done
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
@@ -155,7 +157,8 @@ extension RootVC: MKMapViewDelegate {
 extension RootVC: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        animateHeight(height: 64)
+        animateHeight(height: 74)
+        animateBackground(color: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
@@ -163,6 +166,7 @@ extension RootVC: UISearchBarDelegate {
         inSearchMode = false
         searchBar.text = ""
         animateHeight(height: 340)
+        animateBackground(color: .clear)
         searchBar.setShowsCancelButton(false, animated: true)
         view.endEditing(true)
     }
@@ -180,6 +184,12 @@ extension RootVC: UISearchBarDelegate {
             inSearchMode = true
             filteredBikes = bikes.filter( { $0.name.range(of: searchText) != nil })
             bikeTableView.reloadData()
+        }
+    }
+
+    func animateBackground(color: UIColor) {
+        UIView.animate(withDuration: 0.2) {
+            self.searchBarBackgroundView.backgroundColor = color
         }
     }
 

@@ -15,6 +15,7 @@
                 <outlet property="bikeTableView" destination="0Wy-ly-Ho5" id="UPR-Wl-EUI"/>
                 <outlet property="mapHeight" destination="ibl-ld-RSa" id="C37-Rc-J3e"/>
                 <outlet property="searchBar" destination="gXW-NB-E20" id="wP8-aE-9dl"/>
+                <outlet property="searchBarBackgroundView" destination="haH-eg-vMH" id="gLk-xo-tW0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,7 +45,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="gXW-NB-E20" firstAttribute="leading" secondItem="haH-eg-vMH" secondAttribute="leading" constant="8" id="EFR-Br-1qS"/>
                         <constraint firstAttribute="height" constant="74" id="NJs-Zk-5VV"/>
