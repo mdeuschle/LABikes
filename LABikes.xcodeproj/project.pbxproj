@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A82D846C1F8ABF8C008F9A8C /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				A8BCA2C71F80BA6E00F330A5 /* RootVC.xib */,
 				A8BCA2CB1F80BE2700F330A5 /* BikeCell.xib */,
 				A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */,
+				A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			files = (
 				A8BCA2C31F8096E600F330A5 /* DataService.swift in Sources */,
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
+				A82D846C1F8ABF8C008F9A8C /* RoundedView.swift in Sources */,
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,

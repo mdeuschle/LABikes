@@ -35,7 +35,7 @@
                     </constraints>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haH-eg-vMH">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <searchBar contentMode="redraw" placeholder="Bike Stations" translatesAutoresizingMaskIntoConstraints="NO" id="gXW-NB-E20">
                             <rect key="frame" x="8" y="18" width="359" height="56"/>
@@ -45,10 +45,10 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="gXW-NB-E20" firstAttribute="leading" secondItem="haH-eg-vMH" secondAttribute="leading" constant="8" id="EFR-Br-1qS"/>
-                        <constraint firstAttribute="height" constant="74" id="NJs-Zk-5VV"/>
+                        <constraint firstAttribute="height" constant="80" id="NJs-Zk-5VV"/>
                         <constraint firstAttribute="trailing" secondItem="gXW-NB-E20" secondAttribute="trailing" constant="8" id="Xlc-Ab-nST"/>
                         <constraint firstItem="gXW-NB-E20" firstAttribute="top" secondItem="haH-eg-vMH" secondAttribute="top" constant="18" id="i2l-I7-4na"/>
                     </constraints>

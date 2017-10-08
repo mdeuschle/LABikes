@@ -35,6 +35,8 @@ class RootVC: UIViewController {
         searchBarBackgroundView.backgroundColor = .clear
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.returnKeyType = .done
+        bikeTableView.estimatedRowHeight = 100
+        bikeTableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
     }
@@ -53,9 +55,9 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         return bikes.count
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100  
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
@@ -158,7 +160,7 @@ extension RootVC: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         animateHeight(height: 74)
-        animateBackground(color: #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))
+        animateBackground(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
