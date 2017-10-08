@@ -18,7 +18,6 @@ class RootVC: UIViewController {
     var bikes = [Bike]()
     let locationManager = CLLocationManager()
     var currentLocation = CLLocation()
-    let authorizationStatus = CLLocationManager.authorizationStatus()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +25,59 @@ class RootVC: UIViewController {
         bikeTableView.dataSource = self
         locationManager.delegate = self
         bikeMapView.delegate = self
-        configureLocationServices()
-        locationManager.startUpdatingLocation()
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
+    }
+}
+
+extension RootVC: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bikes.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
+            return BikeCell()
+        }
+        let bike = bikes[indexPath.row]
+        cell.configCell(bike: bike)
+        return cell
+    }
+}
+
+extension RootVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            downloadBikeData()
+        case .notDetermined, .denied, .restricted:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLoc = locations.first {
+            currentLocation = currentLoc
+            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
+                locationManager.stopUpdatingLocation()
+                centerMapOnLocation(location: currentLocation)
+            }
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 
     func downloadBikeData() {
@@ -60,55 +108,7 @@ class RootVC: UIViewController {
     }
 }
 
-extension RootVC: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bikes.count
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
-            return BikeCell()
-        }
-        let bike = bikes[indexPath.row]
-        cell.configCell(bike: bike)
-        return cell
-    }
-}
-
-extension RootVC: CLLocationManagerDelegate {
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let currentLoc = locations.first {
-            currentLocation = currentLoc
-            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
-                locationManager.stopUpdatingLocation()
-                centerMapOnLocation(location: currentLocation)
-                downloadBikeData()
-            }
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-}
-
 extension RootVC: MKMapViewDelegate {
-
-    func configureLocationServices() {
-        if authorizationStatus == .notDetermined {
-            locationManager.requestAlwaysAuthorization()
-        }
-    }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
