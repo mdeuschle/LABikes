@@ -55,10 +55,6 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         return bikes.count
     }
 
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100  
-//    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
             return BikeCell()
@@ -160,7 +156,7 @@ extension RootVC: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         animateHeight(height: 74)
-        animateBackground(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
+        animateBackground(color: #colorLiteral(red: 0.8146468997, green: 0.8317709565, blue: 0.8496219516, alpha: 1))
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
@@ -196,7 +192,7 @@ extension RootVC: UISearchBarDelegate {
     }
 
     func animateHeight(height: CGFloat) {
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.mapHeight.constant = height
             self.view.layoutIfNeeded()
         }) { (complete) in
