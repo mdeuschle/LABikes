@@ -15,7 +15,8 @@ class RootVC: UIViewController {
     @IBOutlet weak var bikeTableView: UITableView!
     @IBOutlet weak var bikeMapView: MKMapView!
     @IBOutlet var searchBar: UISearchBar!
-
+    @IBOutlet weak var mapHeight: NSLayoutConstraint!
+    
     var bikes = [Bike]()
     var filteredBikes = [Bike]()
     let locationManager = CLLocationManager()
@@ -154,15 +155,20 @@ extension RootVC: MKMapViewDelegate {
 extension RootVC: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        animateHeight(height: 64)
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        inSearchMode = false
+        searchBar.text = ""
+        animateHeight(height: 340)
         searchBar.setShowsCancelButton(false, animated: true)
+        view.endEditing(true)
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+        view.endEditing(true)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -176,8 +182,18 @@ extension RootVC: UISearchBarDelegate {
             bikeTableView.reloadData()
         }
     }
-}
 
+    func animateHeight(height: CGFloat) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.mapHeight.constant = height
+            self.view.layoutIfNeeded()
+        }) { (complete) in
+            if complete {
+                self.bikeTableView.reloadData()
+            }
+        }
+    }
+}
 
 
 

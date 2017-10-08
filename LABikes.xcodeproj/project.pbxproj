@@ -146,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA2C61F80BA6E00F330A5 /* RootVC.swift */,
-				A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +155,7 @@
 			children = (
 				A8BCA2C71F80BA6E00F330A5 /* RootVC.xib */,
 				A8BCA2CB1F80BE2700F330A5 /* BikeCell.xib */,
+				A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
