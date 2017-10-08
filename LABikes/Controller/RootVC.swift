@@ -22,7 +22,7 @@ class RootVC: UIViewController {
     var filteredBikes = [Bike]()
     let locationManager = CLLocationManager()
     var currentLocation = CLLocation()
-
+    let detailVC = DetailVC()
     var inSearchMode = false
 
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class RootVC: UIViewController {
         locationManager.delegate = self
         bikeMapView.delegate = self
         searchBar.delegate = self
+        navigationController?.navigationBar.prefersLargeTitles = true
         searchBarBackgroundView.backgroundColor = .clear
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.returnKeyType = .done
@@ -39,6 +40,16 @@ class RootVC: UIViewController {
         bikeTableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -67,6 +78,16 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.configCell(bike: bike)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailVC(nibName: "DetailVC", bundle: nil)
+        if inSearchMode {
+            detailVC.selectedBike = filteredBikes[indexPath.row]
+        } else {
+            detailVC.selectedBike = bikes[indexPath.row]
+        }
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
