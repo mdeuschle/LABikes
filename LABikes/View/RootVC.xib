@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="bikeMapView" destination="7JG-Ic-XI0" id="Xnt-fX-vgZ"/>
                 <outlet property="bikeTableView" destination="0Wy-ly-Ho5" id="UPR-Wl-EUI"/>
+                <outlet property="searchBar" destination="gXW-NB-E20" id="wP8-aE-9dl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,14 +29,21 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7JG-Ic-XI0">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                 </mapView>
+                <searchBar contentMode="redraw" placeholder="Bike Stations" translatesAutoresizingMaskIntoConstraints="NO" id="gXW-NB-E20">
+                    <rect key="frame" x="8" y="28" width="359" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9yC-B5-XcT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Wy-ly-Ho5" secondAttribute="bottom" id="E3F-mj-WlU"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ifh-Qk-wYK"/>
+                <constraint firstItem="gXW-NB-E20" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Mu8-KH-FIY"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="340" id="TWu-Ta-Tbu"/>
+                <constraint firstItem="gXW-NB-E20" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Wbx-Yk-LBE"/>
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Y8m-d3-w7Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gXW-NB-E20" secondAttribute="trailing" constant="8" id="d6n-D6-jTz"/>
                 <constraint firstItem="7JG-Ic-XI0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eG0-ft-7fq"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="top" secondItem="7JG-Ic-XI0" secondAttribute="bottom" id="wfT-cI-9AI"/>
                 <constraint firstItem="0Wy-ly-Ho5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ykq-je-w9T"/>

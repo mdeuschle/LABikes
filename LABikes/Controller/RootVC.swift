@@ -14,6 +14,7 @@ class RootVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
     @IBOutlet weak var bikeMapView: MKMapView!
+    @IBOutlet var searchBar: UISearchBar!
 
     var bikes = [Bike]()
     let locationManager = CLLocationManager()
@@ -25,6 +26,8 @@ class RootVC: UIViewController {
         bikeTableView.dataSource = self
         locationManager.delegate = self
         bikeMapView.delegate = self
+        searchBar.delegate = self
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
     }
@@ -55,7 +58,7 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension RootVC: CLLocationManagerDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -135,6 +138,19 @@ extension RootVC: MKMapViewDelegate {
         bikeMapView.setRegion(coordinateRegion, animated: true)
     }
 }
+
+extension RootVC: UISearchBarDelegate {
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+}
+
+
 
 
 
