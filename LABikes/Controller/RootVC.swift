@@ -17,8 +17,11 @@ class RootVC: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
 
     var bikes = [Bike]()
+    var filteredBikes = [Bike]()
     let locationManager = CLLocationManager()
     var currentLocation = CLLocation()
+
+    var inSearchMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class RootVC: UIViewController {
         bikeMapView.delegate = self
         searchBar.delegate = self
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.returnKeyType = .done
         let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
     }
@@ -40,6 +44,9 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if inSearchMode {
+            return filteredBikes.count
+        }
         return bikes.count
     }
 
@@ -51,7 +58,12 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
             return BikeCell()
         }
-        let bike = bikes[indexPath.row]
+        let bike: Bike!
+        if inSearchMode {
+            bike = filteredBikes[indexPath.row]
+        } else {
+            bike = bikes[indexPath.row]
+        }
         cell.configCell(bike: bike)
         return cell
     }
@@ -147,6 +159,22 @@ extension RootVC: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            bikeTableView.reloadData()
+        } else {
+            inSearchMode = true
+            filteredBikes = bikes.filter( { $0.name.range(of: searchText) != nil })
+            bikeTableView.reloadData()
+        }
     }
 }
 
