@@ -10,6 +10,8 @@
 		A82D846C1F8ABF8C008F9A8C /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */; };
 		A82D84771F8ACC7B008F9A8C /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D84751F8ACC7B008F9A8C /* DetailVC.swift */; };
 		A82D84781F8ACC7B008F9A8C /* DetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82D84761F8ACC7B008F9A8C /* DetailVC.xib */; };
+		A82D84C51F947A80008F9A8C /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D84C31F947A80008F9A8C /* MapCell.swift */; };
+		A82D84C61F947A80008F9A8C /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82D84C41F947A80008F9A8C /* MapCell.xib */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		A82D84751F8ACC7B008F9A8C /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		A82D84761F8ACC7B008F9A8C /* DetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DetailVC.xib; path = ../Controller/DetailVC.xib; sourceTree = "<group>"; };
+		A82D84C31F947A80008F9A8C /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		A82D84C41F947A80008F9A8C /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,8 +167,10 @@
 				A8BCA2C71F80BA6E00F330A5 /* RootVC.xib */,
 				A8BCA2CB1F80BE2700F330A5 /* BikeCell.xib */,
 				A82D84761F8ACC7B008F9A8C /* DetailVC.xib */,
+				A82D84C41F947A80008F9A8C /* MapCell.xib */,
 				A8BCA2CA1F80BE2700F330A5 /* BikeCell.swift */,
 				A82D846B1F8ABF8C008F9A8C /* RoundedView.swift */,
+				A82D84C31F947A80008F9A8C /* MapCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			files = (
 				A8BCA2CD1F80BE2700F330A5 /* BikeCell.xib in Resources */,
 				A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */,
+				A82D84C61F947A80008F9A8C /* MapCell.xib in Resources */,
 				A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */,
 				A8BCA2C91F80BA6E00F330A5 /* RootVC.xib in Resources */,
 				A82D84781F8ACC7B008F9A8C /* DetailVC.xib in Resources */,
@@ -337,6 +344,7 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A82D84771F8ACC7B008F9A8C /* DetailVC.swift in Sources */,
+				A82D84C51F947A80008F9A8C /* MapCell.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A8BCA2CC1F80BE2700F330A5 /* BikeCell.swift in Sources */,

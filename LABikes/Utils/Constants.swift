@@ -15,8 +15,9 @@ enum NibName: String {
     case rootVC = "RootVC"
 }
 
-enum ReusalbleCell: String {
+enum ReusableCell: String {
     case bike = "BikeCell"
+    case map = "MapCell"
 }
 
 

@@ -38,8 +38,8 @@ class RootVC: UIViewController {
         searchBar.returnKeyType = .done
         bikeTableView.estimatedRowHeight = 100
         bikeTableView.rowHeight = UITableViewAutomaticDimension
-        let nib = UINib(nibName: ReusalbleCell.bike.rawValue, bundle: nil)
-        bikeTableView.register(nib, forCellReuseIdentifier: ReusalbleCell.bike.rawValue)
+        let nib = UINib(nibName: ReusableCell.bike.rawValue, bundle: nil)
+        bikeTableView.register(nib, forCellReuseIdentifier: ReusableCell.bike.rawValue)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +67,7 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusalbleCell.bike.rawValue, for: indexPath) as? BikeCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.bike.rawValue, for: indexPath) as? BikeCell else {
             return BikeCell()
         }
         let bike: Bike!
@@ -149,11 +149,11 @@ extension RootVC: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
-        let mapPin = MKAnnotationView()
-        mapPin.canShowCallout = true
-        mapPin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        mapPin.image = #imageLiteral(resourceName: "bikePin")
-        return mapPin
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//        mapPin.image = #imageLiteral(resourceName: "bikePin")
+        return annotationView
     }
 
     func dropPins() {
