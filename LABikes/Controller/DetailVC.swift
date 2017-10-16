@@ -18,6 +18,8 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        let nib = UINib(nibName: ReusableCell.map.rawValue, bundle: nil)
+        detailTableView.register(nib, forCellReuseIdentifier: ReusableCell.map.rawValue)
         if let bike = selectedBike {
             title = bike.name
         }
