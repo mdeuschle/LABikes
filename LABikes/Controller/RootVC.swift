@@ -32,7 +32,8 @@ class RootVC: UIViewController {
         locationManager.delegate = self
         bikeMapView.delegate = self
         searchBar.delegate = self
-        navigationController?.navigationBar.prefersLargeTitles = true
+        configNavigationController()
+
         searchBarBackgroundView.backgroundColor = .clear
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.returnKeyType = .done
@@ -40,6 +41,20 @@ class RootVC: UIViewController {
         bikeTableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: ReusableCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusableCell.bike.rawValue)
+    }
+
+    private func configNavigationController() {
+        title = "LABikes"
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+        navigationItem.rightBarButtonItem = searchBarButtonItem
+    }
+
+    @objc private func searchTapped() {
+        print("SEARCH TAPPED")
+
     }
 }
 

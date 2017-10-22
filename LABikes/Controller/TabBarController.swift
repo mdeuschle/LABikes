@@ -24,12 +24,4 @@ class TabBarController: UITabBarController {
     override init(nibName _: String?, bundle _: Bundle?) {
         fatalError("Tab bar not initialized")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-
-
 }
