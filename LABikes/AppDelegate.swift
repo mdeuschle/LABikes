@@ -12,26 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var initialVC: UIViewController?
-
-    var navController: UINavigationController?
+    private let tabBarBarController = TabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        navController = UINavigationController(rootViewController: RootVC(nibName: NibName.rootVC.rawValue, bundle: nil))
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = navController
-
-
-        //        initialVC = RootVC(nibName: NibName.rootVC.rawValue, bundle: nil)
-        //        let frame = UIScreen.main.bounds
-        //        window = UIWindow(frame: frame)
-        //        window!.rootViewController = initialVC
-        //        window!.makeKeyAndVisible()
-
+        configWindow()
         return true
+    }
+
+    private func configWindow() {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = tabBarBarController
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -41,16 +41,6 @@ class RootVC: UIViewController {
         let nib = UINib(nibName: ReusableCell.bike.rawValue, bundle: nil)
         bikeTableView.register(nib, forCellReuseIdentifier: ReusableCell.bike.rawValue)
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        super.viewWillDisappear(animated)
-    }
 }
 
 extension RootVC: UITableViewDelegate, UITableViewDataSource {
@@ -147,14 +137,14 @@ extension RootVC: CLLocationManagerDelegate {
 
 extension RootVC: MKMapViewDelegate {
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
-        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation is MKUserLocation { return nil }
+//        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+//        annotationView.canShowCallout = true
+//        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
 //        mapPin.image = #imageLiteral(resourceName: "bikePin")
-        return annotationView
-    }
+//        return annotationView
+//    }
 
     func dropPins() {
         for bike in bikes {
