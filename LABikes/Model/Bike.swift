@@ -28,6 +28,13 @@ struct Bike {
     private(set) public var kioskConnectionStatus: String!
     private(set) public var coordinate2D: CLLocationCoordinate2D!
     private(set) public var distance: Double!
+    var miles: String {
+        get {
+            let miles = distance * 0.000621371
+            let bikeMiles = Double(round(10 * miles)/10)
+            return "\(bikeMiles) mi"
+        }
+    }
 
     init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
         let coordDic = coordinatesDic["coordinates"] as? [Double] ?? [0.0, 0.0]

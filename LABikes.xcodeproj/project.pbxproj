@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85801F9C4C2A008F9A8C /* ListVC.swift */; };
 		A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82D85C41F9D5523008F9A8C /* Main.storyboard */; };
-		A82D85C91F9D77BD008F9A8C /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85C81F9D77BD008F9A8C /* CurrentLocation.swift */; };
-		A82D85CC1FA0545D008F9A8C /* BikeFetchContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CB1FA0545C008F9A8C /* BikeFetchContract.swift */; };
-		A82D85CE1FA1A40A008F9A8C /* BikeDataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CD1FA1A40A008F9A8C /* BikeDataDisplay.swift */; };
+		A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CF1FA5435A008F9A8C /* BikeCell.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -45,9 +43,7 @@
 /* Begin PBXFileReference section */
 		A82D85801F9C4C2A008F9A8C /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		A82D85C31F9D5523008F9A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A82D85C81F9D77BD008F9A8C /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
-		A82D85CB1FA0545C008F9A8C /* BikeFetchContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeFetchContract.swift; sourceTree = "<group>"; };
-		A82D85CD1FA1A40A008F9A8C /* BikeDataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDataDisplay.swift; sourceTree = "<group>"; };
+		A82D85CF1FA5435A008F9A8C /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,15 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A82D85CA1FA0540C008F9A8C /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				A82D85CB1FA0545C008F9A8C /* BikeFetchContract.swift */,
-				A82D85CD1FA1A40A008F9A8C /* BikeDataDisplay.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		A8BCA2801F8077F100F330A5 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +111,6 @@
 		A8BCA28B1F8077F100F330A5 /* LABikes */ = {
 			isa = PBXGroup;
 			children = (
-				A82D85CA1FA0540C008F9A8C /* Protocols */,
 				A8BCA2BF1F807AA400F330A5 /* Utils */,
 				A8BCA2BD1F807A8000F330A5 /* Services */,
 				A8BCA2BC1F807A7B00F330A5 /* Model */,
@@ -169,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				A82D85C41F9D5523008F9A8C /* Main.storyboard */,
+				A82D85CF1FA5435A008F9A8C /* BikeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,7 +165,6 @@
 			children = (
 				A8BCA2C01F807CAB00F330A5 /* Bike.swift */,
 				A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */,
-				A82D85C81F9D77BD008F9A8C /* CurrentLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,13 +323,11 @@
 				A8BCA2C31F8096E600F330A5 /* DataService.swift in Sources */,
 				A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */,
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
-				A82D85CC1FA0545D008F9A8C /* BikeFetchContract.swift in Sources */,
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
-				A82D85CE1FA1A40A008F9A8C /* BikeDataDisplay.swift in Sources */,
-				A82D85C91F9D77BD008F9A8C /* CurrentLocation.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
+				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -80,10 +80,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addressLabel" destination="uBo-Xt-q9x" id="dRz-Dc-NxK"/>
-                                            <outlet property="bikeAvailableLabel" destination="L4g-KB-kkH" id="UK0-aS-cRO"/>
-                                            <outlet property="distanceLabel" destination="O2V-Ne-UhA" id="NY1-ZR-w3v"/>
-                                            <outlet property="nameLabel" destination="vYd-Z2-mbx" id="Pnz-HV-fBk"/>
+                                            <outlet property="addressLabel" destination="uBo-Xt-q9x" id="ps6-lx-HcI"/>
+                                            <outlet property="distanceLabel" destination="O2V-Ne-UhA" id="0Hx-Qz-Th5"/>
+                                            <outlet property="nameLabel" destination="vYd-Z2-mbx" id="vhP-zL-lYd"/>
+                                            <outlet property="numberOfBikesLabel" destination="L4g-KB-kkH" id="642-Ys-OV5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

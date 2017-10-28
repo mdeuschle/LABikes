@@ -9,16 +9,13 @@
 import Foundation
 import CoreLocation
 
-class DataService: FetchBikeDataServiceContract {
+class DataService {
 
-    weak var bikeDataDisplayDelegate: BikeDataDisplay?
+    static let shared = DataService()
 
-    init(bikeDataDisplayDelegate: BikeDataDisplay) {
-        self.bikeDataDisplayDelegate = bikeDataDisplayDelegate
-    }
-
-    func fetchBikeData(currentLocation: CLLocation) {
+    func fetchBikeData(currentLocation: CLLocation, completion: @escaping (Bool, [Bike]?) -> Void) {
         guard let url = URL(string: URL_STRING) else {
+            completion(false, nil)
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -33,19 +30,25 @@ class DataService: FetchBikeDataServiceContract {
                                     let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic, currentLocation: currentLocation)
                                     bikes.append(bike)
                                 } else {
+                                    completion(false, nil)
                                     print("Bike Dics are NIL")
                                 }
                             }
-                            if let delegate = self.bikeDataDisplayDelegate {
-                                DispatchQueue.main.async {
-                                    delegate.displayBikeData(bikes: bikes)
-                                }
+                            DispatchQueue.main.async {
+                                bikes.sort(by: { $0.distance < $1.distance })
+                                completion(true, bikes)
                             }
+                        } else {
+                            completion(false, nil)
                         }
+                    } else {
+                        completion(false, nil)
                     }
                 } catch {
                     print(error)
                 }
+            } else {
+                completion(false, nil)
             }
         }
         task.resume()

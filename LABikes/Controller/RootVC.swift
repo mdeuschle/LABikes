@@ -10,20 +10,17 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class RootVC: UIViewController, BikeDataDisplay {
+class RootVC: UIViewController {
 
     let locationManager = CLLocationManager()
-    var service: FetchBikeDataServiceContract?
+    var currentLocation = CLLocation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         requestAuthorization()
-        service = DataService(bikeDataDisplayDelegate: self)
-    }
-
-    func displayBikeData(bikes: [Bike]) {
-        print("Bikes")
     }
 }
 
@@ -41,6 +38,11 @@ extension RootVC: CLLocationManagerDelegate {
         }
     }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            currentLocation = location
+        }
+    }
 }
 
 
