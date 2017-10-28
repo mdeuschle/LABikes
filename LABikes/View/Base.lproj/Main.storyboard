@@ -126,7 +126,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="xWf-KA-elo">
             <objects>
-                <tabBarController id="txh-eN-Zwz" customClass="TabBarController" customModule="LABikes" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="txh-eN-Zwz" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Omq-1x-7ec">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
