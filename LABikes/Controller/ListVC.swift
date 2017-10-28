@@ -7,20 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTableView()
-
-
-
+        bikeTableView.delegate = self
+        bikeTableView.dataSource = self
     }
-
-
 }
 
 extension ListVC: UITableViewDelegate, UITableViewDataSource {
@@ -36,14 +33,6 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
-
-    private func configTableView() {
-        bikeTableView.estimatedRowHeight = 100
-        bikeTableView.rowHeight = UITableViewAutomaticDimension
-    }
-
-
-    
 }
 
 

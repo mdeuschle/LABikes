@@ -12,18 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private let tabBarBarController = TabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        configWindow()
+        // Override point for customization after application launch.
         return true
-    }
-
-    private func configWindow() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = tabBarBarController
-        window.makeKeyAndVisible()
-        self.window = window
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -48,4 +40,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
+
 

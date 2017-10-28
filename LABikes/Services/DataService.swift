@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import CoreLocation
 
-class DataService {
+class DataService: FetchBikeDataServiceContract {
 
-    static let instance = DataService()
+    weak var bikeDataDisplayDelegate: BikeDataDisplay?
 
-    func getBikesData(completion: @escaping BikeHandler) {
+    init(bikeDataDisplayDelegate: BikeDataDisplay) {
+        self.bikeDataDisplayDelegate = bikeDataDisplayDelegate
+    }
+
+    func fetchBikeData(currentLocation: CLLocation) {
         guard let url = URL(string: URL_STRING) else {
-            completion(false, nil)
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -22,20 +26,26 @@ class DataService {
                 do {
                     if let object = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
                         if let objects = object["features"] as? [[String: Any]] {
-                            completion(true, objects)
-                        } else {
-                            completion(false, nil)
+                            var bikes = [Bike]()
+                            for bike in objects {
+                                if let coordinatesDic = bike["geometry"] as? [String: Any],
+                                    let propertiesDic = bike["properties"] as? [String: Any] {
+                                    let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic, currentLocation: currentLocation)
+                                    bikes.append(bike)
+                                } else {
+                                    print("Bike Dics are NIL")
+                                }
+                            }
+                            if let delegate = self.bikeDataDisplayDelegate {
+                                DispatchQueue.main.async {
+                                    delegate.displayBikeData(bikes: bikes)
+                                }
+                            }
                         }
-                    } else {
-                        completion(false, nil)
                     }
                 } catch {
-                    print(error.localizedDescription)
-                    completion(false, nil)
+                    print(error)
                 }
-            } else {
-                print(error.debugDescription)
-                completion(false, nil)
             }
         }
         task.resume()
