@@ -12,14 +12,14 @@ import MapKit
 class BikePointAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
-    var locationName: String
-    var discipline: String
+    var subtitle: String?
+    var bike: Bike?
 
-    init(title: String, coordinate: CLLocationCoordinate2D, locationName: String, discipline: String) {
-        self.title = title
-        self.coordinate = coordinate
-        self.locationName = locationName
-        self.discipline = discipline
+    init(bike: Bike) {
+        self.bike = bike
+        self.coordinate = bike.coordinate2D
+        self.title = bike.name ?? ""
+        self.subtitle = bike.bikesAvailable.bikesString()
     }
 }
 

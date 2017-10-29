@@ -20,6 +20,7 @@ class RootVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
+        mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         configureLocationServices()
@@ -60,12 +61,15 @@ extension RootVC: MKMapViewDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let bikeAnnotation = view.annotation as? BikePointAnnotation {
+            print(bikeAnnotation)
+        }
+    }
+
     func dropPins(bikes: [Bike]) {
         for bike in bikes {
-            let annotation = BikePointAnnotation(title: bike.name,
-                                                 coordinate: bike.coordinate2D,
-                                                 locationName: bike.name,
-                                                 discipline: String(bike.bikesAvailable))
+            let annotation = BikePointAnnotation(bike: bike)
             mapView.addAnnotation(annotation)
         }
     }
