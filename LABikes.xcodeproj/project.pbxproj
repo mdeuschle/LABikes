@@ -10,6 +10,8 @@
 		A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85801F9C4C2A008F9A8C /* ListVC.swift */; };
 		A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82D85C41F9D5523008F9A8C /* Main.storyboard */; };
 		A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CF1FA5435A008F9A8C /* BikeCell.swift */; };
+		A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */; };
+		A82D85E01FA6757A008F9A8C /* MapPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82D85DF1FA6757A008F9A8C /* MapPopUpView.xib */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -44,6 +46,8 @@
 		A82D85801F9C4C2A008F9A8C /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		A82D85C31F9D5523008F9A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A82D85CF1FA5435A008F9A8C /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
+		A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpVC.swift; sourceTree = "<group>"; };
+		A82D85DF1FA6757A008F9A8C /* MapPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpView.xib; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			children = (
 				A8BCA2C61F80BA6E00F330A5 /* RootVC.swift */,
 				A82D85801F9C4C2A008F9A8C /* ListVC.swift */,
+				A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				A82D85C41F9D5523008F9A8C /* Main.storyboard */,
 				A82D85CF1FA5435A008F9A8C /* BikeCell.swift */,
+				A82D85DF1FA6757A008F9A8C /* MapPopUpView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			files = (
 				A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */,
 				A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */,
+				A82D85E01FA6757A008F9A8C /* MapPopUpView.xib in Resources */,
 				A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +333,7 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
+				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,

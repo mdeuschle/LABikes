@@ -63,7 +63,10 @@ extension RootVC: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let bikeAnnotation = view.annotation as? BikePointAnnotation {
-            print(bikeAnnotation)
+            let mapPopUpVC = MapPopUpVC(nibName: "MapPopUpView", bundle: nil)
+            mapPopUpVC.modalPresentationStyle = .overCurrentContext
+            mapPopUpVC.bike = bikeAnnotation.bike
+            present(mapPopUpVC, animated: true, completion: nil)
         }
     }
 
