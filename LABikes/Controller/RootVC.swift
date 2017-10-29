@@ -12,6 +12,7 @@ import MapKit
 
 class RootVC: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
@@ -22,6 +23,7 @@ class RootVC: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         configureLocationServices()
+        centerMapOnLocation(location: currentLocation)
     }
 }
 
@@ -38,6 +40,33 @@ extension RootVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             currentLocation = location
+            locationManager.stopUpdatingLocation()
+            centerMapOnLocation(location: location)
+            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
+                if success {
+                    if let bikes = bikes {
+                        self.dropPins(bikes: bikes)
+                    }
+                }
+            })
+        }
+    }
+}
+
+extension RootVC: MKMapViewDelegate {
+
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    func dropPins(bikes: [Bike]) {
+        for bike in bikes {
+            let annotation = BikePointAnnotation(title: bike.name,
+                                                 coordinate: bike.coordinate2D,
+                                                 locationName: bike.name,
+                                                 discipline: String(bike.bikesAvailable))
+            mapView.addAnnotation(annotation)
         }
     }
 }
