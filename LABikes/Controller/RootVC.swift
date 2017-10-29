@@ -13,6 +13,7 @@ import MapKit
 class RootVC: UIViewController {
 
     let locationManager = CLLocationManager()
+    let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
 
     override func viewDidLoad() {
@@ -20,21 +21,17 @@ class RootVC: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        requestAuthorization()
+        configureLocationServices()
     }
 }
 
 extension RootVC: CLLocationManagerDelegate {
 
-    func requestAuthorization() {
-        let status = CLLocationManager.authorizationStatus()
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
+    func configureLocationServices() {
+        if authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        } else {
             return
-        case .denied, .restricted:
-            print("Permission denied")
-        default:
-            locationManager.requestWhenInUseAuthorization()
         }
     }
 

@@ -12,7 +12,9 @@ import CoreLocation
 class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
-    var bikes = [Bike]()
+    fileprivate var bikes = [Bike]()
+    fileprivate var filteredBikes = [Bike]()
+    fileprivate var isFiltering = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,16 @@ class ListVC: UIViewController {
                 })
             }
         }
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = NavigationTitle.laBikes.rawValue
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = search
+            navigationItem.hidesSearchBarWhenScrolling = false
+        } else {
+            navigationItem.titleView = search.searchBar
+        }
     }
 }
 
@@ -40,18 +52,33 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bikes.count
+        return isFiltering ? filteredBikes.count : bikes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.bike.rawValue) as? BikeCell else {
             return BikeCell()
         }
-        let bike = bikes[indexPath.row]
+        let bike = isFiltering ? filteredBikes[indexPath.row] : bikes[indexPath.row]
         cell.config(bike: bike)
         return cell
     }
 }
+
+extension ListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            filteredBikes = bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+            isFiltering = true
+        } else {
+            isFiltering = false
+            filteredBikes = [Bike]()
+        }
+        bikeTableView.reloadData()
+    }
+}
+
+
 
 
 

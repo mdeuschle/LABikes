@@ -20,6 +20,10 @@ enum ReusableCell: String {
     case map = "MapCell"
 }
 
+enum NavigationTitle: String {
+    case laBikes = "LABikes"
+}
+
 
 
 
