@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="153"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uUV-0M-vg7" id="Zfv-Ys-MwA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="153"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYd-Z2-mbx">
@@ -115,12 +115,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUc-Dc-gch">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUc-Dc-gch">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SUc-Dc-gch" firstAttribute="leading" secondItem="WsV-KG-Ms2" secondAttribute="leading" id="Gwf-se-TXl"/>
+                            <constraint firstItem="SUc-Dc-gch" firstAttribute="top" secondItem="WsV-KG-Ms2" secondAttribute="top" id="LRi-Hd-WnJ"/>
+                            <constraint firstItem="SUc-Dc-gch" firstAttribute="trailing" secondItem="WsV-KG-Ms2" secondAttribute="trailing" id="OHF-xe-DAL"/>
+                            <constraint firstItem="SUc-Dc-gch" firstAttribute="bottom" secondItem="WsV-KG-Ms2" secondAttribute="bottom" id="meS-jy-j9L"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WsV-KG-Ms2"/>
                     </view>
                     <navigationItem key="navigationItem" id="QOu-pz-bgf"/>

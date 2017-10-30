@@ -22,9 +22,12 @@ class MapPopUpVC: UIViewController {
         addressLabel.text = bike?.addressStreet
 
     }
-    @IBAction func closeTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(false)
+        dismiss(animated: false, completion: nil)
     }
+
     @IBAction func directionsTapped(_ sender: UIButton) {
     }
 }

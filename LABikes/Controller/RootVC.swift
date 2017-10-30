@@ -16,6 +16,7 @@ class RootVC: UIViewController {
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
+    let mapPopUpVC = MapPopUpVC(nibName: "MapPopUpView", bundle: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,14 @@ class RootVC: UIViewController {
         locationManager.startUpdatingLocation()
         configureLocationServices()
         centerMapOnLocation(location: currentLocation)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "LABikes"
     }
 }
 
 extension RootVC: CLLocationManagerDelegate {
 
-    func configureLocationServices() {
+    private func configureLocationServices() {
         if authorizationStatus == .notDetermined {
             locationManager.requestAlwaysAuthorization()
         } else {
@@ -63,14 +66,22 @@ extension RootVC: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let bikeAnnotation = view.annotation as? BikePointAnnotation {
-            let mapPopUpVC = MapPopUpVC(nibName: "MapPopUpView", bundle: nil)
             mapPopUpVC.modalPresentationStyle = .overCurrentContext
             mapPopUpVC.bike = bikeAnnotation.bike
             present(mapPopUpVC, animated: true, completion: nil)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
+            mapPopUpVC.view.addGestureRecognizer(tap)
+            let coordinate = CLLocationCoordinate2DMake((bikeAnnotation.bike?.latitude)! - 0.0012, (bikeAnnotation.bike?.longitude)!)
+            let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+            mapView.setRegion(region, animated: true)
         }
     }
 
-    func dropPins(bikes: [Bike]) {
+    @objc func dismissPopUp() {
+        mapPopUpVC.dismiss(animated: true, completion: nil)
+    }
+
+    private func dropPins(bikes: [Bike]) {
         for bike in bikes {
             let annotation = BikePointAnnotation(bike: bike)
             mapView.addAnnotation(annotation)
