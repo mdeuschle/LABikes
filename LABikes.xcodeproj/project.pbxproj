@@ -12,6 +12,7 @@
 		A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CF1FA5435A008F9A8C /* BikeCell.swift */; };
 		A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */; };
 		A82D85E01FA6757A008F9A8C /* MapPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A82D85DF1FA6757A008F9A8C /* MapPopUpView.xib */; };
+		A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 		A82D85CF1FA5435A008F9A8C /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
 		A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpVC.swift; sourceTree = "<group>"; };
 		A82D85DF1FA6757A008F9A8C /* MapPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpView.xib; sourceTree = "<group>"; };
+		A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				A8BCA2C41F80972E00F330A5 /* Constants.swift */,
 				A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */,
+				A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
+				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,

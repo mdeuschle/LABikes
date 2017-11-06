@@ -17,10 +17,10 @@ class MapPopUpVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         nameLabel.text = bike?.name
         addressLabel.text = bike?.addressStreet
-
+        popUpView.layer.cornerRadius = 10
+        popUpView.shadow()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

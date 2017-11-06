@@ -17,6 +17,17 @@ class RootVC: UIViewController {
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
     let mapPopUpVC = MapPopUpVC(nibName: "MapPopUpView", bundle: nil)
+    var bikes: [Bike] = [Bike]() {
+        didSet {
+            if let navControllers = tabBarController?.viewControllers {
+                if let navController = navControllers[1] as? UINavigationController {
+                    if let listVC = navController.topViewController as? ListVC {
+                        listVC.loadBikeData()
+                    }
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +37,6 @@ class RootVC: UIViewController {
         locationManager.startUpdatingLocation()
         configureLocationServices()
         centerMapOnLocation(location: currentLocation)
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = "LABikes"
     }
 }
@@ -49,6 +59,7 @@ extension RootVC: CLLocationManagerDelegate {
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let bikes = bikes {
+                        self.bikes = bikes
                         self.dropPins(bikes: bikes)
                     }
                 }
@@ -69,11 +80,11 @@ extension RootVC: MKMapViewDelegate {
             mapPopUpVC.modalPresentationStyle = .overCurrentContext
             mapPopUpVC.bike = bikeAnnotation.bike
             present(mapPopUpVC, animated: true, completion: nil)
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
-            mapPopUpVC.view.addGestureRecognizer(tap)
             let coordinate = CLLocationCoordinate2DMake((bikeAnnotation.bike?.latitude)! - 0.0012, (bikeAnnotation.bike?.longitude)!)
             let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
             mapView.setRegion(region, animated: true)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
+            mapView.addGestureRecognizer(tap)
         }
     }
 

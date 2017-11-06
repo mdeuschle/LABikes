@@ -10,6 +10,7 @@ import Foundation
 
 typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
 let URL_STRING = "https://bikeshare.metro.net/stations/json/"
+let bikesNotification = NSNotification.Name(rawValue: "bikesNotification")
 
 enum NibName: String {
     case rootVC = "RootVC"

@@ -20,19 +20,6 @@ class ListVC: UIViewController {
         super.viewDidLoad()
         bikeTableView.delegate = self
         bikeTableView.dataSource = self
-        if let navController = tabBarController?.viewControllers?.first as? UINavigationController {
-            if let rootVC = navController.viewControllers.first as? RootVC {
-                DataService.shared.fetchBikeData(currentLocation: rootVC.currentLocation, completion: { (success, bikes) in
-                    if success {
-                        if let bikes = bikes {
-                            self.bikes = bikes
-                            self.bikeTableView.reloadData()
-                        }
-                    }
-                })
-            }
-        }
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = NavigationTitle.laBikes.rawValue
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
@@ -41,6 +28,16 @@ class ListVC: UIViewController {
             navigationItem.hidesSearchBarWhenScrolling = false
         } else {
             navigationItem.titleView = search.searchBar
+        }
+    }
+
+    func loadBikeData() {
+        if let navControllers = tabBarController?.viewControllers {
+            if let navController = navControllers.first as? UINavigationController {
+                if let rootVC = navController.topViewController as? RootVC {
+                    bikes = rootVC.bikes
+                }
+            }
         }
     }
 }

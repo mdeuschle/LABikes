@@ -22,26 +22,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-Eu-iab">
-                    <rect key="frame" x="0.0" y="527" width="375" height="140"/>
+                <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdU-Eu-iab">
+                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mnk-9M-SRC">
-                            <rect key="frame" x="20" y="20" width="335" height="100"/>
+                            <rect key="frame" x="20" y="20" width="335" height="110"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wj7-Yb-DZN">
-                                    <rect key="frame" x="145" y="0.0" width="45" height="26.5"/>
+                                    <rect key="frame" x="145" y="0.0" width="45" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aul-ip-fmU">
-                                    <rect key="frame" x="136" y="36.5" width="63" height="27"/>
+                                    <rect key="frame" x="136" y="40" width="63" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ey7-eQ-HQM">
-                                    <rect key="frame" x="132.5" y="73.5" width="70" height="26.5"/>
+                                    <rect key="frame" x="132.5" y="80" width="70" height="30"/>
                                     <state key="normal" title="Directions"/>
                                     <connections>
                                         <action selector="directionsTapped:" destination="-1" eventType="touchUpInside" id="RIb-3C-e8c"/>
@@ -50,23 +50,22 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="mnk-9M-SRC" firstAttribute="top" secondItem="DdU-Eu-iab" secondAttribute="top" constant="20" id="GDj-kf-axn"/>
-                        <constraint firstAttribute="bottom" secondItem="mnk-9M-SRC" secondAttribute="bottom" constant="20" id="HfF-SK-C7G"/>
                         <constraint firstAttribute="trailing" secondItem="mnk-9M-SRC" secondAttribute="trailing" constant="20" id="Na9-Bf-hIq"/>
                         <constraint firstItem="mnk-9M-SRC" firstAttribute="leading" secondItem="DdU-Eu-iab" secondAttribute="leading" constant="20" id="cLJ-t0-guh"/>
-                        <constraint firstAttribute="height" constant="140" id="cca-zl-vks"/>
+                        <constraint firstAttribute="height" constant="200" id="cca-zl-vks"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="DdU-Eu-iab" secondAttribute="bottom" id="ZBh-rX-3I2"/>
                 <constraint firstItem="DdU-Eu-iab" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="eDe-9q-t6u"/>
-                <constraint firstItem="DdU-Eu-iab" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="i6B-uN-nnh"/>
                 <constraint firstItem="DdU-Eu-iab" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qJ2-mL-fFW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="34.5" y="73.5"/>
+            <point key="canvasLocation" x="-14" y="46"/>
         </view>
     </objects>
 </document>
