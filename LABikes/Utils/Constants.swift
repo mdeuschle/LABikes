@@ -14,6 +14,7 @@ let bikesNotification = NSNotification.Name(rawValue: "bikesNotification")
 
 enum NibName: String {
     case rootVC = "RootVC"
+    case mapPopUpView = "MapPopUpView"
 }
 
 enum ReusableCell: String {

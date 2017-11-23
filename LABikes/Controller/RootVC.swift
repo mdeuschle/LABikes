@@ -13,10 +13,11 @@ import MapKit
 class RootVC: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
-    let mapPopUpVC = MapPopUpVC(nibName: "MapPopUpView", bundle: nil)
+    let mapPopUpVC = MapPopUpVC(nibName: NibName.mapPopUpView.rawValue, bundle: nil)
     var bikes: [Bike] = [Bike]() {
         didSet {
             if let navControllers = tabBarController?.viewControllers {
@@ -31,19 +32,19 @@ class RootVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        mapView.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         configureLocationServices()
         centerMapOnLocation(location: currentLocation)
-        title = "LABikes"
+        title = NavigationTitle.laBikes.rawValue
+        mapView.delegate = self
     }
 }
 
 extension RootVC: CLLocationManagerDelegate {
 
     private func configureLocationServices() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         if authorizationStatus == .notDetermined {
             locationManager.requestAlwaysAuthorization()
         } else {
@@ -83,8 +84,6 @@ extension RootVC: MKMapViewDelegate {
             let coordinate = CLLocationCoordinate2DMake((bikeAnnotation.bike?.latitude)! - 0.0012, (bikeAnnotation.bike?.longitude)!)
             let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
             mapView.setRegion(region, animated: true)
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
-            mapView.addGestureRecognizer(tap)
         }
     }
 
