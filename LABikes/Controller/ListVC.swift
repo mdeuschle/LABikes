@@ -12,7 +12,11 @@ import CoreLocation
 class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
-    fileprivate var bikes = [Bike]()
+    fileprivate var bikes = [Bike]() {
+        didSet {
+            bikeTableView.reloadData()
+        }
+    }
     fileprivate var filteredBikes = [Bike]()
     fileprivate var isFiltering = false
 
@@ -36,7 +40,6 @@ class ListVC: UIViewController {
             if success {
                 if let bikes = bikes {
                     self.bikes = bikes
-                    self.bikeTableView.reloadData()
                 }
             }
         })

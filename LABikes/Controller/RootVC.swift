@@ -106,7 +106,7 @@ extension RootVC: MKMapViewDelegate {
             self.mapPopUpHeight.constant = self.view.bounds.height / 3
             self.view.layoutIfNeeded()
         }, completion: nil)
-        let coordinate = CLLocationCoordinate2DMake(latitude - 0.0025, longitude)
+        let coordinate = CLLocationCoordinate2DMake(latitude - 0.0015, longitude)
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
         mapView.setRegion(region, animated: true)
     }
