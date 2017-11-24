@@ -12,20 +12,16 @@ class MapPopUpVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var popUpView: UIView!
-    var bike: Bike?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = bike?.name
-        addressLabel.text = bike?.addressStreet
-        popUpView.layer.cornerRadius = 10
-        popUpView.shadow()
+        view.layer.cornerRadius = 10
+        view.shadow()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(false)
-        dismiss(animated: false, completion: nil)
+    func updateBikeData(bike: Bike) {
+        nameLabel.text = bike.name
+        addressLabel.text = bike.addressStreet
     }
 
     @IBAction func directionsTapped(_ sender: UIButton) {

@@ -26,6 +26,10 @@ enum NavigationTitle: String {
     case laBikes = "LABikes"
 }
 
+enum SegueID: String {
+    case mapPopUpSegue = "mapPopUpSegue"
+}
+
 
 
 
