@@ -15,12 +15,13 @@
             <objects>
                 <viewController storyboardIdentifier="ListVC" id="fh8-yu-tmN" customClass="ListVC" customModule="LABikes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o75-oo-9e7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Wn-e0-Ni6">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BikeCell" rowHeight="153" id="uUV-0M-vg7" customClass="BikeCell" customModule="LABikes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="153"/>
@@ -79,6 +80,7 @@
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="top" secondItem="uBo-Xt-q9x" secondAttribute="bottom" constant="8" id="pw4-1A-pQV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="uBo-Xt-q9x" id="ps6-lx-HcI"/>
                                             <outlet property="distanceLabel" destination="O2V-Ne-UhA" id="0Hx-Qz-Th5"/>
@@ -112,14 +114,14 @@
             <objects>
                 <viewController storyboardIdentifier="RootVC" id="ibV-7b-qcf" customClass="RootVC" customModule="LABikes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ss-yJ-yAS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUc-Dc-gch">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ObF-IX-NLk">
-                                <rect key="frame" x="0.0" y="457" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="341" width="375" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="7jc-R5-dtO"/>
                                 </constraints>
@@ -174,9 +176,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mHB-Xb-mHT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="yzT-cB-JnA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="zT8-ZH-Mrq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="zT8-ZH-Mrq">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -193,9 +197,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ssw-eA-mCw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 2" id="I5B-wm-1UK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bHo-31-HsB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="bHo-31-HsB">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -244,6 +250,7 @@
                             <constraint firstItem="gFS-c9-I1d" firstAttribute="top" secondItem="eXl-OT-AfW" secondAttribute="bottom" constant="8" id="hKf-yR-G6i"/>
                             <constraint firstItem="DaI-4u-eP9" firstAttribute="centerX" secondItem="rKC-6o-wWF" secondAttribute="centerX" id="hmk-eI-xMQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="H3h-Zh-n7A"/>
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="eXl-OT-AfW" id="DGc-QE-xO5"/>

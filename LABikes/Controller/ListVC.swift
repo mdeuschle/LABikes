@@ -31,14 +31,15 @@ class ListVC: UIViewController {
         }
     }
 
-    func loadBikeData() {
-        if let navControllers = tabBarController?.viewControllers {
-            if let navController = navControllers.first as? UINavigationController {
-                if let rootVC = navController.topViewController as? RootVC {
-                    bikes = rootVC.bikes
+    func downloadBikeData(location: CLLocation) {
+        DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
+            if success {
+                if let bikes = bikes {
+                    self.bikes = bikes
+                    self.bikeTableView.reloadData()
                 }
             }
-        }
+        })
     }
 }
 

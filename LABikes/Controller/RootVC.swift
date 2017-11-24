@@ -19,17 +19,6 @@ class RootVC: UIViewController {
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
     var mapPopUpVC: MapPopUpVC?
-    var bikes: [Bike] = [Bike]() {
-        didSet {
-            if let navControllers = tabBarController?.viewControllers {
-                if let navController = navControllers[1] as? UINavigationController {
-                    if let listVC = navController.topViewController as? ListVC {
-                        listVC.loadBikeData()
-                    }
-                }
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +54,7 @@ extension RootVC: CLLocationManagerDelegate {
 
     private func configureLocationServices() {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
         if authorizationStatus == .notDetermined {
             locationManager.requestAlwaysAuthorization()
@@ -75,14 +64,20 @@ extension RootVC: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            currentLocation = location
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
+            currentLocation = location
             centerMapOnLocation(location: location)
+            guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
+                return
+            }
+            if let listVC = navigationController.viewControllers[0] as? ListVC {
+                listVC.downloadBikeData(location: location)
+            }
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let bikes = bikes {
-                        self.bikes = bikes
                         self.dropPins(bikes: bikes)
                     }
                 }
