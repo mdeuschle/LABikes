@@ -18,6 +18,7 @@ class RootVC: UIViewController {
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
+    var mapPopUpVC: MapPopUpVC?
     var bikes: [Bike] = [Bike]() {
         didSet {
             if let navControllers = tabBarController?.viewControllers {
@@ -36,6 +37,9 @@ class RootVC: UIViewController {
         centerMapOnLocation(location: currentLocation)
         title = NavigationTitle.laBikes.rawValue
         mapView.delegate = self
+        if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
+            mapPopUpVC = mapPopUpViewController
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,23 +87,21 @@ extension RootVC: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let bikeAnnotation = view.annotation as? BikePointAnnotation {
-            guard let bike = bikeAnnotation.bike, let mapPopUpView = childViewControllers.last as? MapPopUpVC else {
+        guard let bikeAnnotation = view.annotation as? BikePointAnnotation,
+            let bike = bikeAnnotation.bike,
+            let popUpVC = mapPopUpVC,
+            let latitude = bikeAnnotation.bike?.latitude,
+            let longitude = bikeAnnotation.bike?.longitude else {
                 return
-            }
-            mapPopUpView.updateBikeData(bike: bike)
-            UIView.animate(withDuration: 0.2, animations: {
-                self.mapPopUpHeight.constant = self.view.bounds.height / 4
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-
-            guard let latitude = bikeAnnotation.bike?.latitude, let longitude = bikeAnnotation.bike?.longitude else {
-                return
-            }
-            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-            mapView.setRegion(region, animated: true)
         }
+        popUpVC.updateBikeData(bike: bike)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.mapPopUpHeight.constant = self.view.bounds.height / 3
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+        mapView.setRegion(region, animated: true)
     }
 
     private func dropPins(bikes: [Bike]) {
