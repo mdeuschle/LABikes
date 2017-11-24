@@ -12,9 +12,12 @@ import CoreLocation
 class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
-    fileprivate var bikes = [Bike]() {
+    private let spinner = UIActivityIndicatorView()
+    var bikes: [Bike] = [Bike]() {
         didSet {
-            bikeTableView.reloadData()
+            if let tableView = bikeTableView {
+                tableView.reloadData()
+            }
         }
     }
     fileprivate var filteredBikes = [Bike]()
@@ -33,16 +36,6 @@ class ListVC: UIViewController {
         } else {
             navigationItem.titleView = search.searchBar
         }
-    }
-
-    func downloadBikeData(location: CLLocation) {
-        DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
-            if success {
-                if let bikes = bikes {
-                    self.bikes = bikes
-                }
-            }
-        })
     }
 }
 

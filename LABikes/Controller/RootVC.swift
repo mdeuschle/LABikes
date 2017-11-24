@@ -30,6 +30,8 @@ class RootVC: UIViewController {
             mapPopUpVC = mapPopUpViewController
         }
         addGestureRecognizers()
+        let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        navigationItem.rightBarButtonItem = locationButton
     }
 
     private func addGestureRecognizers() {
@@ -72,13 +74,14 @@ extension RootVC: CLLocationManagerDelegate {
             guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
                 return
             }
-            if let listVC = navigationController.viewControllers[0] as? ListVC {
-                listVC.downloadBikeData(location: location)
+            guard let listVC = navigationController.viewControllers[0] as? ListVC else {
+                return
             }
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let bikes = bikes {
                         self.dropPins(bikes: bikes)
+                        listVC.bikes = bikes
                     }
                 }
             })
