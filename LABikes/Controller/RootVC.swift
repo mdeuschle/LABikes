@@ -40,10 +40,22 @@ class RootVC: UIViewController {
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
         }
+        addGestureRecognizers()
+    }
+
+    private func addGestureRecognizers() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        swipe.direction = .down
+        mapPopUpVC?.view.addGestureRecognizer(swipe)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        mapPopUpHeight.constant = 0
+        view.layoutIfNeeded()
+    }
+
+    @objc func dismissView() {
         mapPopUpHeight.constant = 0
         view.layoutIfNeeded()
     }
@@ -99,7 +111,7 @@ extension RootVC: MKMapViewDelegate {
             self.mapPopUpHeight.constant = self.view.bounds.height / 3
             self.view.layoutIfNeeded()
         }, completion: nil)
-        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        let coordinate = CLLocationCoordinate2DMake(latitude - 0.0025, longitude)
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
         mapView.setRegion(region, animated: true)
     }
