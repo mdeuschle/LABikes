@@ -37,6 +37,11 @@ class ListVC: UIViewController {
             navigationItem.titleView = search.searchBar
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
 }
 
 extension ListVC: UITableViewDelegate, UITableViewDataSource {
@@ -56,6 +61,11 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         let bike = isFiltering ? filteredBikes[indexPath.row] : bikes[indexPath.row]
         cell.config(bike: bike)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bikeDetailVC = BikeDetailVC()
+        navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 }
 
