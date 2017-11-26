@@ -68,6 +68,10 @@ class Bike: NSObject, NSCoding {
             aCoder.encode(kioskId, forKey: "kioskId")
         }
     }
+
+    func getFavoriteIndex(favorites: [Bike]) -> Int? {
+        return favorites.index(where: { $0.kioskId == self.kioskId })
+    }
 }
 
 

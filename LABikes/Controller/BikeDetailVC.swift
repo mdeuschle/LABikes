@@ -44,7 +44,7 @@ class BikeDetailVC: UIViewController {
             Dao().saveFavorites(bikes: favoriteBikes)
         } else {
             Dao().removeFavorites()
-            if let index = favoriteBikes.index(where: { $0.kioskId == bike.kioskId }) {
+            if let index = bike.getFavoriteIndex(favorites: favoriteBikes) {
                 favoriteBikes.remove(at: index)
             }
             Dao().saveFavorites(bikes: favoriteBikes)
