@@ -19,7 +19,12 @@ class RootVC: UIViewController {
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
     var mapPopUpVC: MapPopUpVC?
-
+    var bikes: [Bike] = [Bike]() {
+        didSet {
+            print("Bikes: \(bikes)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
@@ -80,12 +85,18 @@ extension RootVC: CLLocationManagerDelegate {
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let bikes = bikes {
+                        self.bikes = bikes
                         self.dropPins(bikes: bikes)
                         listVC.bikes = bikes
                     }
                 }
             })
         }
+    }
+
+    func getUserDirectory() -> String {
+        let userDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        return userDirectories.first ?? ""
     }
 }
 

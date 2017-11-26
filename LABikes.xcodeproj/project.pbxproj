@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */; };
 		A80DA2FA1FC9D63C00BC8750 /* BikeDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A80DA2F81FC9D63C00BC8750 /* BikeDetailVC.xib */; };
+		A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2FB1FCA543700BC8750 /* Dao.swift */; };
 		A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85801F9C4C2A008F9A8C /* ListVC.swift */; };
 		A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82D85C41F9D5523008F9A8C /* Main.storyboard */; };
 		A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CF1FA5435A008F9A8C /* BikeCell.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDetailVC.swift; sourceTree = "<group>"; };
 		A80DA2F81FC9D63C00BC8750 /* BikeDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeDetailVC.xib; sourceTree = "<group>"; };
+		A80DA2FB1FCA543700BC8750 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		A82D85801F9C4C2A008F9A8C /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		A82D85C31F9D5523008F9A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A82D85CF1FA5435A008F9A8C /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				A8BCA2C01F807CAB00F330A5 /* Bike.swift */,
 				A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */,
+				A80DA2FB1FCA543700BC8750 /* Dao.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
+				A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,

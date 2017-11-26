@@ -9,7 +9,8 @@
 import Foundation
 import CoreLocation
 
-struct Bike {
+class Bike: NSObject, NSCoding {
+
     private(set) public var latitude: Double!
     private(set) public var longitude: Double!
     private(set) public var addressStreet: String!
@@ -56,6 +57,14 @@ struct Bike {
         kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String ?? ""
         distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
         coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        kioskId = aDecoder.decodeInteger(forKey: "kioskId")
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(kioskId, forKey: "kioskId")
     }
 }
 
