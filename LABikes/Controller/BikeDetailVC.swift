@@ -12,6 +12,7 @@ class BikeDetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isFavorite: UISwitch!
+    var bike: Bike?
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -24,6 +25,7 @@ class BikeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        nameLabel.text = bike?.name
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {

@@ -64,6 +64,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="trailing" secondItem="Zfv-Ys-MwA" secondAttribute="trailingMargin" id="26T-ys-6PW"/>
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="leading" secondItem="Zfv-Ys-MwA" secondAttribute="leadingMargin" id="8pS-BH-swJ"/>
@@ -91,7 +92,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Wn-e0-Ni6" firstAttribute="trailing" secondItem="UhD-5h-2Di" secondAttribute="trailing" id="1mb-Cb-qwq"/>
                             <constraint firstItem="7Wn-e0-Ni6" firstAttribute="bottom" secondItem="UhD-5h-2Di" secondAttribute="bottom" id="8eK-HL-aGL"/>
@@ -169,7 +170,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Omq-1x-7ec">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mHB-Xb-mHT" kind="relationship" relationship="viewControllers" id="sHv-lw-v7c"/>
