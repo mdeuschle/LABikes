@@ -22,6 +22,14 @@ class Dao {
         NSKeyedArchiver.archiveRootObject(bikes, toFile: favoritesArchive)
     }
 
+    func removeFavorites() {
+        do {
+            try FileManager.default.removeItem(atPath: favoritesArchive)
+        } catch {
+            print("ERROR: \(error.localizedDescription)")
+        }
+    }
+
     func loadFavorites() -> [Bike] {
         if let bikes = NSKeyedUnarchiver.unarchiveObject(withFile: favoritesArchive) as? [Bike] {
             return bikes

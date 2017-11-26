@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ListVC: UIViewController, FavoriteBikeDelegate {
+class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
     private let spinner = UIActivityIndicatorView()
@@ -22,7 +22,6 @@ class ListVC: UIViewController, FavoriteBikeDelegate {
     }
 
     fileprivate var filteredBikes = [Bike]()
-    fileprivate var favoriteBikes = [Bike]()
     fileprivate var isFiltering = false
 
     override func viewDidLoad() {
@@ -38,20 +37,11 @@ class ListVC: UIViewController, FavoriteBikeDelegate {
         } else {
             navigationItem.titleView = search.searchBar
         }
-        favoriteBikes = Dao().loadFavorites()
-        for bike in favoriteBikes {
-            print("BIKE: \(bike.kioskId)")
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-    }
-
-    func favoriteBikeSelected(bike: Bike) {
-        favoriteBikes.append(bike)
-        Dao().saveFavorites(bikes: favoriteBikes)
     }
 }
 
@@ -78,7 +68,6 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let bikeDetailVC = BikeDetailVC()
         bikeDetailVC.bike = bikes[indexPath.row]
-        bikeDetailVC.favoriteBikeDelegate = self
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 }

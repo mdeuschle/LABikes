@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol FavoriteBikeDelegate {
-    func favoriteBikeSelected(bike: Bike)
-}
-
 class BikeDetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isFavorite: UISwitch!
     var bike: Bike?
-    var favoriteBikeDelegate: FavoriteBikeDelegate?
+    var favoriteBikes = [Bike]()
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -31,13 +27,27 @@ class BikeDetailVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         nameLabel.text = bike?.name
+        favoriteBikes = Dao().loadFavorites()
+        for favoriteBike in favoriteBikes {
+            if bike?.kioskId == favoriteBike.kioskId {
+                isFavorite.setOn(true, animated: false)
+            }
+        }
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
+        guard let bike = bike else {
+            return
+        }
         if sender.isOn {
-            if let delegate = favoriteBikeDelegate, let bike = bike {
-                delegate.favoriteBikeSelected(bike: bike)
+            favoriteBikes.append(bike)
+            Dao().saveFavorites(bikes: favoriteBikes)
+        } else {
+            Dao().removeFavorites()
+            if let index = favoriteBikes.index(where: { $0.kioskId == bike.kioskId }) {
+                favoriteBikes.remove(at: index)
             }
+            Dao().saveFavorites(bikes: favoriteBikes)
         }
     }
 }
