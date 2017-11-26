@@ -64,8 +64,12 @@ class Bike: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(kioskId, forKey: "kioskId")
+        if let kioskId = kioskId {
+            aCoder.encode(kioskId, forKey: "kioskId")
+        }
     }
 }
+
+
 
 

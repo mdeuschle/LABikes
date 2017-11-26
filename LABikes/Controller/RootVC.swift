@@ -19,7 +19,7 @@ class RootVC: UIViewController {
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
     var mapPopUpVC: MapPopUpVC?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()

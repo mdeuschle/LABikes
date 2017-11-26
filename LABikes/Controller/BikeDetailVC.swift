@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol FavoriteBikeDelegate {
+    func favoriteBikeSelected(bike: Bike)
+}
+
 class BikeDetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isFavorite: UISwitch!
     var bike: Bike?
+    var favoriteBikeDelegate: FavoriteBikeDelegate?
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -29,5 +34,10 @@ class BikeDetailVC: UIViewController {
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
+        if sender.isOn {
+            if let delegate = favoriteBikeDelegate, let bike = bike {
+                delegate.favoriteBikeSelected(bike: bike)
+            }
+        }
     }
 }
