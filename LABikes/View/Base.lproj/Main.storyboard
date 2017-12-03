@@ -110,10 +110,14 @@
                                 <segment title="All Bike Stations"/>
                                 <segment title="My Bike Stations"/>
                             </segments>
+                            <connections>
+                                <action selector="favoritesSegmentedControlSelected:" destination="fh8-yu-tmN" eventType="valueChanged" id="NVk-Lf-fnJ"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="bikeTableView" destination="7Wn-e0-Ni6" id="d44-jd-vCT"/>
+                        <outlet property="favoritesSegmentedControl" destination="zzs-iw-BTK" id="D6U-Y0-iry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCk-qo-YLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

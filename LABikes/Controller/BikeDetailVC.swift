@@ -13,7 +13,7 @@ class BikeDetailVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isFavorite: UISwitch!
     var bike: Bike?
-    var favoriteBikes = [Bike]()
+    private var favoriteBikes = [Bike]()
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)

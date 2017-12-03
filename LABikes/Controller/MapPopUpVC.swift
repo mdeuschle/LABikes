@@ -13,8 +13,8 @@ class MapPopUpVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var favoriteSwitch: UISwitch!
-    var bike: Bike?
-    var favoriteBikes = [Bike]()
+    private var bike: Bike?
+    private var favoriteBikes = [Bike]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,8 @@ class MapPopUpVC: UIViewController {
         for favoriteBike in favoriteBikes {
             if bike.kioskId == favoriteBike.kioskId {
                 favoriteSwitch.setOn(true, animated: false)
+            } else {
+                favoriteSwitch.setOn(false, animated: false)
             }
         }
     }

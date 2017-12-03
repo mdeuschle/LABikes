@@ -12,6 +12,7 @@ import CoreLocation
 class ListVC: UIViewController {
 
     @IBOutlet weak var bikeTableView: UITableView!
+    @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
     private let spinner = UIActivityIndicatorView()
     var bikes: [Bike] = [Bike]() {
         didSet {
@@ -21,8 +22,12 @@ class ListVC: UIViewController {
         }
     }
 
-    fileprivate var filteredBikes = [Bike]()
+    fileprivate var isFavorites = false
     fileprivate var isFiltering = false
+
+    fileprivate var favoriteBikes = [Bike]()
+    fileprivate var filteredBikes = [Bike]()
+    fileprivate var filteredFavorites = [Bike]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +42,21 @@ class ListVC: UIViewController {
         } else {
             navigationItem.titleView = search.searchBar
         }
+        favoriteBikes = Dao().loadFavorites()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+
+    @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
+        bikeTableView.reloadData()
+        if sender.selectedSegmentIndex == 0 {
+            isFavorites = false
+        } else {
+            isFavorites = true
+        }
     }
 }
 
@@ -52,14 +67,14 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering ? filteredBikes.count : bikes.count
+        return getBikesList().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.bike.rawValue) as? BikeCell else {
             return BikeCell()
         }
-        let bike = isFiltering ? filteredBikes[indexPath.row] : bikes[indexPath.row]
+        let bike = getBikesList()[indexPath.row]
         cell.config(bike: bike)
         return cell
     }
@@ -70,16 +85,35 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         bikeDetailVC.bike = bikes[indexPath.row]
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
+
+    private func getBikesList() -> [Bike] {
+        let stateTuple = (isFiltering, isFavorites)
+        switch stateTuple {
+        case (true, true):
+            return filteredFavorites
+        case (true, false):
+            return filteredBikes
+        case (false, true):
+            return favoriteBikes
+        default:
+            return bikes
+        }
+    }
 }
 
 extension ListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
-            filteredBikes = bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
             isFiltering = true
+            if isFavorites {
+                filteredFavorites = favoriteBikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+            } else {
+                filteredBikes = bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+            }
         } else {
             isFiltering = false
             filteredBikes = [Bike]()
+            filteredFavorites = [Bike]()
         }
         bikeTableView.reloadData()
     }
