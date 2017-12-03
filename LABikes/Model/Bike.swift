@@ -29,6 +29,7 @@ class Bike: NSObject, NSCoding {
     private(set) public var kioskConnectionStatus: String!
     private(set) public var coordinate2D: CLLocationCoordinate2D!
     private(set) public var distance: Double!
+    private(set) public var isFavorite: Bool!
     var miles: String {
         get {
             let miles = distance * 0.000621371
@@ -57,6 +58,7 @@ class Bike: NSObject, NSCoding {
         kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String ?? ""
         distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
         coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        isFavorite = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +76,7 @@ class Bike: NSObject, NSCoding {
         totalDocks = aDecoder.decodeInteger(forKey: "totalDocks")
         trikesAvailable = aDecoder.decodeInteger(forKey: "trikesAvailable")
         kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String
+        isFavorite = aDecoder.decodeBool(forKey: "isFavorite")
     }
 
     func encode(with aCoder: NSCoder) {
@@ -90,7 +93,8 @@ class Bike: NSObject, NSCoding {
             let openTime = openTime,
             let totalDocks = totalDocks,
             let trikesAvailable = trikesAvailable,
-            let kioskConnectionStatus = kioskConnectionStatus
+            let kioskConnectionStatus = kioskConnectionStatus,
+            let isFavorite = isFavorite
         {
             aCoder.encode(longitude, forKey: "longitude")
             aCoder.encode(latitude, forKey: "latitude")
@@ -106,6 +110,7 @@ class Bike: NSObject, NSCoding {
             aCoder.encode(totalDocks, forKey: "totalDocks")
             aCoder.encode(trikesAvailable, forKey: "trikesAvailable")
             aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
+            aCoder.encode(isFavorite, forKey: "isFavorite")
         }
     }
 
