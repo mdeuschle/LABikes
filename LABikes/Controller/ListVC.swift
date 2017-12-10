@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ListVC: UIViewController {
+class ListVC: UIViewController, RefreshFavoritesDelegate {
 
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
@@ -48,7 +48,13 @@ class ListVC: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
 
+    func refreshFavorites() {
+        favoriteBikes = Dao().unarchiveFavorites()
+        bikeTableView.reloadData()
+    }
+
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
+        favoriteBikes = Dao().unarchiveFavorites()
         if sender.selectedSegmentIndex == 0 {
             isFavorites = false
         } else {
@@ -80,7 +86,8 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let bikeDetailVC = BikeDetailVC()
-        bikeDetailVC.bike = bikes[indexPath.row]
+        bikeDetailVC.bike = getBikesList()[indexPath.row]
+        bikeDetailVC.refreshFavoritesDelegate = self
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 

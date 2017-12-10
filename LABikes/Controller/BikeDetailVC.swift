@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RefreshFavoritesDelegate {
+    func refreshFavorites()
+}
+
 class BikeDetailVC: UIViewController {
 
     @IBOutlet weak private var nameLabel: UILabel!
@@ -15,6 +19,7 @@ class BikeDetailVC: UIViewController {
     var bike: Bike?
     private var favoriteIndex: Int?
     private var favoriteBikes = [Bike]()
+    var refreshFavoritesDelegate: RefreshFavoritesDelegate?
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -33,6 +38,11 @@ class BikeDetailVC: UIViewController {
             isFavorite.isOn = true
             self.favoriteIndex = favoriteIndex
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        refreshFavoritesDelegate?.refreshFavorites()
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {

@@ -24,7 +24,7 @@ class Dao {
 
     func unarchiveFavorites() -> [Bike] {
         if let unarchivedBikes = NSKeyedUnarchiver.unarchiveObject(withFile: favoritesArchive) as? [Bike] {
-            return unarchivedBikes
+            return unarchivedBikes.sorted(by: { $0.distance < $1.distance })
         }
         return [Bike]()
     }
