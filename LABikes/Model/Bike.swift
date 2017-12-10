@@ -61,12 +61,18 @@ class Bike: NSObject, NSCoding {
 
     required init?(coder aDecoder: NSCoder) {
         kioskId = aDecoder.decodeInteger(forKey: "kioskId")
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        addressStreet = aDecoder.decodeObject(forKey: "addressStreet") as? String
+        bikesAvailable = aDecoder.decodeInteger(forKey: "bikesAvailable")
+        distance = aDecoder.decodeDouble(forKey: "distance")
     }
 
     func encode(with aCoder: NSCoder) {
-        if let kioskId = kioskId {
-            aCoder.encode(kioskId, forKey: "kioskId")
-        }
+        aCoder.encode(kioskId, forKey: "kioskId")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(addressStreet, forKey: "addressStreet")
+        aCoder.encode(bikesAvailable, forKey: "bikesAvailable")
+        aCoder.encode(distance, forKey: "distance")
     }
 
     func getFavoriteIndex(favorites: [Bike]) -> Int? {
@@ -74,9 +80,7 @@ class Bike: NSObject, NSCoding {
     }
 }
 
-func ==(lhs: Bike, rhs: Bike) -> Bool {
-    return lhs.kioskId == rhs.kioskId
-}
+
 
 
 

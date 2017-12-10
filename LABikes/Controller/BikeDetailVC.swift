@@ -10,10 +10,10 @@ import UIKit
 
 class BikeDetailVC: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var isFavorite: UISwitch!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var isFavorite: UISwitch!
     var bike: Bike?
-    var favoriteIndex: Int?
+    private var favoriteIndex: Int?
     private var favoriteBikes = [Bike]()
 
     init() {
@@ -29,7 +29,7 @@ class BikeDetailVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         nameLabel.text = bike?.name
         favoriteBikes = Dao().unarchiveFavorites()
-        if let favoriteIndex = favoriteBikes.index(where: { $0.kioskId == bike?.kioskId }) {
+        if let favoriteIndex = bike?.getFavoriteIndex(favorites: favoriteBikes) {
             isFavorite.isOn = true
             self.favoriteIndex = favoriteIndex
         }

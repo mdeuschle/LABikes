@@ -11,23 +11,16 @@ import CoreLocation
 
 class ListVC: UIViewController {
 
-    @IBOutlet weak var bikeTableView: UITableView!
-    @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
-    private let spinner = UIActivityIndicatorView()
-    var bikes: [Bike] = [Bike]() {
-        didSet {
-            if let tableView = bikeTableView {
-                tableView.reloadData()
-            }
-        }
-    }
+    @IBOutlet weak private var bikeTableView: UITableView!
+    @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
-    fileprivate var isFavorites = false
-    fileprivate var isFiltering = false
+    var bikes = [Bike]()
+    private var favoriteBikes = [Bike]()
+    private var filteredBikes = [Bike]()
+    private var filteredFavorites = [Bike]()
 
-    fileprivate var favoriteBikes = [Bike]()
-    fileprivate var filteredBikes = [Bike]()
-    fileprivate var filteredFavorites = [Bike]()
+    private var isFavorites = false
+    private var isFiltering = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +28,11 @@ class ListVC: UIViewController {
         bikeTableView.dataSource = self
         navigationController?.view.backgroundColor = .white
         title = NavigationTitle.laBikes.rawValue
+        configureSearch()
+        favoriteBikes = Dao().unarchiveFavorites()
+    }
+
+    private func configureSearch() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         if #available(iOS 11.0, *) {
@@ -51,12 +49,12 @@ class ListVC: UIViewController {
     }
 
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
-        bikeTableView.reloadData()
         if sender.selectedSegmentIndex == 0 {
             isFavorites = false
         } else {
             isFavorites = true
         }
+        bikeTableView.reloadData()
     }
 }
 
