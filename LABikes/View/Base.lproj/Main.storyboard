@@ -21,7 +21,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Wn-e0-Ni6">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="403"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BikeCell" rowHeight="153" id="uUV-0M-vg7" customClass="BikeCell" customModule="LABikes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="153"/>
@@ -64,7 +63,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="trailing" secondItem="Zfv-Ys-MwA" secondAttribute="trailingMargin" id="26T-ys-6PW"/>
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="leading" secondItem="Zfv-Ys-MwA" secondAttribute="leadingMargin" id="8pS-BH-swJ"/>
@@ -81,7 +79,6 @@
                                                 <constraint firstItem="L4g-KB-kkH" firstAttribute="top" secondItem="uBo-Xt-q9x" secondAttribute="bottom" constant="8" id="pw4-1A-pQV"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="uBo-Xt-q9x" id="ps6-lx-HcI"/>
                                             <outlet property="distanceLabel" destination="O2V-Ne-UhA" id="0Hx-Qz-Th5"/>

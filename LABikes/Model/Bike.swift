@@ -31,11 +31,9 @@ class Bike: NSObject, NSCoding {
     private(set) public var distance: Double!
     private(set) public var isFavorite: Bool!
     var miles: String {
-        get {
-            let miles = distance * 0.000621371
-            let bikeMiles = Double(round(10 * miles)/10)
-            return "\(bikeMiles) mi"
-        }
+        let miles = distance * 0.000621371
+        let bikeMiles = Double(round(10 * miles)/10)
+        return "\(bikeMiles) mi"
     }
 
     init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
@@ -62,55 +60,12 @@ class Bike: NSObject, NSCoding {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        latitude = aDecoder.decodeDouble(forKey: "latitude")
-        longitude = aDecoder.decodeDouble(forKey: "longitude")
-        addressStreet = aDecoder.decodeObject(forKey: "addressStreet") as? String
-        addressZipCode = aDecoder.decodeObject(forKey: "addressZipCode") as? String
-        bikesAvailable = aDecoder.decodeInteger(forKey: "bikesAvailable")
-        closeTime = aDecoder.decodeObject(forKey: "closeTime") as? String
         kioskId = aDecoder.decodeInteger(forKey: "kioskId")
-        kioskPublicStatus = aDecoder.decodeObject(forKey: "kioskPublicStatus") as? String
-        kioskStatus = aDecoder.decodeObject(forKey: "kioskStatus") as? String
-        name = aDecoder.decodeObject(forKey: "name") as? String
-        openTime = aDecoder.decodeObject(forKey: "openTime") as? String
-        totalDocks = aDecoder.decodeInteger(forKey: "totalDocks")
-        trikesAvailable = aDecoder.decodeInteger(forKey: "trikesAvailable")
-        kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String
-        isFavorite = aDecoder.decodeBool(forKey: "isFavorite")
     }
 
     func encode(with aCoder: NSCoder) {
-        if let latitude = latitude,
-            let longitude = longitude,
-            let addressStreet = addressStreet,
-            let addressZipCode = addressZipCode,
-            let bikesAvailable = bikesAvailable,
-            let closeTime = closeTime,
-            let kioskId = kioskId,
-            let kioskPublicStatus = kioskPublicStatus,
-            let kioskStatus = kioskStatus,
-            let name = name,
-            let openTime = openTime,
-            let totalDocks = totalDocks,
-            let trikesAvailable = trikesAvailable,
-            let kioskConnectionStatus = kioskConnectionStatus,
-            let isFavorite = isFavorite
-        {
-            aCoder.encode(longitude, forKey: "longitude")
-            aCoder.encode(latitude, forKey: "latitude")
-            aCoder.encode(addressStreet, forKey: "addressStreet")
-            aCoder.encode(addressZipCode, forKey: "addressZipCode")
-            aCoder.encode(bikesAvailable, forKey: "bikesAvailable")
-            aCoder.encode(closeTime, forKey: "closeTime")
+        if let kioskId = kioskId {
             aCoder.encode(kioskId, forKey: "kioskId")
-            aCoder.encode(kioskPublicStatus, forKey: "kioskPublicStatus")
-            aCoder.encode(kioskStatus, forKey: "kioskStatus")
-            aCoder.encode(name, forKey: "name")
-            aCoder.encode(openTime, forKey: "openTime")
-            aCoder.encode(totalDocks, forKey: "totalDocks")
-            aCoder.encode(trikesAvailable, forKey: "trikesAvailable")
-            aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
-            aCoder.encode(isFavorite, forKey: "isFavorite")
         }
     }
 
@@ -118,5 +73,12 @@ class Bike: NSObject, NSCoding {
         return favorites.index(where: { $0.kioskId == self.kioskId })
     }
 }
+
+func ==(lhs: Bike, rhs: Bike) -> Bool {
+    return lhs.kioskId == rhs.kioskId
+}
+
+
+
 
 

@@ -79,9 +79,10 @@ extension RootVC: CLLocationManagerDelegate {
             }
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
-                    if let bikes = bikes {
+                    if let bikes = bikes, let mapPopUpVC = self.mapPopUpVC {
                         self.dropPins(bikes: bikes)
                         listVC.bikes = bikes
+//                        mapPopUpVC.bikes = bikes
                     }
                 }
             })

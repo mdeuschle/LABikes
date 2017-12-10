@@ -33,6 +33,7 @@ class ListVC: UIViewController {
         super.viewDidLoad()
         bikeTableView.delegate = self
         bikeTableView.dataSource = self
+        navigationController?.view.backgroundColor = .white
         title = NavigationTitle.laBikes.rawValue
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
@@ -42,7 +43,6 @@ class ListVC: UIViewController {
         } else {
             navigationItem.titleView = search.searchBar
         }
-        favoriteBikes = Dao().loadFavorites()
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -13,6 +13,7 @@ class BikeDetailVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isFavorite: UISwitch!
     var bike: Bike?
+    var favoriteIndex: Int?
     private var favoriteBikes = [Bike]()
 
     init() {
@@ -27,11 +28,10 @@ class BikeDetailVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         nameLabel.text = bike?.name
-        favoriteBikes = Dao().loadFavorites()
-        for favoriteBike in favoriteBikes {
-            if bike?.kioskId == favoriteBike.kioskId {
-                isFavorite.setOn(true, animated: false)
-            }
+        favoriteBikes = Dao().unarchiveFavorites()
+        if let favoriteIndex = favoriteBikes.index(where: { $0.kioskId == bike?.kioskId }) {
+            isFavorite.isOn = true
+            self.favoriteIndex = favoriteIndex
         }
     }
     
@@ -41,13 +41,12 @@ class BikeDetailVC: UIViewController {
         }
         if sender.isOn {
             favoriteBikes.append(bike)
-            Dao().saveFavorites(bikes: favoriteBikes)
+            Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
         } else {
-            Dao().removeFavorites()
-            if let index = bike.getFavoriteIndex(favorites: favoriteBikes) {
+            if let index = favoriteIndex {
                 favoriteBikes.remove(at: index)
+                Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
             }
-            Dao().saveFavorites(bikes: favoriteBikes)
         }
     }
 }

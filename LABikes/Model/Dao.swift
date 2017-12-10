@@ -18,21 +18,13 @@ class Dao {
         favoritesArchive = "\(userDirecotry)/favoriteBikes"
     }
 
-    func saveFavorites(bikes: [Bike]) {
-        NSKeyedArchiver.archiveRootObject(bikes, toFile: favoritesArchive)
+    func acrchiveFavorites(favoriteBikes: [Bike]) {
+        NSKeyedArchiver.archiveRootObject(favoriteBikes, toFile: favoritesArchive)
     }
 
-    func removeFavorites() {
-        do {
-            try FileManager.default.removeItem(atPath: favoritesArchive)
-        } catch {
-            print("ERROR: \(error.localizedDescription)")
-        }
-    }
-
-    func loadFavorites() -> [Bike] {
-        if let bikes = NSKeyedUnarchiver.unarchiveObject(withFile: favoritesArchive) as? [Bike] {
-            return bikes
+    func unarchiveFavorites() -> [Bike] {
+        if let unarchivedBikes = NSKeyedUnarchiver.unarchiveObject(withFile: favoritesArchive) as? [Bike] {
+            return unarchivedBikes
         }
         return [Bike]()
     }
