@@ -8,18 +8,17 @@
 
 import UIKit
 
-protocol RefreshFavoritesDelegate {
-    func refreshFavorites()
+protocol AdjustFavoriteBikeDelegate {
+    func addFavoriteBike(bike: Bike)
+    func removeFavoriteBike(bike: Bike)
 }
 
 class BikeDetailVC: UIViewController {
 
     @IBOutlet weak private var nameLabel: UILabel!
-    @IBOutlet weak private var isFavorite: UISwitch!
+    @IBOutlet weak private var isFavoriteSwitch: UISwitch!
     var bike: Bike?
-    private var favoriteIndex: Int?
-    private var favoriteBikes = [Bike]()
-    var refreshFavoritesDelegate: RefreshFavoritesDelegate?
+    var adjustFavoriteBikeDelegate: AdjustFavoriteBikeDelegate?
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -33,16 +32,9 @@ class BikeDetailVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         nameLabel.text = bike?.name
-        favoriteBikes = Dao().unarchiveFavorites()
-        if let favoriteIndex = bike?.getFavoriteIndex(favorites: favoriteBikes) {
-            isFavorite.isOn = true
-            self.favoriteIndex = favoriteIndex
+        if let favorite = bike?.isFavorite {
+            isFavoriteSwitch.isOn = favorite
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        refreshFavoritesDelegate?.refreshFavorites()
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
@@ -50,13 +42,9 @@ class BikeDetailVC: UIViewController {
             return
         }
         if sender.isOn {
-            favoriteBikes.append(bike)
-            Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
+            adjustFavoriteBikeDelegate?.addFavoriteBike(bike: bike)
         } else {
-            if let index = favoriteIndex {
-                favoriteBikes.remove(at: index)
-                Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
-            }
+            adjustFavoriteBikeDelegate?.removeFavoriteBike(bike: bike)
         }
     }
 }

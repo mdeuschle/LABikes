@@ -28,6 +28,7 @@ class DataService {
                                 if let coordinatesDic = bike["geometry"] as? [String: Any],
                                     let propertiesDic = bike["properties"] as? [String: Any] {
                                     let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic, currentLocation: currentLocation)
+                                    self.checkIfFavorite(bike: bike)
                                     bikes.append(bike)
                                 } else {
                                     completion(false, nil)
@@ -52,6 +53,14 @@ class DataService {
             }
         }
         task.resume()
+    }
+
+    private func checkIfFavorite(bike: Bike) {
+        for favoriteBike in Dao().unarchiveFavorites() {
+            if favoriteBike.kioskId == bike.kioskId {
+                bike.adjustFavorite(isFavorite: true)
+            }
+        }
     }
 }
 

@@ -9,11 +9,12 @@
 import UIKit
 import CoreLocation
 
-class ListVC: UIViewController, RefreshFavoritesDelegate {
+class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
 
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
+    var location: CLLocation?
     var bikes = [Bike]()
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
@@ -48,9 +49,33 @@ class ListVC: UIViewController, RefreshFavoritesDelegate {
         tabBarController?.tabBar.isHidden = false
     }
 
-    func refreshFavorites() {
-        favoriteBikes = Dao().unarchiveFavorites()
-        bikeTableView.reloadData()
+    func addFavoriteBike(bike: Bike) {
+        bike.adjustFavorite(isFavorite: true)
+        favoriteBikes.append(bike)
+        Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
+        refreshBikes()
+    }
+
+    func removeFavoriteBike(bike: Bike) {
+        bike.adjustFavorite(isFavorite: false)
+        if let index = bike.getFavoriteIndex(favorites: favoriteBikes) {
+            favoriteBikes.remove(at: index)
+            Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
+            refreshBikes()
+        }
+    }
+
+    private func refreshBikes() {
+        if let location = location {
+            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
+                if success {
+                    if let unwrappedBikes = bikes {
+                        self.bikes = unwrappedBikes
+                        self.bikeTableView.reloadData()
+                    }
+                }
+            })
+        }
     }
 
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
@@ -87,7 +112,7 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let bikeDetailVC = BikeDetailVC()
         bikeDetailVC.bike = getBikesList()[indexPath.row]
-        bikeDetailVC.refreshFavoritesDelegate = self
+        bikeDetailVC.adjustFavoriteBikeDelegate = self
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 

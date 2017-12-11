@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BikeDetailVC" customModule="LABikes" customModuleProvider="target">
             <connections>
-                <outlet property="isFavorite" destination="lKF-nN-fIC" id="z9Y-KB-e1i"/>
+                <outlet property="isFavoriteSwitch" destination="lKF-nN-fIC" id="Hs2-gq-s57"/>
                 <outlet property="nameLabel" destination="Kls-dp-bAq" id="ewb-yA-3cw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,7 +27,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lKF-nN-fIC">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lKF-nN-fIC" userLabel="isFavoriteSwitch">
                     <rect key="frame" x="163" y="49" width="51" height="31"/>
                     <connections>
                         <action selector="favoriteSwitched:" destination="-1" eventType="valueChanged" id="uJy-W2-o6K"/>

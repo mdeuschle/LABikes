@@ -69,6 +69,7 @@ extension RootVC: CLLocationManagerDelegate {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
             currentLocation = location
             centerMapOnLocation(location: location)
             guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
@@ -81,6 +82,7 @@ extension RootVC: CLLocationManagerDelegate {
                 if success {
                     if let bikes = bikes, let mapPopUpVC = self.mapPopUpVC {
                         self.dropPins(bikes: bikes)
+                        listVC.location = location
                         listVC.bikes = bikes
 //                        mapPopUpVC.bikes = bikes
                     }
