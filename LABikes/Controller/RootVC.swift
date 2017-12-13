@@ -78,12 +78,12 @@ extension RootVC: CLLocationManagerDelegate {
             guard let listVC = navigationController.viewControllers[0] as? ListVC else {
                 return
             }
+            listVC.location = location
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let bikes = bikes, let mapPopUpVC = self.mapPopUpVC {
                         self.dropPins(bikes: bikes)
-                        listVC.location = location
-                        listVC.bikes = bikes
+//                        listVC.bikes = bikes
 //                        mapPopUpVC.bikes = bikes
                     }
                 }

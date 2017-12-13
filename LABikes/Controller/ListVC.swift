@@ -15,7 +15,7 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
     var location: CLLocation?
-    var bikes = [Bike]()
+    private var bikes = [Bike]()
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
     private var filteredFavorites = [Bike]()
@@ -31,6 +31,7 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         favoriteBikes = Dao().unarchiveFavorites()
+        refreshBikes()
     }
 
     private func configureSearch() {
@@ -72,9 +73,15 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
                     if let unwrappedBikes = bikes {
                         self.bikes = unwrappedBikes
                         self.bikeTableView.reloadData()
+                    } else {
+                        print("Bikes not unwrapped")
                     }
+                } else {
+                    print("Data pull error")
                 }
             })
+        } else {
+            print("Location Not Found")
         }
     }
 
@@ -132,20 +139,24 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ListVC: UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
             isFiltering = true
             if isFavorites {
                 filteredFavorites = favoriteBikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+                bikeTableView.reloadData()
             } else {
                 filteredBikes = bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+                bikeTableView.reloadData()
             }
         } else {
             isFiltering = false
             filteredBikes = [Bike]()
             filteredFavorites = [Bike]()
+            bikeTableView.reloadData()
+            view.endEditing(true)
         }
-        bikeTableView.reloadData()
     }
 }
 
