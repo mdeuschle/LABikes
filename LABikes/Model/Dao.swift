@@ -12,6 +12,8 @@ class Dao {
 
     var favoritesArchive: String
 
+    static let shared = Dao()
+
     init() {
         let userDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let userDirecotry = userDirectories.first ?? ""

@@ -19,6 +19,7 @@ class RootVC: UIViewController {
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var currentLocation = CLLocation()
     var mapPopUpVC: MapPopUpVC?
+    var listVC: ListVC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,12 @@ class RootVC: UIViewController {
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
+        }
+        guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
+            return
+        }
+        if let listVC = navigationController.viewControllers.first as? ListVC {
+            self.listVC = listVC
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -72,28 +79,19 @@ extension RootVC: CLLocationManagerDelegate {
             locationManager.delegate = nil
             currentLocation = location
             centerMapOnLocation(location: location)
-            guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
-                return
-            }
-            guard let listVC = navigationController.viewControllers[0] as? ListVC else {
-                return
-            }
-            listVC.location = location
-            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
-                if success {
-                    if let bikes = bikes, let mapPopUpVC = self.mapPopUpVC {
-                        self.dropPins(bikes: bikes)
-//                        listVC.bikes = bikes
-//                        mapPopUpVC.bikes = bikes
-                    }
-                }
-            })
+            listVC?.location = location
+            refreshBikes()
         }
     }
 
-    func getUserDirectory() -> String {
-        let userDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return userDirectories.first ?? ""
+    @objc private func refreshBikes() {
+        DataService.shared.fetchBikeData(currentLocation: currentLocation, completion: { (success, bikes) in
+            if success {
+                if let bikes = bikes {
+                    self.dropPins(bikes: bikes)
+                }
+            }
+        })
     }
 }
 
@@ -129,6 +127,9 @@ extension RootVC: MKMapViewDelegate {
         }
     }
 }
+
+
+
 
 
 

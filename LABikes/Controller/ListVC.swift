@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
+class ListVC: UIViewController {
 
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
@@ -30,7 +30,6 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
         navigationController?.view.backgroundColor = .white
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
-        favoriteBikes = Dao().unarchiveFavorites()
         refreshBikes()
     }
 
@@ -50,28 +49,13 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
         tabBarController?.tabBar.isHidden = false
     }
 
-    func addFavoriteBike(bike: Bike) {
-        bike.adjustFavorite(isFavorite: true)
-        favoriteBikes.append(bike)
-        Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
-        refreshBikes()
-    }
-
-    func removeFavoriteBike(bike: Bike) {
-        bike.adjustFavorite(isFavorite: false)
-        if let index = bike.getFavoriteIndex(favorites: favoriteBikes) {
-            favoriteBikes.remove(at: index)
-            Dao().acrchiveFavorites(favoriteBikes: favoriteBikes)
-            refreshBikes()
-        }
-    }
-
-    private func refreshBikes() {
+    func refreshBikes() {
         if let location = location {
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let unwrappedBikes = bikes {
                         self.bikes = unwrappedBikes
+                        self.favoriteBikes = Dao().unarchiveFavorites()
                         self.bikeTableView.reloadData()
                     } else {
                         print("Bikes not unwrapped")
@@ -86,7 +70,6 @@ class ListVC: UIViewController, AdjustFavoriteBikeDelegate {
     }
 
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
-        favoriteBikes = Dao().unarchiveFavorites()
         if sender.selectedSegmentIndex == 0 {
             isFavorites = false
         } else {
@@ -118,8 +101,8 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let bikeDetailVC = BikeDetailVC()
+        bikeDetailVC.refreshBikeListDelegate = self
         bikeDetailVC.bike = getBikesList()[indexPath.row]
-        bikeDetailVC.adjustFavoriteBikeDelegate = self
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 
@@ -157,6 +140,13 @@ extension ListVC: UISearchResultsUpdating {
             bikeTableView.reloadData()
             view.endEditing(true)
         }
+    }
+}
+
+extension ListVC: RefreshBikeListDelegate {
+
+    func refreshBikeList() {
+        refreshBikes()
     }
 }
 

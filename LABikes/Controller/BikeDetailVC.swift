@@ -8,17 +8,12 @@
 
 import UIKit
 
-protocol AdjustFavoriteBikeDelegate {
-    func addFavoriteBike(bike: Bike)
-    func removeFavoriteBike(bike: Bike)
-}
-
 class BikeDetailVC: UIViewController {
 
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var isFavoriteSwitch: UISwitch!
     var bike: Bike?
-    var adjustFavoriteBikeDelegate: AdjustFavoriteBikeDelegate?
+    var refreshBikeListDelegate: RefreshBikeListDelegate?
 
     init() {
         super.init(nibName: "BikeDetailVC", bundle: nil)
@@ -32,8 +27,8 @@ class BikeDetailVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         nameLabel.text = bike?.name
-        if let favorite = bike?.isFavorite {
-            isFavoriteSwitch.isOn = favorite
+        if let bike = bike {
+            isFavoriteSwitch.isOn = bike.isFavorite
         }
     }
     
@@ -41,10 +36,17 @@ class BikeDetailVC: UIViewController {
         guard let bike = bike else {
             return
         }
+        var favorites = Dao.shared.unarchiveFavorites()
+        bike.adjustFavorite(isFavorite: sender.isOn)
         if sender.isOn {
-            adjustFavoriteBikeDelegate?.addFavoriteBike(bike: bike)
+            favorites.append(bike)
+            Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
         } else {
-            adjustFavoriteBikeDelegate?.removeFavoriteBike(bike: bike)
+            if let index = bike.getFavoriteIndex(favorites: favorites) {
+                favorites.remove(at: index)
+                Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
+            }
         }
+        refreshBikeListDelegate?.refreshBikeList()
     }
 }

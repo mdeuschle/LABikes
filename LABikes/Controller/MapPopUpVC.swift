@@ -12,7 +12,6 @@ class MapPopUpVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var favoriteSwitch: UISwitch!
     private var bike: Bike?
 
     override func viewDidLoad() {
@@ -22,13 +21,11 @@ class MapPopUpVC: UIViewController {
     }
 
     func updateBikeData(bike: Bike) {
-        nameLabel.text = bike.name
+        nameLabel.text = bike.name                                              
         addressLabel.text = bike.addressStreet
+        self.bike = bike
     }
-
-    @IBAction func favoriteSwitched(_ sender: UISwitch) {
-
-    }
+    
     @IBAction func directionsTapped(_ sender: UIButton) {
         
     }

@@ -234,7 +234,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-4u-eP9">
-                                <rect key="frame" x="8" y="8" width="249" height="20.5"/>
+                                <rect key="frame" x="8" y="8" width="304" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -252,28 +252,16 @@
                                     <action selector="directionsTapped:" destination="hC8-8E-IiH" eventType="touchUpInside" id="2VE-yp-5gY"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fkn-oI-nWl">
-                                <rect key="frame" x="265" y="8" width="49" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="MbN-mQ-xrd"/>
-                                    <constraint firstAttribute="width" constant="47" id="gMO-DK-H1y"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="favoriteSwitched:" destination="hC8-8E-IiH" eventType="valueChanged" id="Al6-Qi-qdb"/>
-                                </connections>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="eXl-OT-AfW" firstAttribute="top" secondItem="DaI-4u-eP9" secondAttribute="bottom" constant="8" id="1UR-oC-Dmf"/>
                             <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="eXl-OT-AfW" secondAttribute="trailing" constant="8" id="7Ef-jS-7sX"/>
                             <constraint firstItem="gFS-c9-I1d" firstAttribute="top" secondItem="eXl-OT-AfW" secondAttribute="bottom" constant="8" id="A3e-YV-rfU"/>
-                            <constraint firstItem="fkn-oI-nWl" firstAttribute="leading" secondItem="DaI-4u-eP9" secondAttribute="trailing" constant="8" id="E2x-DL-TUA"/>
                             <constraint firstItem="DaI-4u-eP9" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="8" id="GID-2e-ERt"/>
+                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="DaI-4u-eP9" secondAttribute="trailing" constant="8" id="MQf-DO-foZ"/>
                             <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="gFS-c9-I1d" secondAttribute="trailing" constant="8" id="MRY-5U-7H1"/>
                             <constraint firstItem="DaI-4u-eP9" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="h28-k0-Ktk"/>
-                            <constraint firstItem="fkn-oI-nWl" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="8" id="hjj-Al-MGL"/>
-                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="fkn-oI-nWl" secondAttribute="trailing" constant="8" id="t2n-ak-Deh"/>
                             <constraint firstItem="eXl-OT-AfW" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="tn6-Ff-ktn"/>
                             <constraint firstItem="gFS-c9-I1d" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="u1p-5V-5Gy"/>
                         </constraints>
@@ -281,7 +269,6 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="eXl-OT-AfW" id="DGc-QE-xO5"/>
-                        <outlet property="favoriteSwitch" destination="fkn-oI-nWl" id="uPA-vM-RXT"/>
                         <outlet property="nameLabel" destination="DaI-4u-eP9" id="XGK-2l-3i1"/>
                     </connections>
                 </viewController>
