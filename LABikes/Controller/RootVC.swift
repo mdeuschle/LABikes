@@ -98,7 +98,7 @@ extension RootVC: CLLocationManagerDelegate {
 extension RootVC: MKMapViewDelegate {
 
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 5000, 5000)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
@@ -111,7 +111,7 @@ extension RootVC: MKMapViewDelegate {
                 return
         }
         popUpVC.updateBikeData(bike: bike)
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.mapPopUpHeight.constant = self.view.bounds.height / 3
             self.view.layoutIfNeeded()
         }, completion: nil)
