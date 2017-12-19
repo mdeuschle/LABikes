@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import CoreLocation
 
 class ListVC: UIViewController {
 
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
-    var location: CLLocation?
     private var bikes = [Bike]()
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
@@ -51,7 +49,7 @@ class ListVC: UIViewController {
     }
 
     func refreshBikes() {
-        if let location = location {
+        if let location = Location.shared.location {
             DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
                 if success {
                     if let unwrappedBikes = bikes {

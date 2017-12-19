@@ -17,24 +17,15 @@ class RootVC: UIViewController {
 
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
-    var currentLocation = CLLocation()
     var mapPopUpVC: MapPopUpVC?
-    var listVC: ListVC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
-        centerMapOnLocation(location: currentLocation)
         title = NavigationTitle.laBikes.rawValue
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
-        }
-        guard let navigationController = tabBarController?.viewControllers?[1] as? UINavigationController else {
-            return
-        }
-        if let listVC = navigationController.viewControllers.first as? ListVC {
-            self.listVC = listVC
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -77,21 +68,22 @@ extension RootVC: CLLocationManagerDelegate {
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            currentLocation = location
+            Location.shared.location = location
             centerMapOnLocation(location: location)
-            listVC?.location = location
             refreshBikes()
         }
     }
 
     @objc private func refreshBikes() {
-        DataService.shared.fetchBikeData(currentLocation: currentLocation, completion: { (success, bikes) in
-            if success {
-                if let bikes = bikes {
-                    self.dropPins(bikes: bikes)
+        if let location = Location.shared.location {
+            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
+                if success {
+                    if let bikes = bikes {
+                        self.dropPins(bikes: bikes)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 }
 

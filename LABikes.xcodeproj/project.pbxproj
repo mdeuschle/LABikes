@@ -27,6 +27,7 @@
 		A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2C61F80BA6E00F330A5 /* RootVC.swift */; };
 		A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */; };
 		A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */; };
+		A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEA1FE8E7A600E9249E /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		A8BCA2C61F80BA6E00F330A5 /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikePointAnnotation.swift; sourceTree = "<group>"; };
+		A8ED8BEA1FE8E7A600E9249E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				A8BCA2C01F807CAB00F330A5 /* Bike.swift */,
 				A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */,
 				A80DA2FB1FCA543700BC8750 /* Dao.swift */,
+				A8ED8BEA1FE8E7A600E9249E /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
+				A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A8A7702A1FE729A100CD1A89 /* RefreshBikeListDelegate.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
