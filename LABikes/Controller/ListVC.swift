@@ -36,6 +36,7 @@ class ListVC: UIViewController {
     private func configureSearch() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
+        search.delegate = self
         if #available(iOS 11.0, *) {
             navigationItem.searchController = search
             navigationItem.hidesSearchBarWhenScrolling = false
@@ -121,9 +122,11 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ListVC: UISearchResultsUpdating {
+extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
 
     func updateSearchResults(for searchController: UISearchController) {
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         if let text = searchController.searchBar.text, !text.isEmpty {
             isFiltering = true
             if isFavorites {
