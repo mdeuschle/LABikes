@@ -75,14 +75,16 @@ extension RootVC: CLLocationManagerDelegate {
     }
 
     @objc private func refreshBikes() {
-        if let location = Location.shared.location {
-            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
-                if success {
-                    if let bikes = bikes {
-                        self.dropPins(bikes: bikes)
+        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, object) in
+            if success {
+                if let bikeObject = object {
+                    if let bikes = JSONHelper.shared.convertJSONObjectToBikes(object: bikeObject) {
+                        DispatchQueue.main.async {
+                            self.dropPins(bikes: bikes)
+                        }
                     }
                 }
-            })
+            }
         }
     }
 }
@@ -119,12 +121,4 @@ extension RootVC: MKMapViewDelegate {
         }
     }
 }
-
-
-
-
-
-
-
-
 

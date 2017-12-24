@@ -49,22 +49,22 @@ class ListVC: UIViewController {
     }
 
     func refreshBikes() {
-        if let location = Location.shared.location {
-            DataService.shared.fetchBikeData(currentLocation: location, completion: { (success, bikes) in
-                if success {
-                    if let unwrappedBikes = bikes {
+        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, object) in
+            if success {
+                if let bikeObject = object {
+                    if let unwrappedBikes = JSONHelper.shared.convertJSONObjectToBikes(object: bikeObject) {
                         self.bikes = unwrappedBikes
                         self.favoriteBikes = Dao().unarchiveFavorites()
-                        self.bikeTableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.bikeTableView.reloadData()
+                        }
                     } else {
                         print("Bikes not unwrapped")
                     }
                 } else {
-                    print("Data pull error")
+                    print("Data")
                 }
-            })
-        } else {
-            print("Location Not Found")
+            }
         }
     }
 

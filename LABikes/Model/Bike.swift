@@ -30,6 +30,7 @@ class Bike: NSObject, NSCoding {
     private(set) public var coordinate2D: CLLocationCoordinate2D!
     private(set) public var distance: Double!
     private(set) public var isFavorite: Bool!
+    
     var miles: String {
         let miles = distance * 0.000621371
         let bikeMiles = Double(round(10 * miles)/10)
