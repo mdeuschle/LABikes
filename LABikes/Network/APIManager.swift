@@ -7,22 +7,31 @@
 //
 
 import Foundation
+import CoreLocation
 
 typealias Handler = (Bool, [String: Any]?) -> Void
 
 struct APIManager {
+
+//    let LATITUDE = String(describing: Location.shared.location?.coordinate.latitude)
+//    let LONGITUDE = String(describing: Location.shared.location?.coordinate.longitude)
 
     static let shared = APIManager()
 
     enum Router {
         case bikes
         case weather
+
+        var location: CLLocation {
+           return Location.shared.location ?? CLLocation()
+        }
+
         var path: String {
             switch self {
             case .bikes:
                 return "https://bikeshare.metro.net/stations/json/"
             case .weather:
-                return "http://api.openweathermap.org/data/2.5/weather?lat=\(LATITUDE)=\(LONGITUDE)&appid=410f10b49176eef3db7a6fe196ec891c"
+                return "http://api.openweathermap.org/data/2.5/weather?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=410f10b49176eef3db7a6fe196ec891c"
             }
         }
     }

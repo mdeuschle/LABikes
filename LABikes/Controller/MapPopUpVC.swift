@@ -12,6 +12,8 @@ class MapPopUpVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+
     private var bike: Bike?
 
     override func viewDidLoad() {
@@ -20,7 +22,7 @@ class MapPopUpVC: UIViewController {
         view.shadow()
     }
 
-    func updateBikeData(bike: Bike) {
+    func config(bike: Bike) {
         nameLabel.text = bike.name                                              
         addressLabel.text = bike.addressStreet
         self.bike = bike

@@ -70,11 +70,12 @@ extension RootVC: CLLocationManagerDelegate {
             locationManager.delegate = nil
             Location.shared.location = location
             centerMapOnLocation(location: location)
-            refreshBikes()
+            downloadBikes()
+            downloadWeather()
         }
     }
 
-    @objc private func refreshBikes() {
+    private func downloadBikes() {
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, object) in
             if success {
                 if let bikeObject = object {
@@ -83,6 +84,18 @@ extension RootVC: CLLocationManagerDelegate {
                             self.dropPins(bikes: bikes)
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private func downloadWeather() {
+        print("WEATHER URL: \(APIManager.Router.weather.path)")
+
+        APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, object) in
+            if success {
+                if let weatherObject = object {
+                    print("WEATHER: \(weatherObject)")
                 }
             }
         }
@@ -104,7 +117,7 @@ extension RootVC: MKMapViewDelegate {
             let longitude = bikeAnnotation.bike?.longitude else {
                 return
         }
-        popUpVC.updateBikeData(bike: bike)
+        popUpVC.config(bike: bike)
         UIView.animate(withDuration: 0.1, animations: {
             self.mapPopUpHeight.constant = self.view.bounds.height / 3
             self.view.layoutIfNeeded()

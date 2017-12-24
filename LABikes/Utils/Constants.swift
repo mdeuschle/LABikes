@@ -9,8 +9,6 @@
 import Foundation
 
 typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
-let LATITUDE = String(describing: Location.shared.location?.coordinate.latitude)
-let LONGITUDE = String(describing: Location.shared.location?.coordinate.longitude)
 
 enum NibName: String {
     case rootVC = "RootVC"
