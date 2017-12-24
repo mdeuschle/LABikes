@@ -31,6 +31,16 @@ struct JSONHelper {
         }
         return bikes
     }
+
+    func convertJSONObjectToWeather(object: [String: Any]) -> String? {
+        var temperature = ""
+        if let main = object["main"] as? [String: Any] {
+            if let temp = main["temp"] as? Double {
+                temperature = KelvinToFahrenheitConverter(kelvin: temp).convert()
+            }
+        }
+        return temperature
+    }
 }
 
 private func checkIfFavorite(bike: Bike) {

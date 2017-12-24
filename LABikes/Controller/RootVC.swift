@@ -90,12 +90,14 @@ extension RootVC: CLLocationManagerDelegate {
     }
 
     private func downloadWeather() {
-        print("WEATHER URL: \(APIManager.Router.weather.path)")
-
         APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, object) in
             if success {
                 if let weatherObject = object {
-                    print("WEATHER: \(weatherObject)")
+                    if let temp = JSONHelper.shared.convertJSONObjectToWeather(object: weatherObject) {
+                        DispatchQueue.main.async {
+                            print("TEMP: \(temp)")
+                        }
+                    }
                 }
             }
         }
