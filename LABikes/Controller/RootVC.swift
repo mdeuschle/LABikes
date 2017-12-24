@@ -71,7 +71,7 @@ extension RootVC: CLLocationManagerDelegate {
             Location.shared.location = location
             centerMapOnLocation(location: location)
             downloadBikes()
-            downloadWeather()
+            mapPopUpVC?.downloadWeather()
         }
     }
 
@@ -82,20 +82,6 @@ extension RootVC: CLLocationManagerDelegate {
                     if let bikes = JSONHelper.shared.convertJSONObjectToBikes(object: bikeObject) {
                         DispatchQueue.main.async {
                             self.dropPins(bikes: bikes)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private func downloadWeather() {
-        APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, object) in
-            if success {
-                if let weatherObject = object {
-                    if let temp = JSONHelper.shared.convertJSONObjectToWeather(object: weatherObject) {
-                        DispatchQueue.main.async {
-                            print("TEMP: \(temp)")
                         }
                     }
                 }

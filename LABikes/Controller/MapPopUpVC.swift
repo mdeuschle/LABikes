@@ -27,6 +27,21 @@ class MapPopUpVC: UIViewController {
         addressLabel.text = bike.addressStreet
         self.bike = bike
     }
+
+
+    func downloadWeather() {
+        APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, object) in
+            if success {
+                if let weatherObject = object {
+                    if let temp = JSONHelper.shared.convertJSONObjectToWeather(object: weatherObject) {
+                        DispatchQueue.main.async {
+                            self.tempLabel.text = temp
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func directionsTapped(_ sender: UIButton) {
         
