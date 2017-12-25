@@ -239,19 +239,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXl-OT-AfW">
-                                <rect key="frame" x="8" y="37" width="304" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-c9-I1d">
-                                <rect key="frame" x="8" y="65.5" width="304" height="30"/>
-                                <state key="normal" title="Directions"/>
-                                <connections>
-                                    <action selector="directionsTapped:" destination="hC8-8E-IiH" eventType="touchUpInside" id="2VE-yp-5gY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG9-TB-A1r">
                                 <rect key="frame" x="224" y="8" width="88" height="21"/>
                                 <constraints>
@@ -261,20 +248,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXl-OT-AfW">
+                                <rect key="frame" x="8" y="37" width="261" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-c9-I1d">
+                                <rect key="frame" x="8" y="80" width="304" height="30"/>
+                                <state key="normal" title="Directions"/>
+                                <connections>
+                                    <action selector="directionsTapped:" destination="hC8-8E-IiH" eventType="touchUpInside" id="2VE-yp-5gY"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxK-xr-5ET">
+                                <rect key="frame" x="277" y="37" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nRr-N9-pYR"/>
+                                    <constraint firstAttribute="width" constant="35" id="vjz-Fg-iU5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="eXl-OT-AfW" firstAttribute="top" secondItem="DaI-4u-eP9" secondAttribute="bottom" constant="8" id="2Hq-De-IzP"/>
                             <constraint firstItem="WG9-TB-A1r" firstAttribute="leading" secondItem="DaI-4u-eP9" secondAttribute="trailing" constant="8" id="6gj-dL-rA7"/>
-                            <constraint firstItem="eXl-OT-AfW" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="GQw-2z-HkG"/>
+                            <constraint firstItem="gxK-xr-5ET" firstAttribute="top" secondItem="WG9-TB-A1r" secondAttribute="bottom" constant="8" id="GHN-Pj-fU1"/>
+                            <constraint firstItem="eXl-OT-AfW" firstAttribute="top" secondItem="DaI-4u-eP9" secondAttribute="bottom" constant="8" id="I7B-PG-hjb"/>
                             <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="WG9-TB-A1r" secondAttribute="trailing" constant="8" id="So4-kn-gMj"/>
-                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="gFS-c9-I1d" secondAttribute="trailing" constant="8" id="bS4-Yg-7wn"/>
+                            <constraint firstItem="gxK-xr-5ET" firstAttribute="leading" secondItem="eXl-OT-AfW" secondAttribute="trailing" constant="8" id="aeF-SA-lzO"/>
                             <constraint firstItem="DaI-4u-eP9" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="8" id="bUW-RJ-cJB"/>
                             <constraint firstItem="DaI-4u-eP9" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="c3X-79-DBT"/>
-                            <constraint firstItem="gFS-c9-I1d" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="c3j-vI-QY5"/>
-                            <constraint firstItem="gFS-c9-I1d" firstAttribute="top" secondItem="eXl-OT-AfW" secondAttribute="bottom" constant="8" id="eyf-03-SeF"/>
+                            <constraint firstItem="gFS-c9-I1d" firstAttribute="top" secondItem="gxK-xr-5ET" secondAttribute="bottom" constant="8" id="cP6-JW-oQt"/>
+                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="gFS-c9-I1d" secondAttribute="trailing" constant="8" id="dfh-P5-I8u"/>
+                            <constraint firstItem="gFS-c9-I1d" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="gTf-bj-l19"/>
                             <constraint firstItem="WG9-TB-A1r" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="8" id="jyd-AQ-he9"/>
-                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="eXl-OT-AfW" secondAttribute="trailing" constant="8" id="lk1-kc-dzu"/>
+                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="gxK-xr-5ET" secondAttribute="trailing" constant="8" id="kJG-rF-LHN"/>
+                            <constraint firstItem="eXl-OT-AfW" firstAttribute="leading" secondItem="H3h-Zh-n7A" secondAttribute="leading" constant="8" id="qbc-ti-7eO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H3h-Zh-n7A"/>
                     </view>
@@ -282,6 +291,7 @@
                         <outlet property="addressLabel" destination="eXl-OT-AfW" id="DGc-QE-xO5"/>
                         <outlet property="nameLabel" destination="DaI-4u-eP9" id="XGK-2l-3i1"/>
                         <outlet property="tempLabel" destination="WG9-TB-A1r" id="y6f-Rc-cmI"/>
+                        <outlet property="weatherIcon" destination="gxK-xr-5ET" id="ban-FD-X8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2K-T6-RVx" userLabel="First Responder" sceneMemberID="firstResponder"/>

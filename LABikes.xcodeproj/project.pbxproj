@@ -28,7 +28,7 @@
 		A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */; };
 		A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEA1FE8E7A600E9249E /* Location.swift */; };
 		A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BED1FEB7BA300E9249E /* APIManager.swift */; };
-		A8ED8BF01FEB8D5F00E9249E /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* JSONHelper.swift */; };
+		A8ED8BF01FEB8D5F00E9249E /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */; };
 		A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */; };
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +78,7 @@
 		A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikePointAnnotation.swift; sourceTree = "<group>"; };
 		A8ED8BEA1FE8E7A600E9249E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8ED8BED1FEB7BA300E9249E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		A8ED8BEF1FEB8D5F00E9249E /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,9 +217,9 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA2C41F80972E00F330A5 /* Constants.swift */,
-				A8ED8BEF1FEB8D5F00E9249E /* JSONHelper.swift */,
-				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
+				A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */,
 				A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */,
+				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,
-				A8ED8BF01FEB8D5F00E9249E /* JSONHelper.swift in Sources */,
+				A8ED8BF01FEB8D5F00E9249E /* DataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

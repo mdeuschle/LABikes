@@ -12,6 +12,7 @@ class BikeDetailVC: UIViewController {
 
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var isFavoriteSwitch: UISwitch!
+
     var bike: Bike?
     var refreshBikeListDelegate: RefreshBikeListDelegate?
 

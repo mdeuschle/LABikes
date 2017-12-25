@@ -76,14 +76,10 @@ extension RootVC: CLLocationManagerDelegate {
     }
 
     private func downloadBikes() {
-        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, object) in
+        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
-                if let bikeObject = object {
-                    if let bikes = JSONHelper.shared.convertJSONObjectToBikes(object: bikeObject) {
-                        DispatchQueue.main.async {
-                            self.dropPins(bikes: bikes)
-                        }
-                    }
+                DispatchQueue.main.async {
+                    self.dropPins(bikes: DataHelper.shared.convertDataToBikes(data: data!))
                 }
             }
         }

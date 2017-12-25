@@ -6,15 +6,12 @@
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
-typealias Handler = (Bool, [String: Any]?) -> Void
+typealias Handler = (Bool, Data?) -> Void
 
 struct APIManager {
-
-//    let LATITUDE = String(describing: Location.shared.location?.coordinate.latitude)
-//    let LONGITUDE = String(describing: Location.shared.location?.coordinate.longitude)
 
     static let shared = APIManager()
 
@@ -23,7 +20,7 @@ struct APIManager {
         case weather
 
         var location: CLLocation {
-           return Location.shared.location ?? CLLocation()
+            return Location.shared.location ?? CLLocation()
         }
 
         var path: String {
@@ -43,16 +40,7 @@ struct APIManager {
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if data != nil && error == nil {
-                do {
-                    if let object = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
-                        handler(true, object)
-                    } else {
-                        handler(false, nil)
-                    }
-                } catch {
-                    print(error)
-                    handler(false, nil)
-                }
+                handler(true, data)
             } else {
                 handler(false, nil)
             }

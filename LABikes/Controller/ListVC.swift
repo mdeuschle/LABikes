@@ -49,20 +49,12 @@ class ListVC: UIViewController {
     }
 
     func refreshBikes() {
-        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, object) in
+        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
-                if let bikeObject = object {
-                    if let unwrappedBikes = JSONHelper.shared.convertJSONObjectToBikes(object: bikeObject) {
-                        self.bikes = unwrappedBikes
-                        self.favoriteBikes = Dao().unarchiveFavorites()
-                        DispatchQueue.main.async {
-                            self.bikeTableView.reloadData()
-                        }
-                    } else {
-                        print("Bikes not unwrapped")
-                    }
-                } else {
-                    print("Data")
+                self.bikes = DataHelper.shared.convertDataToBikes(data: data!)
+                self.favoriteBikes = Dao().unarchiveFavorites()
+                DispatchQueue.main.async {
+                    self.bikeTableView.reloadData()
                 }
             }
         }
