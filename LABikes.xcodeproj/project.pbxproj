@@ -31,6 +31,7 @@
 		A8ED8BF01FEB8D5F00E9249E /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */; };
 		A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */; };
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
+		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
+		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */,
 				A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */,
 				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
+				A8FE71B81FF1DCBE009D50D1 /* Direction.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A8A7702A1FE729A100CD1A89 /* RefreshBikeListDelegate.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
+				A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */,
 				A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
