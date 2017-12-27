@@ -111,6 +111,16 @@ extension RootVC: MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
 
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isEqual(mapView.userLocation) { return nil }
+        let annotationView = MKAnnotationView()
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        annotationView.centerOffset = CGPoint(x: 0, y: -annotationView.frame.size.height / 2)
+        annotationView.image = #imageLiteral(resourceName: "full")
+        return annotationView
+    }
+
     private func dropPins(bikes: [Bike]) {
         for bike in bikes {
             let annotation = BikePointAnnotation(bike: bike)
