@@ -29,6 +29,7 @@ class ListVC: UIViewController {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         refreshBikes()
+        tabBarController?.tabBar.items?[1].title = "LIST"
     }
 
     private func configureSearch() {

@@ -30,6 +30,7 @@ class RootVC: UIViewController {
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
+        tabBarController?.tabBar.items?[0].title = "MAP"
     }
 
     private func addGestureRecognizers() {

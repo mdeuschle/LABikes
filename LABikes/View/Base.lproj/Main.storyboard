@@ -186,11 +186,11 @@
             </objects>
             <point key="canvasLocation" x="-3518" y="136"/>
         </scene>
-        <!--Map-->
+        <!--MAP-->
         <scene sceneID="Pc0-6s-hdX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mHB-Xb-mHT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="yzT-cB-JnA">
+                    <tabBarItem key="tabBarItem" tag="1" title="MAP" image="map" selectedImage="map" id="yzT-cB-JnA">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -209,11 +209,11 @@
             </objects>
             <point key="canvasLocation" x="-2566.4000000000001" y="-197.00149925037482"/>
         </scene>
-        <!--List-->
+        <!--LIST-->
         <scene sceneID="JBq-bg-eoy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ssw-eA-mCw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="I5B-wm-1UK">
+                    <tabBarItem key="tabBarItem" tag="1" title="LIST" image="list" selectedImage="list" id="I5B-wm-1UK">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
