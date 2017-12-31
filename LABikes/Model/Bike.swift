@@ -29,8 +29,9 @@ class Bike: NSObject, NSCoding {
     private(set) public var kioskConnectionStatus: String!
     private(set) public var coordinate2D: CLLocationCoordinate2D!
     private(set) public var distance: Double!
-    private(set) public var isFavorite: Bool!
-    
+    private(set) public var isFavorite = false
+    private(set) public var mapIcon: MapIcon!
+
     var miles: String {
         let miles = distance * 0.000621371
         let bikeMiles = Double(round(10 * miles)/10)
@@ -58,6 +59,23 @@ class Bike: NSObject, NSCoding {
         distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
         coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         isFavorite = false
+        let availablePercentage = Double(bikesAvailable) / Double(totalDocks)
+        switch availablePercentage {
+        case 0:
+            mapIcon = .empty
+        case 0.001..<0.1:
+            mapIcon = .red
+        case 0.1..<0.3:
+            mapIcon = .quarter
+        case 0.3..<0.6:
+            mapIcon = .half
+        case 0.6..<0.9:
+            mapIcon = .threeQuarter
+        case 0.9...1:
+            mapIcon = .full
+        default:
+            mapIcon = .empty
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -70,7 +88,7 @@ class Bike: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
-        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance, let isFavorite = isFavorite {
+        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance {
             aCoder.encode(kioskId, forKey: "kioskId")
             aCoder.encode(name, forKey: "name")
             aCoder.encode(addressStreet, forKey: "addressStreet")

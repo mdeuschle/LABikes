@@ -32,6 +32,7 @@
 		A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */; };
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
+		A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */,
 				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
 				A8FE71B81FF1DCBE009D50D1 /* Direction.swift */,
+				A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */,
 				A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */,
 				A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */,
+				A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */,
 				A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */,
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,

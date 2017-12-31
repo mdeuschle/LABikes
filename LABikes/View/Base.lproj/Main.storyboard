@@ -107,6 +107,7 @@
                                 <segment title="All Bike Stations"/>
                                 <segment title="My Bike Stations"/>
                             </segments>
+                            <color key="tintColor" red="0.27058823529999998" green="0.67450980390000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="favoritesSegmentedControlSelected:" destination="fh8-yu-tmN" eventType="valueChanged" id="NVk-Lf-fnJ"/>
                             </connections>
@@ -172,7 +173,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.34119081497192383" green="0.74208658933639526" blue="0.77629923820495605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.34890177845954895" green="0.75744432210922241" blue="0.79176300764083862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mHB-Xb-mHT" kind="relationship" relationship="viewControllers" id="sHv-lw-v7c"/>
@@ -183,11 +186,13 @@
             </objects>
             <point key="canvasLocation" x="-3518" y="136"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="Pc0-6s-hdX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mHB-Xb-mHT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="yzT-cB-JnA"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="yzT-cB-JnA">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="zT8-ZH-Mrq">
                         <rect key="frame" x="0.0" y="20" width="320" height="96"/>
@@ -204,11 +209,13 @@
             </objects>
             <point key="canvasLocation" x="-2566.4000000000001" y="-197.00149925037482"/>
         </scene>
-        <!--Item 2-->
+        <!--List-->
         <scene sceneID="JBq-bg-eoy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ssw-eA-mCw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="I5B-wm-1UK"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="I5B-wm-1UK">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="bHo-31-HsB">
                         <rect key="frame" x="0.0" y="20" width="320" height="96"/>
@@ -299,4 +306,8 @@
             <point key="canvasLocation" x="-894.375" y="-198.59154929577466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="20" height="18"/>
+        <image name="map" width="20" height="20"/>
+    </resources>
 </document>
