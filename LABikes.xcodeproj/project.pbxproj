@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849944E09E100E92A0CF6357 /* Pods_LABikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */; };
 		A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */; };
 		A80DA2FA1FC9D63C00BC8750 /* BikeDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A80DA2F81FC9D63C00BC8750 /* BikeDetailVC.xib */; };
 		A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2FB1FCA543700BC8750 /* Dao.swift */; };
@@ -33,6 +34,9 @@
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
 		A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */; };
+		A8FE71C41FF891ED009D50D1 /* cycle_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A8FE71C31FF891ED009D50D1 /* cycle_animation.json */; };
+		A8FE71C61FF8C17B009D50D1 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71C51FF8C17B009D50D1 /* LottieView.swift */; };
+		A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LABikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-LABikes/Pods-LABikes.release.xcconfig"; sourceTree = "<group>"; };
+		1A2BF6B10FE4837519828247 /* Pods_LABikesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LABikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LABikes/Pods-LABikes.debug.xcconfig"; sourceTree = "<group>"; };
+		9A94BAAF42A3F6DE856A48A4 /* Pods_LABikesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDetailVC.swift; sourceTree = "<group>"; };
 		A80DA2F81FC9D63C00BC8750 /* BikeDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeDetailVC.xib; sourceTree = "<group>"; };
 		A80DA2FB1FCA543700BC8750 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
@@ -85,6 +94,9 @@
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIcon.swift; sourceTree = "<group>"; };
+		A8FE71C31FF891ED009D50D1 /* cycle_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cycle_animation.json; sourceTree = "<group>"; };
+		A8FE71C51FF8C17B009D50D1 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849944E09E100E92A0CF6357 /* Pods_LABikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		143D2350BD91F7D253196C2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */,
+				9A94BAAF42A3F6DE856A48A4 /* Pods_LABikesTests.framework */,
+				1A2BF6B10FE4837519828247 /* Pods_LABikesUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8A7701B1FE5B11200CD1A89 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +159,8 @@
 				A8BCA2A01F8077F200F330A5 /* LABikesTests */,
 				A8BCA2AB1F8077F200F330A5 /* LABikesUITests */,
 				A8BCA28A1F8077F100F330A5 /* Products */,
+				C1B29BE410DF4A1174C15DEC /* Pods */,
+				143D2350BD91F7D253196C2F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +184,7 @@
 				A8ED8BEC1FEB7B0600E9249E /* Network */,
 				A8BCA2BB1F807A7500F330A5 /* View */,
 				A8BCA2BA1F807A6800F330A5 /* Controller */,
+				A8FE71C21FF891DA009D50D1 /* Support */,
 				A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */,
 				A8BCA2931F8077F100F330A5 /* Assets.xcassets */,
 				A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */,
@@ -192,6 +218,7 @@
 				A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */,
 				A82D85801F9C4C2A008F9A8C /* ListVC.swift */,
 				A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */,
+				A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,6 +229,7 @@
 				A82D85C41F9D5523008F9A8C /* Main.storyboard */,
 				A80DA2F81FC9D63C00BC8750 /* BikeDetailVC.xib */,
 				A82D85CF1FA5435A008F9A8C /* BikeCell.swift */,
+				A8FE71C51FF8C17B009D50D1 /* LottieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +266,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		A8FE71C21FF891DA009D50D1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A8FE71C31FF891ED009D50D1 /* cycle_animation.json */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		C1B29BE410DF4A1174C15DEC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */,
+				079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,9 +290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8BCA2B11F8077F200F330A5 /* Build configuration list for PBXNativeTarget "LABikes" */;
 			buildPhases = (
+				4ABA5E5205944D3F22F5240D /* [CP] Check Pods Manifest.lock */,
 				A8BCA2851F8077F100F330A5 /* Sources */,
 				A8BCA2861F8077F100F330A5 /* Frameworks */,
 				A8BCA2871F8077F100F330A5 /* Resources */,
+				052713360DE8EA5D1A634514 /* [CP] Embed Pods Frameworks */,
+				AFFD5E871F0381854A836FC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FE71C41FF891ED009D50D1 /* cycle_animation.json in Resources */,
 				A80DA2FA1FC9D63C00BC8750 /* BikeDetailVC.xib in Resources */,
 				A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */,
 				A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */,
@@ -368,6 +417,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		052713360DE8EA5D1A634514 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LABikes/Pods-LABikes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4ABA5E5205944D3F22F5240D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AFFD5E871F0381854A836FC8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LABikes/Pods-LABikes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A8BCA2851F8077F100F330A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -384,7 +481,9 @@
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
 				A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */,
 				A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */,
+				A8FE71C61FF8C17B009D50D1 /* LottieView.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
+				A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */,
 				A8A7702A1FE729A100CD1A89 /* RefreshBikeListDelegate.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */,
@@ -556,6 +655,7 @@
 		};
 		A8BCA2B21F8077F200F330A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -572,6 +672,7 @@
 		};
 		A8BCA2B31F8077F200F330A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

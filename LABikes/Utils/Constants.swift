@@ -28,6 +28,10 @@ enum SegueID: String {
     case mapPopUpSegue = "mapPopUpSegue"
 }
 
+enum CycleAnimation: String {
+    case json = "cycle_animation"
+}
+
 
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class BikeDetailVC: UIViewController {
 
@@ -31,6 +32,9 @@ class BikeDetailVC: UIViewController {
         if let bike = bike {
             isFavoriteSwitch.isOn = bike.isFavorite
         }
+        title = "LABikes"
+        let lottieView = LottieView(frame: view.frame)
+        lottieView.configure(view: view)
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
