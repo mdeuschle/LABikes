@@ -142,6 +142,13 @@
                                     <segue destination="hC8-8E-IiH" kind="embed" identifier="mapPopUpSegue" id="ocP-YV-Xzf"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-wD-6eW" customClass="WeatherView" customModule="LABikes" customModuleProvider="target">
+                                <rect key="frame" x="212" y="192" width="100" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="37s-xQ-efl"/>
+                                    <constraint firstAttribute="width" constant="100" id="FOh-ML-CFy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -150,7 +157,9 @@
                             <constraint firstItem="SUc-Dc-gch" firstAttribute="top" secondItem="WsV-KG-Ms2" secondAttribute="top" id="LRi-Hd-WnJ"/>
                             <constraint firstItem="SUc-Dc-gch" firstAttribute="trailing" secondItem="WsV-KG-Ms2" secondAttribute="trailing" id="OHF-xe-DAL"/>
                             <constraint firstAttribute="bottom" secondItem="ObF-IX-NLk" secondAttribute="bottom" id="hhN-yL-vHu"/>
+                            <constraint firstItem="ObF-IX-NLk" firstAttribute="top" secondItem="Jnm-wD-6eW" secondAttribute="bottom" constant="8" id="it6-P4-UgO"/>
                             <constraint firstItem="SUc-Dc-gch" firstAttribute="bottom" secondItem="WsV-KG-Ms2" secondAttribute="bottom" id="meS-jy-j9L"/>
+                            <constraint firstItem="WsV-KG-Ms2" firstAttribute="trailing" secondItem="Jnm-wD-6eW" secondAttribute="trailing" constant="8" id="qKj-cU-5uj"/>
                             <constraint firstItem="ObF-IX-NLk" firstAttribute="leading" secondItem="WsV-KG-Ms2" secondAttribute="leading" id="yBp-x9-YJM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WsV-KG-Ms2"/>
@@ -159,11 +168,12 @@
                     <connections>
                         <outlet property="mapPopUpHeight" destination="7jc-R5-dtO" id="YrD-C5-sK7"/>
                         <outlet property="mapView" destination="SUc-Dc-gch" id="Ea3-kd-kM3"/>
+                        <outlet property="weatherView" destination="Jnm-wD-6eW" id="nC3-YD-zm7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19O-Tg-zJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1748" y="-197.45127436281859"/>
+            <point key="canvasLocation" x="-1749.375" y="-197.53521126760563"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xWf-KA-elo">
@@ -236,8 +246,8 @@
         <scene sceneID="67Z-uW-1wi">
             <objects>
                 <viewController id="hC8-8E-IiH" customClass="MapPopUpVC" customModule="LABikes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rKC-6o-wWF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="rKC-6o-wWF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-4u-eP9">
@@ -294,6 +304,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H3h-Zh-n7A"/>
                     </view>
+                    <size key="freeformSize" width="320" height="300"/>
                     <connections>
                         <outlet property="addressLabel" destination="eXl-OT-AfW" id="DGc-QE-xO5"/>
                         <outlet property="nameLabel" destination="DaI-4u-eP9" id="XGK-2l-3i1"/>

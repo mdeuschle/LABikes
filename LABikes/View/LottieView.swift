@@ -21,7 +21,6 @@ class LottieView: UIView {
 
     func configure(view: UIView) {
         let animationView = LOTAnimationView(name: CycleAnimation.json.rawValue)
-        animationView.frame = CGRect(origin: frame.origin, size: frame.size)
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = 3
         animationView.loopAnimation = true
@@ -29,9 +28,9 @@ class LottieView: UIView {
         animationView.play()
 
         animationView.translatesAutoresizingMaskIntoConstraints = false
-        animationView.heightAnchor.constraint(equalToConstant: view.frame.height / 3).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: view.frame.height / 5).isActive = true
         animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 14).isActive = true
     }
 }

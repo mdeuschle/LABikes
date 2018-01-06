@@ -12,9 +12,9 @@ import MapKit
 
 class RootVC: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var mapPopUpHeight: NSLayoutConstraint!
-
+    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var mapPopUpHeight: NSLayoutConstraint!
+    @IBOutlet private weak var weatherView: WeatherView!
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var mapPopUpVC: MapPopUpVC?
@@ -31,6 +31,7 @@ class RootVC: UIViewController {
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
         tabBarController?.tabBar.items?[0].title = "MAP"
+        weatherView.downloadWeather()
     }
 
     private func addGestureRecognizers() {
@@ -46,8 +47,10 @@ class RootVC: UIViewController {
     }
 
     @objc func dismissView() {
-        mapPopUpHeight.constant = 0
-        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25) {
+            self.mapPopUpHeight.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -103,11 +106,11 @@ extension RootVC: MKMapViewDelegate {
                 return
         }
         popUpVC.config(bike: bike)
-        UIView.animate(withDuration: 0.1, animations: {
-            self.mapPopUpHeight.constant = self.view.bounds.height / 3
+        UIView.animate(withDuration: 0.25, animations: {
+            self.mapPopUpHeight.constant = self.view.bounds.height / 2
             self.view.layoutIfNeeded()
         }, completion: nil)
-        let coordinate = CLLocationCoordinate2DMake(latitude - 0.0015, longitude)
+        let coordinate = CLLocationCoordinate2DMake(latitude - 0.0028, longitude)
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
         mapView.setRegion(region, animated: true)
     }

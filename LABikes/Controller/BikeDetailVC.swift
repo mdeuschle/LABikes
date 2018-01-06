@@ -18,7 +18,7 @@ class BikeDetailVC: UIViewController {
     var refreshBikeListDelegate: RefreshBikeListDelegate?
 
     init() {
-        super.init(nibName: "BikeDetailVC", bundle: nil)
+        super.init(nibName: "BikeDetailView", bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,11 +28,10 @@ class BikeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-        nameLabel.text = bike?.name
         if let bike = bike {
             isFavoriteSwitch.isOn = bike.isFavorite
         }
-        title = "LABikes"
+        title = bike?.name
         let lottieView = LottieView(frame: view.frame)
         lottieView.configure(view: view)
     }
