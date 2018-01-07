@@ -299,7 +299,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="down" width="59" height="13"/>
+        <image name="down" width="53" height="12"/>
         <image name="list" width="20" height="18"/>
         <image name="map" width="20" height="20"/>
     </resources>
