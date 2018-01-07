@@ -37,7 +37,7 @@ class WeatherView: UIView {
             if success {
                 if let temp = DataHelper.shared.convertDataToTemperature(data: data!) {
                     DispatchQueue.main.async {
-                        self.weatherTempLabel.text = "80°"
+                        self.weatherTempLabel.text = temp
                     }
                 }
                 if let url = DataHelper.shared.convertDataToIconURL(data: data!) {

@@ -31,7 +31,6 @@ class RootVC: UIViewController {
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
         tabBarController?.tabBar.items?[0].title = "MAP"
-        weatherView.downloadWeather()
     }
 
     private func addGestureRecognizers() {
@@ -74,8 +73,8 @@ extension RootVC: CLLocationManagerDelegate {
             locationManager.delegate = nil
             Location.shared.location = location
             centerMapOnLocation(location: location)
+            weatherView.downloadWeather()
             downloadBikes()
-            mapPopUpVC?.downloadWeather()
         }
     }
 
