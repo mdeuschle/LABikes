@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-4u-eP9">
-                                <rect key="frame" x="8" y="103" width="45" height="21"/>
+                                <rect key="frame" x="16" y="103" width="304" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -279,17 +279,41 @@
                                     <constraint firstAttribute="width" constant="40" id="bCO-hW-57r"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hO-mq-9TE">
+                                <rect key="frame" x="258" y="16" width="46" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Z8w-yd-edJ"/>
+                                    <constraint firstAttribute="width" constant="46" id="w8B-TK-5Fv"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="blueHeart">
+                                    <color key="titleColor" red="0.9097267389" green="0.85866886379999996" blue="0.8609208465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="hC8-8E-IiH" eventType="touchUpInside" id="EFX-2Z-svU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj8-5D-Lun">
+                                <rect key="frame" x="16" y="74" width="304" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.34890177849999998" green="0.75744432210000001" blue="0.79176300759999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99422607898712156" green="0.99422607898712156" blue="0.99422607898712156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MA1-H3-kO8" firstAttribute="centerX" secondItem="rKC-6o-wWF" secondAttribute="centerX" id="4qB-aD-k5G"/>
                             <constraint firstItem="MA1-H3-kO8" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="8" id="BaW-4m-nvP"/>
+                            <constraint firstItem="H3h-Zh-n7A" firstAttribute="trailing" secondItem="7hO-mq-9TE" secondAttribute="trailing" constant="16" id="PUr-bb-x5D"/>
+                            <constraint firstItem="7hO-mq-9TE" firstAttribute="top" secondItem="H3h-Zh-n7A" secondAttribute="top" constant="16" id="kVN-80-IYC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H3h-Zh-n7A"/>
                     </view>
                     <size key="freeformSize" width="320" height="300"/>
                     <connections>
                         <outlet property="addressLabel" destination="eXl-OT-AfW" id="DGc-QE-xO5"/>
+                        <outlet property="favoriteButton" destination="7hO-mq-9TE" id="14L-f4-zCW"/>
+                        <outlet property="favoriteLabel" destination="Cj8-5D-Lun" id="EaI-BR-hP6"/>
                         <outlet property="nameLabel" destination="DaI-4u-eP9" id="XGK-2l-3i1"/>
                     </connections>
                 </viewController>
@@ -299,7 +323,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="down" width="53" height="12"/>
+        <image name="blueHeart" width="56" height="56"/>
+        <image name="down" width="59" height="15"/>
         <image name="list" width="20" height="18"/>
         <image name="map" width="20" height="20"/>
     </resources>

@@ -26,6 +26,7 @@ class RootVC: UIViewController {
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
+            mapPopUpVC?.refreshMapPinsDelegate = self
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -129,6 +130,12 @@ extension RootVC: MKMapViewDelegate {
             let annotation = BikePointAnnotation(bike: bike)
             mapView.addAnnotation(annotation)
         }
+    }
+}
+
+extension RootVC: RefreshMapPinsDelegate {
+    func refreshMapPins() {
+        downloadBikes()
     }
 }
 

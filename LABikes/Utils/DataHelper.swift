@@ -35,6 +35,7 @@ struct DataHelper {
         } catch {
             print(error)
         }
+        bikes.sort(by: { $0.distance < $1.distance })
         return bikes
     }
 
