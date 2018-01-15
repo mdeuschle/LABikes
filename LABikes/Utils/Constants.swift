@@ -32,6 +32,11 @@ enum CycleAnimation: String {
     case json = "cycle_animation"
 }
 
+enum TabBarName: String {
+    case map = "MAP"
+    case list = "LIST"
+}
+
 
 
 

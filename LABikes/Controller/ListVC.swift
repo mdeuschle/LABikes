@@ -13,10 +13,10 @@ class ListVC: UIViewController {
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
-    private var bikes = [Bike]()
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
     private var filteredFavorites = [Bike]()
+    private var rootVC: RootVC?
 
     private var isFavorites = false
     private var isFiltering = false
@@ -28,8 +28,12 @@ class ListVC: UIViewController {
         navigationController?.view.backgroundColor = .white
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
-        refreshBikes()
-        tabBarController?.tabBar.items?[1].title = "LIST"
+        tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
+        if let navController = tabBarController?.viewControllers?[0] as? UINavigationController {
+            if let rootVC = navController.viewControllers[0] as? RootVC {
+                self.rootVC = rootVC
+            }
+        }
     }
 
     private func configureSearch() {
@@ -47,18 +51,6 @@ class ListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-    }
-
-    func refreshBikes() {
-        APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
-            if success {
-                self.bikes = DataHelper.shared.convertDataToBikes(data: data!)
-                self.favoriteBikes = Dao().unarchiveFavorites()
-                DispatchQueue.main.async {
-                    self.bikeTableView.reloadData()
-                }
-            }
-        }
     }
 
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
@@ -92,13 +84,16 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let bikeDetailVC = BikeDetailVC()
-        bikeDetailVC.refreshBikeListDelegate = self
+        let bikeDetailVC = BikeDetailVC(delegate: self)
+        bikeDetailVC.delegate = self
         bikeDetailVC.bike = getBikesList()[indexPath.row]
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 
     private func getBikesList() -> [Bike] {
+        guard let bikes = rootVC?.bikes else {
+            return [Bike]()
+        }
         let stateTuple = (isFiltering, isFavorites)
         switch stateTuple {
         case (true, true):
@@ -116,6 +111,9 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
 
     func updateSearchResults(for searchController: UISearchController) {
+        guard let bikes = rootVC?.bikes else {
+            return
+        }
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         if let text = searchController.searchBar.text, !text.isEmpty {
@@ -140,7 +138,7 @@ extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
 extension ListVC: RefreshBikeListDelegate {
 
     func refreshBikeList() {
-        refreshBikes()
+//        refreshBikes()
     }
 }
 

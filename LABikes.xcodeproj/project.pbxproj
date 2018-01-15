@@ -38,8 +38,6 @@
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
 		A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */; };
-		A8FE71C41FF891ED009D50D1 /* cycle_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = A8FE71C31FF891ED009D50D1 /* cycle_animation.json */; };
-		A8FE71C61FF8C17B009D50D1 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71C51FF8C17B009D50D1 /* LottieView.swift */; };
 		A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,8 +100,6 @@
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIcon.swift; sourceTree = "<group>"; };
-		A8FE71C31FF891ED009D50D1 /* cycle_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cycle_animation.json; sourceTree = "<group>"; };
-		A8FE71C51FF8C17B009D50D1 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +189,6 @@
 				A8ED8BEC1FEB7B0600E9249E /* Network */,
 				A8BCA2BB1F807A7500F330A5 /* View */,
 				A8BCA2BA1F807A6800F330A5 /* Controller */,
-				A8FE71C21FF891DA009D50D1 /* Support */,
 				A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */,
 				A8BCA2931F8077F100F330A5 /* Assets.xcassets */,
 				A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */,
@@ -240,7 +235,6 @@
 				A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */,
 				A84251811FFCA21C00A0B3EC /* WeatherView.swift */,
 				A82D85CF1FA5435A008F9A8C /* BikeCell.swift */,
-				A8FE71C51FF8C17B009D50D1 /* LottieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,14 +270,6 @@
 				A8ED8BED1FEB7BA300E9249E /* APIManager.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		A8FE71C21FF891DA009D50D1 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A8FE71C31FF891ED009D50D1 /* cycle_animation.json */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		C1B29BE410DF4A1174C15DEC /* Pods */ = {
@@ -405,7 +391,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8FE71C41FF891ED009D50D1 /* cycle_animation.json in Resources */,
 				A84251801FFB5AD800A0B3EC /* WeatherVC.xib in Resources */,
 				A80DA2FA1FC9D63C00BC8750 /* BikeDetailView.xib in Resources */,
 				A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */,
@@ -496,7 +481,6 @@
 				A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */,
 				A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */,
 				A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */,
-				A8FE71C61FF8C17B009D50D1 /* LottieView.swift in Sources */,
 				A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */,

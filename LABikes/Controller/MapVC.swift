@@ -10,17 +10,18 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class RootVC: UIViewController {
+class MapVC: UIViewController {
 
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var mapPopUpHeight: NSLayoutConstraint!
     @IBOutlet private weak var weatherView: WeatherView!
-
+    
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var mapPopUpVC: MapPopUpVC?
     var bikes = [Bike]() {
         didSet {
+            print("MAP BIKES SET")
             dropPins()
         }
     }
@@ -32,12 +33,21 @@ class RootVC: UIViewController {
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
-            mapPopUpVC?.refreshMapPinsDelegate = self
+            mapPopUpVC?.delegate = self
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
-        tabBarController?.tabBar.items?[0].title = TabBarName.map.rawValue
+        tabBarController?.tabBar.items?[0].title = "MAP"
+
+
+        if let tabBarViewControllers = tabBarController?.viewControllers {
+            if let navigationViewController = tabBarViewControllers[0] as? UINavigationController {
+                if let mapVC = navigationViewController.viewControllers[0] as? MapVC {
+                    bikes = mapVC.bikes
+                }
+            }
+        }
     }
 
     private func addGestureRecognizers() {
@@ -60,7 +70,7 @@ class RootVC: UIViewController {
     }
 }
 
-extension RootVC: CLLocationManagerDelegate {
+extension MapVC: CLLocationManagerDelegate {
 
     private func configureLocationServices() {
         locationManager.delegate = self
@@ -85,18 +95,20 @@ extension RootVC: CLLocationManagerDelegate {
         }
     }
 
-    private func downloadBikes() {
+    @objc private func downloadBikes() {
+       mapView.removeAnnotations(mapView.annotations)
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
                 DispatchQueue.main.async {
                     self.bikes = DataHelper.shared.convertDataToBikes(data: data!)
+                    print("PINS DROPPED")
                 }
             }
         }
     }
 }
 
-extension RootVC: MKMapViewDelegate {
+extension MapVC: MKMapViewDelegate {
 
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 5000, 5000)
@@ -119,7 +131,6 @@ extension RootVC: MKMapViewDelegate {
         let coordinate = CLLocationCoordinate2DMake(latitude - 0.0028, longitude)
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
         mapView.setRegion(region, animated: true)
-        mapView.deselectAnnotation(mapView.selectedAnnotations[0], animated: true)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -140,13 +151,20 @@ extension RootVC: MKMapViewDelegate {
     }
 }
 
-extension RootVC: RefreshMapPinsDelegate {
-    func refreshMapPins() {
-        if !mapView.annotations.isEmpty {
-            mapView.removeAnnotations(mapView.annotations)
-        }
-        print("Bikes Refreshed")
+extension MapVC: MapPopUpVCDelegate {
+    func popUpBikeFavorited() {
         downloadBikes()
     }
 }
+
+extension MapVC: DetailVCDelegate {
+    func detailBikeFavorited() {
+        downloadBikes()
+    }
+}
+
+
+
+
+
 

@@ -42,7 +42,8 @@ class MapPopUpVC: UIViewController {
         guard let delegate = refreshMapPinsDelegate, let bike = bike else {
             return
         }
-        let isFavorite = favoriteLabel.text == "Favorite"
+        let isFavorite = !bike.isFavorite
+        configFavorite(isFavorite: isFavorite)
         var favorites = Dao.shared.unarchiveFavorites()
         if isFavorite {
             favorites.append(bike)
@@ -53,9 +54,7 @@ class MapPopUpVC: UIViewController {
                 Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
             }
         }
-        configFavorite(isFavorite: isFavorite)
         delegate.refreshMapPins()
-
     }
 
     private func configFavorite(isFavorite: Bool) {

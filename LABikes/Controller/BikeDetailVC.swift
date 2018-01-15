@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 
 class BikeDetailVC: UIViewController {
 
@@ -15,9 +14,10 @@ class BikeDetailVC: UIViewController {
     @IBOutlet weak private var isFavoriteSwitch: UISwitch!
 
     var bike: Bike?
-    var refreshBikeListDelegate: RefreshBikeListDelegate?
+    var delegate: RefreshBikeListDelegate?
 
-    init() {
+    init(delegate: RefreshBikeListDelegate) {
+        self.delegate = delegate
         super.init(nibName: "BikeDetailView", bundle: nil)
     }
 
@@ -32,8 +32,8 @@ class BikeDetailVC: UIViewController {
             isFavoriteSwitch.isOn = bike.isFavorite
         }
         title = bike?.name
-        let lottieView = LottieView(frame: view.frame)
-        lottieView.configure(view: view)
+        print("VDL")
+
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
@@ -51,6 +51,6 @@ class BikeDetailVC: UIViewController {
                 Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
             }
         }
-        refreshBikeListDelegate?.refreshBikeList()
+        delegate?.refreshBikeList()
     }
 }
