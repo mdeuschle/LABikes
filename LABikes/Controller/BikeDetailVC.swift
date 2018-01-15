@@ -14,9 +14,9 @@ class BikeDetailVC: UIViewController {
     @IBOutlet weak private var isFavoriteSwitch: UISwitch!
 
     var bike: Bike?
-    var delegate: RefreshBikeListDelegate?
+    var delegate: AdjustFavoriteDelegate?
 
-    init(delegate: RefreshBikeListDelegate) {
+    init(delegate: AdjustFavoriteDelegate) {
         self.delegate = delegate
         super.init(nibName: "BikeDetailView", bundle: nil)
     }
@@ -32,8 +32,6 @@ class BikeDetailVC: UIViewController {
             isFavoriteSwitch.isOn = bike.isFavorite
         }
         title = bike?.name
-        print("VDL")
-
     }
     
     @IBAction func favoriteSwitched(_ sender: UISwitch) {
@@ -51,6 +49,6 @@ class BikeDetailVC: UIViewController {
                 Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
             }
         }
-        delegate?.refreshBikeList()
+        delegate?.adjustFavorite()
     }
 }

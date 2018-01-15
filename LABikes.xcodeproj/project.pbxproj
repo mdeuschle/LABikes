@@ -20,7 +20,7 @@
 		A84251BE2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */; };
 		A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */; };
 		A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */; };
-		A8A7702A1FE729A100CD1A89 /* RefreshBikeListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A770291FE729A100CD1A89 /* RefreshBikeListDelegate.swift */; };
+		A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
 		A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2931F8077F100F330A5 /* Assets.xcassets */; };
 		A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BCA2951F8077F100F330A5 /* LaunchScreen.storyboard */; };
@@ -76,7 +76,7 @@
 		A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshMapPinsDelegate.swift; sourceTree = "<group>"; };
 		A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		A8A770291FE729A100CD1A89 /* RefreshBikeListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshBikeListDelegate.swift; sourceTree = "<group>"; };
+		A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustFavoriteDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2931F8077F100F330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		A8A770241FE6F8AD00CD1A89 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				A8A770291FE729A100CD1A89 /* RefreshBikeListDelegate.swift */,
+				A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */,
 				A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */,
 			);
 			path = Protocols;
@@ -484,7 +484,7 @@
 				A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
 				A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */,
-				A8A7702A1FE729A100CD1A89 /* RefreshBikeListDelegate.swift in Sources */,
+				A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */,
 				A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */,

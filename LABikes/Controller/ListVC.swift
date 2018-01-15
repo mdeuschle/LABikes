@@ -135,10 +135,11 @@ extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
     }
 }
 
-extension ListVC: RefreshBikeListDelegate {
+extension ListVC: AdjustFavoriteDelegate {
 
-    func refreshBikeList() {
-//        refreshBikes()
+    func adjustFavorite() {
+        favoriteBikes = Dao.shared.unarchiveFavorites()
+        bikeTableView.reloadData()
     }
 }
 

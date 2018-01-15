@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol RefreshBikeListDelegate {
-    func refreshBikeList()
+protocol AdjustFavoriteDelegate {
+    func adjustFavorite()
 }
