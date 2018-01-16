@@ -13,16 +13,10 @@ class ListVC: UIViewController {
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
-    private var bikes = DataManager.shared.bikes {
-        didSet {
-            bikes = DataManager.shared.bikes
-            bikeTableView.reloadData()
-        }
-    }
+    private var bikes = DataManager.shared.bikes
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
     private var filteredFavorites = [Bike]()
-    private var rootVC: RootVC?
 
     private var isFavorites = false
     private var isFiltering = false
@@ -35,6 +29,14 @@ class ListVC: UIViewController {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
+        if let navigation = tabBarController?.viewControllers?.first as? UINavigationController {
+            if let rootVC = navigation.viewControllers.first as? RootVC {
+                if bikes.isEmpty {
+                    rootVC.downloadBikes()
+                    bikeTableView.reloadData()
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

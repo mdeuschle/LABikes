@@ -80,7 +80,7 @@ extension RootVC: CLLocationManagerDelegate {
         }
     }
 
-    private func downloadBikes() {
+    func downloadBikes() {
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
                 DispatchQueue.main.async {
