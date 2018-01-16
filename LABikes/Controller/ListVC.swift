@@ -29,14 +29,6 @@ class ListVC: UIViewController {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
-        if let navigation = tabBarController?.viewControllers?.first as? UINavigationController {
-            if let rootVC = navigation.viewControllers.first as? RootVC {
-                if bikes.isEmpty {
-                    rootVC.downloadBikes()
-                    bikeTableView.reloadData()
-                }
-            }
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

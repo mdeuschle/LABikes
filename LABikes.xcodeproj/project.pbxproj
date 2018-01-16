@@ -18,6 +18,7 @@
 		A84251801FFB5AD800A0B3EC /* WeatherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */; };
 		A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251811FFCA21C00A0B3EC /* WeatherView.swift */; };
 		A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */; };
+		A84251CC200DDAC200A0B3EC /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251CB200DDAC200A0B3EC /* Detail.swift */; };
 		A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */; };
 		A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherVC.xib; sourceTree = "<group>"; };
 		A84251811FFCA21C00A0B3EC /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		A84251CB200DDAC200A0B3EC /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustFavoriteDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A84251C8200D88DF00A0B3EC /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
 		A8A7701B1FE5B11200CD1A89 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA28B1F8077F100F330A5 /* LABikes */,
+				A84251C8200D88DF00A0B3EC /* SupportFiles */,
 				A8BCA2A01F8077F200F330A5 /* LABikesTests */,
 				A8BCA2AB1F8077F200F330A5 /* LABikesUITests */,
 				A8BCA28A1F8077F100F330A5 /* Products */,
@@ -243,6 +253,7 @@
 				A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */,
 				A80DA2FB1FCA543700BC8750 /* Dao.swift */,
 				A8ED8BEA1FE8E7A600E9249E /* Location.swift */,
+				A84251CB200DDAC200A0B3EC /* Detail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,6 +478,7 @@
 			files = (
 				A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */,
 				A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */,
+				A84251CC200DDAC200A0B3EC /* Detail.swift in Sources */,
 				A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */,
 				A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */,
 				A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */,

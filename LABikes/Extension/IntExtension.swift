@@ -10,7 +10,7 @@ import Foundation
 
 extension Int {
     func bikesString() -> String {
-        return self == 1 ? "\(self) bike available" : "\(self) bikes avilable"
+        return self == 1 ? "\(self) Bike Available" : "\(self) Bikes Available"
     }
 }
 
