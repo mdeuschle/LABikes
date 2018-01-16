@@ -13,6 +13,8 @@ typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
 enum NibName: String {
     case rootVC = "RootVC"
     case mapPopUpView = "MapPopUpView"
+    case bikeDetailView = "BikeDetailView"
+    case weatherVC = "WeatherVC"
 }
 
 enum ReusableCell: String {

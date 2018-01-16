@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BikeDetailVC" customModule="LABikes" customModuleProvider="target">
             <connections>
-                <outlet property="isFavoriteSwitch" destination="lKF-nN-fIC" id="Hs2-gq-s57"/>
                 <outlet property="nameLabel" destination="Kls-dp-bAq" id="ewb-yA-3cw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,18 +26,10 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lKF-nN-fIC" userLabel="isFavoriteSwitch">
-                    <rect key="frame" x="163" y="49" width="51" height="31"/>
-                    <connections>
-                        <action selector="favoriteSwitched:" destination="-1" eventType="valueChanged" id="uJy-W2-o6K"/>
-                    </connections>
-                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="lKF-nN-fIC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HPe-mF-RSW"/>
                 <constraint firstItem="Kls-dp-bAq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Mby-Id-UeM"/>
-                <constraint firstItem="lKF-nN-fIC" firstAttribute="top" secondItem="Kls-dp-bAq" secondAttribute="bottom" constant="8" id="eTM-uH-SYg"/>
                 <constraint firstItem="Kls-dp-bAq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uJi-GS-wE4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -17,7 +17,6 @@
 		A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */; };
 		A84251801FFB5AD800A0B3EC /* WeatherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */; };
 		A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251811FFCA21C00A0B3EC /* WeatherView.swift */; };
-		A84251BE2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */; };
 		A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */; };
 		A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */; };
 		A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */; };
@@ -33,7 +32,7 @@
 		A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */; };
 		A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEA1FE8E7A600E9249E /* Location.swift */; };
 		A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BED1FEB7BA300E9249E /* APIManager.swift */; };
-		A8ED8BF01FEB8D5F00E9249E /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */; };
+		A8ED8BF01FEB8D5F00E9249E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */; };
 		A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */; };
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
@@ -73,7 +72,6 @@
 		A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpVC.swift; sourceTree = "<group>"; };
 		A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherVC.xib; sourceTree = "<group>"; };
 		A84251811FFCA21C00A0B3EC /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshMapPinsDelegate.swift; sourceTree = "<group>"; };
 		A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustFavoriteDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +93,7 @@
 		A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikePointAnnotation.swift; sourceTree = "<group>"; };
 		A8ED8BEA1FE8E7A600E9249E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8ED8BED1FEB7BA300E9249E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */,
-				A84251BD2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -254,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA2C41F80972E00F330A5 /* Constants.swift */,
-				A8ED8BEF1FEB8D5F00E9249E /* DataHelper.swift */,
+				A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */,
 				A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */,
 				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
 				A8FE71B81FF1DCBE009D50D1 /* Direction.swift */,
@@ -477,7 +474,6 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
-				A84251BE2002AF1300A0B3EC /* RefreshMapPinsDelegate.swift in Sources */,
 				A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */,
 				A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */,
 				A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */,
@@ -491,7 +487,7 @@
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
 				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,
-				A8ED8BF01FEB8D5F00E9249E /* DataHelper.swift in Sources */,
+				A8ED8BF01FEB8D5F00E9249E /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

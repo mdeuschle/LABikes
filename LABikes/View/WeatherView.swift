@@ -25,7 +25,7 @@ class WeatherView: UIView {
     }
 
     private func commonInit() {
-        Bundle.main.loadNibNamed("WeatherVC", owner: self, options: nil)
+        Bundle.main.loadNibNamed(NibName.weatherVC.rawValue, owner: self, options: nil)
         addSubview(weatherView)
         weatherView.frame = self.bounds
         weatherView.layer.cornerRadius = 5
@@ -35,12 +35,12 @@ class WeatherView: UIView {
     func downloadWeather() {
         APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, data) in
             if success {
-                if let temp = DataHelper.shared.convertDataToTemperature(data: data!) {
+                if let temp = DataManager.shared.convertDataToTemperature(data: data!) {
                     DispatchQueue.main.async {
                         self.weatherTempLabel.text = temp
                     }
                 }
-                if let url = DataHelper.shared.convertDataToIconURL(data: data!) {
+                if let url = DataManager.shared.convertDataToIconURL(data: data!) {
                     APIManager.shared.performAPICall(urlString: url, handler: { (iconSuccess, iconData) in
                         if iconSuccess {
                             DispatchQueue.main.async {

@@ -13,6 +13,12 @@ class ListVC: UIViewController {
     @IBOutlet weak private var bikeTableView: UITableView!
     @IBOutlet weak private var favoritesSegmentedControl: UISegmentedControl!
 
+    private var bikes = DataManager.shared.bikes {
+        didSet {
+            bikes = DataManager.shared.bikes
+            bikeTableView.reloadData()
+        }
+    }
     private var favoriteBikes = [Bike]()
     private var filteredBikes = [Bike]()
     private var filteredFavorites = [Bike]()
@@ -29,11 +35,13 @@ class ListVC: UIViewController {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
-        if let navController = tabBarController?.viewControllers?[0] as? UINavigationController {
-            if let rootVC = navController.viewControllers[0] as? RootVC {
-                self.rootVC = rootVC
-            }
-        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        favoriteBikes = Dao.shared.unarchiveFavorites()
+        bikeTableView.reloadData()
     }
 
     private func configureSearch() {
@@ -46,11 +54,6 @@ class ListVC: UIViewController {
         } else {
             navigationItem.titleView = search.searchBar
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
     }
 
     @IBAction func favoritesSegmentedControlSelected(_ sender: UISegmentedControl) {
@@ -84,16 +87,12 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let bikeDetailVC = BikeDetailVC(delegate: self)
-        bikeDetailVC.delegate = self
+        let bikeDetailVC = BikeDetailVC(nibName: NibName.bikeDetailView.rawValue, bundle: nil)
         bikeDetailVC.bike = getBikesList()[indexPath.row]
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 
     private func getBikesList() -> [Bike] {
-        guard let bikes = rootVC?.bikes else {
-            return [Bike]()
-        }
         let stateTuple = (isFiltering, isFavorites)
         switch stateTuple {
         case (true, true):
@@ -103,7 +102,7 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         case (false, true):
             return favoriteBikes
         default:
-            return bikes
+            return DataManager.shared.bikes
         }
     }
 }
@@ -111,9 +110,6 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let bikes = rootVC?.bikes else {
-            return
-        }
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         if let text = searchController.searchBar.text, !text.isEmpty {
@@ -122,7 +118,7 @@ extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
                 filteredFavorites = favoriteBikes.filter { $0.name.lowercased().contains(text.lowercased()) }
                 bikeTableView.reloadData()
             } else {
-                filteredBikes = bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
+                filteredBikes = DataManager.shared.bikes.filter { $0.name.lowercased().contains(text.lowercased()) }
                 bikeTableView.reloadData()
             }
         } else {
@@ -132,14 +128,6 @@ extension ListVC: UISearchResultsUpdating, UISearchControllerDelegate {
             bikeTableView.reloadData()
             view.endEditing(true)
         }
-    }
-}
-
-extension ListVC: AdjustFavoriteDelegate {
-
-    func adjustFavorite() {
-        favoriteBikes = Dao.shared.unarchiveFavorites()
-        bikeTableView.reloadData()
     }
 }
 

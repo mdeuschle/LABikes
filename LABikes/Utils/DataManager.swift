@@ -8,12 +8,13 @@
 
 import UIKit
 
-struct DataHelper {
+class DataManager {
 
-    static let shared = DataHelper()
+    static let shared = DataManager()
 
-    func convertDataToBikes(data: Data?) -> [Bike] {
-        var bikes = [Bike]()
+    var bikes = [Bike]()
+
+    func convertDataToBikes(data: Data?) {
         do {
             if let object = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
                 if let objects = object["features"] as? [[String: Any]] {
@@ -36,7 +37,6 @@ struct DataHelper {
             print(error)
         }
         bikes.sort(by: { $0.distance < $1.distance })
-        return bikes
     }
 
     func convertDataToTemperature(data: Data?) -> String? {
@@ -80,15 +80,17 @@ struct DataHelper {
         }
         return result
     }
-}
 
-private func checkIfFavorite(bike: Bike) {
-    for favoriteBike in Dao().unarchiveFavorites() {
-        if favoriteBike.kioskId == bike.kioskId {
-            bike.adjustFavorite(isFavorite: true)
+    func checkIfFavorite(bike: Bike) {
+        for favoriteBike in Dao().unarchiveFavorites() {
+            if favoriteBike.kioskId == bike.kioskId {
+                bike.adjustFavorite(isFavorite: true)
+            }
         }
     }
 }
+
+
 
 
 

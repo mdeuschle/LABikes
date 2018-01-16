@@ -17,19 +17,21 @@ class MapPopUpVC: UIViewController {
 
     private var bike: Bike? {
         didSet {
-            print("BIKE SET")
             guard let bike = bike else {
                 return
             }
             configFavorite(isFavorite: bike.isFavorite)        }
     }
 
-    var refreshMapPinsDelegate: RefreshMapPinsDelegate?
+    var delegate: AdjustFavoriteDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 10
         view.shadow()
+        if let bike = bike {
+            configFavorite(isFavorite: bike.isFavorite)
+        }
     }
 
     func config(bike: Bike) {
@@ -39,12 +41,13 @@ class MapPopUpVC: UIViewController {
     }
 
     @IBAction private func buttonTapped(_ sender: UIButton) {
-        guard let delegate = refreshMapPinsDelegate, let bike = bike else {
+        guard let bike = bike else {
             return
         }
         let isFavorite = !bike.isFavorite
         configFavorite(isFavorite: isFavorite)
         var favorites = Dao.shared.unarchiveFavorites()
+        bike.adjustFavorite(isFavorite: !bike.isFavorite)
         if isFavorite {
             favorites.append(bike)
             Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
@@ -54,7 +57,7 @@ class MapPopUpVC: UIViewController {
                 Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
             }
         }
-        delegate.refreshMapPins()
+        delegate?.adjustFavorite()
     }
 
     private func configFavorite(isFavorite: Bool) {

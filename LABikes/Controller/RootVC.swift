@@ -19,11 +19,6 @@ class RootVC: UIViewController {
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     var mapPopUpVC: MapPopUpVC?
-    var bikes = [Bike]() {
-        didSet {
-            dropPins()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +27,7 @@ class RootVC: UIViewController {
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
-            mapPopUpVC?.refreshMapPinsDelegate = self
+            mapPopUpVC?.delegate = self
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -89,7 +84,8 @@ extension RootVC: CLLocationManagerDelegate {
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
                 DispatchQueue.main.async {
-                    self.bikes = DataHelper.shared.convertDataToBikes(data: data!)
+                    DataManager.shared.convertDataToBikes(data: data!)
+                    self.dropPins()
                 }
             }
         }
@@ -133,20 +129,18 @@ extension RootVC: MKMapViewDelegate {
     }
 
     private func dropPins() {
-        for bike in bikes {
+        for bike in DataManager.shared.bikes {
             let annotation = BikePointAnnotation(bike: bike)
             mapView.addAnnotation(annotation)
         }
     }
 }
 
-extension RootVC: RefreshMapPinsDelegate {
-    func refreshMapPins() {
-        if !mapView.annotations.isEmpty {
-            mapView.removeAnnotations(mapView.annotations)
-        }
-        print("Bikes Refreshed")
-        downloadBikes()
-    }
+extension RootVC: AdjustFavoriteDelegate {
+    func adjustFavorite() {
+        dropPins()
+    }    
 }
+
+
 
