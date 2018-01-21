@@ -83,18 +83,36 @@ class Bike: NSObject, NSCoding {
         name = aDecoder.decodeObject(forKey: "name") as? String
         addressStreet = aDecoder.decodeObject(forKey: "addressStreet") as? String
         bikesAvailable = aDecoder.decodeInteger(forKey: "bikesAvailable")
+        totalDocks = aDecoder.decodeInteger(forKey: "totalDocks")
         distance = aDecoder.decodeDouble(forKey: "distance")
         isFavorite = aDecoder.decodeBool(forKey: "isFavorite")
+        addressCity = aDecoder.decodeObject(forKey: "addressCity") as? String
+        addressState = aDecoder.decodeObject(forKey: "addressState") as? String
+        addressZipCode = aDecoder.decodeObject(forKey: "addressZipCode") as? String
+        openTime = aDecoder.decodeObject(forKey: "openTime") as? String
+        closeTime = aDecoder.decodeObject(forKey: "closeTime") as? String
+        kioskStatus = aDecoder.decodeObject(forKey: "kioskStatus") as? String
+        kioskPublicStatus = aDecoder.decodeObject(forKey: "kioskPublicStatus") as? String
+        kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String
     }
 
     func encode(with aCoder: NSCoder) {
-        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance {
+        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance, let totalDocks = totalDocks, let addressCity = addressCity, let addressState = addressState, let addressZipCode = addressZipCode, let openTime = openTime, let closeTime = closeTime, let kioskStatus = kioskStatus, let kioskPublicStatus = kioskPublicStatus, let kioskConnectionStatus = kioskConnectionStatus {
             aCoder.encode(kioskId, forKey: "kioskId")
             aCoder.encode(name, forKey: "name")
             aCoder.encode(addressStreet, forKey: "addressStreet")
             aCoder.encode(bikesAvailable, forKey: "bikesAvailable")
+            aCoder.encode(totalDocks, forKey: "totalDocks")
             aCoder.encode(distance, forKey: "distance")
             aCoder.encode(isFavorite, forKey: "isFavorite")
+            aCoder.encode(addressCity, forKey: "addressCity")
+            aCoder.encode(addressState, forKey: "addressState")
+            aCoder.encode(addressZipCode, forKey: "addressZipCode")
+            aCoder.encode(openTime, forKey: "openTime")
+            aCoder.encode(closeTime, forKey: "closeTime")
+            aCoder.encode(kioskStatus, forKey: "kioskStatus")
+            aCoder.encode(kioskPublicStatus, forKey: "kioskPublicStatus")
+            aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
         }
     }
 

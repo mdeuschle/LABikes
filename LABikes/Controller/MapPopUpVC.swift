@@ -72,8 +72,6 @@ class MapPopUpVC: UIViewController {
         }
     }
 
-
-
     @IBAction func directionsTapped(_ sender: UIButton) {
         if let lat = bike?.latitude, let lon = bike?.longitude {
             Direction.init(lat: lat, lon: lon).openMaps()

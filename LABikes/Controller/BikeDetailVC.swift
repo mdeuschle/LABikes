@@ -20,12 +20,6 @@ class BikeDetailVC: UIViewController {
         title = "Details"
         tabBarController?.tabBar.isHidden = true
         tableView = UITableView()
-        if let bike = bike {
-            detail = Detail(bike: bike)
-        }
-        if let detail = detail {
-            details = detail.getDetails()
-        }
         configTableView()
     }
 
@@ -59,7 +53,7 @@ extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DetailCell(style: .subtitle, reuseIdentifier: "detailCell")
-        cell.config(bike: bike!, indexPathRow: indexPath.row)
+        cell.config(details: details, indexPathRow: indexPath.row)
         return cell
     }
 }

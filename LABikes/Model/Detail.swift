@@ -91,7 +91,15 @@ struct Detail {
         if bike.kioskPublicStatus == "Active" {
             kioskConnectionStatus.image = "✅".emojiToImage()
         }
-        return [nameDetail, bikesAvailable, totalDocks, distance, addressDetail, city, state, zipCode, favorite, openTime, closeTime, kioskStatus, kioskPublicStatus, kioskConnectionStatus]
+        var kioskID = Detail(bike: bike)
+        kioskID.label = "KIOSK ID"
+        kioskID.detail = String(bike.kioskId)
+        kioskID.image = "🆔".emojiToImage()
+        var thankYou = Detail(bike: bike)
+        thankYou.label = "THANK YOU"
+        thankYou.detail = "Thank you for downloading LABikes!"
+        thankYou.image = "🤓".emojiToImage()
+        return [nameDetail, bikesAvailable, totalDocks, distance, addressDetail, city, state, zipCode, favorite, openTime, closeTime, kioskStatus, kioskPublicStatus, kioskConnectionStatus, kioskID, thankYou]
     }
 }
 

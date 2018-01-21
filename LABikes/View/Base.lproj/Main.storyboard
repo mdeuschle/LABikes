@@ -107,7 +107,7 @@
                                 <segment title="All Bike Stations"/>
                                 <segment title="My Bike Stations"/>
                             </segments>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.34890177849999998" green="0.75744432210000001" blue="0.79176300759999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="favoritesSegmentedControlSelected:" destination="fh8-yu-tmN" eventType="valueChanged" id="NVk-Lf-fnJ"/>
                             </connections>

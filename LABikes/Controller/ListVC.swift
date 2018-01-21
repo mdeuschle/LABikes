@@ -55,6 +55,7 @@ class ListVC: UIViewController {
         if sender.selectedSegmentIndex == 0 {
             isFavorites = false
         } else {
+            favoriteBikes = Dao.shared.unarchiveFavorites()
             isFavorites = true
         }
         bikeTableView.reloadData()
@@ -83,7 +84,11 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let bikeDetailVC = BikeDetailVC(nibName: NibName.bikeDetailView.rawValue, bundle: nil)
-        bikeDetailVC.bike = getBikesList()[indexPath.row]
+        let bike = getBikesList()[indexPath.row]
+        bikeDetailVC.bike = bike
+        let detail = Detail(bike: bike)
+        let details = detail.getDetails()
+        bikeDetailVC.details = details
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 

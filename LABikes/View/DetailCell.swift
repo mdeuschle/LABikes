@@ -10,9 +10,7 @@ import UIKit
 
 class DetailCell: UITableViewCell {
 
-    func config(bike: Bike, indexPathRow: Int) {
-        let detail = Detail(bike: bike)
-        let details = detail.getDetails()
+    func config(details: [Detail], indexPathRow: Int) {
         let cellDetail = details[indexPathRow]
         self.textLabel?.text = cellDetail.label
         self.detailTextLabel?.text = cellDetail.detail
