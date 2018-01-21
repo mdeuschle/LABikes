@@ -7,6 +7,6 @@ target 'LABikes' do
 
   # Pods for LABikes
 
-  pod 'lottie-ios'
+#  pod 'lottie-ios'
 
 end

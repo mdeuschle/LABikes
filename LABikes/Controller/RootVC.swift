@@ -33,6 +33,7 @@ class RootVC: UIViewController {
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
         tabBarController?.tabBar.items?[0].title = TabBarName.map.rawValue
+        tabBarController?.tabBar.items?[1].isEnabled = false
     }
 
     private func addGestureRecognizers() {
@@ -84,6 +85,7 @@ extension RootVC: CLLocationManagerDelegate {
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
                 DispatchQueue.main.async {
+                    self.tabBarController?.tabBar.items?[1].isEnabled = true
                     DataManager.shared.convertDataToBikes(data: data!)
                     self.dropPins()
                 }
