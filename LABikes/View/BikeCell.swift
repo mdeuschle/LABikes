@@ -17,7 +17,7 @@ class BikeCell: UITableViewCell {
     func config(bike: Bike) {
         self.nameLabel.text = bike.name
         self.addressLabel.text = bike.addressStreet
-        self.numberOfBikesLabel.text = bike.bikesAvailable.bikesString()
+        self.numberOfBikesLabel.text = bike.bikesAvailable.bikeIntToString()
         self.distanceLabel.text = bike.miles
     }
 }

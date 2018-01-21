@@ -9,7 +9,7 @@
 import Foundation
 
 extension Int {
-    func bikesString() -> String {
+    func bikeIntToString() -> String {
         return self == 1 ? "\(self) Bike Available" : "\(self) Bikes Available"
     }
 }

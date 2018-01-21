@@ -29,6 +29,7 @@ class ListVC: UIViewController {
         title = NavigationTitle.laBikes.rawValue
         configureSearch()
         tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
+        self.definesPresentationContext = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -39,14 +40,14 @@ class ListVC: UIViewController {
     }
 
     private func configureSearch() {
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        search.delegate = self
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
         if #available(iOS 11.0, *) {
-            navigationItem.searchController = search
+            navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
         } else {
-            navigationItem.titleView = search.searchBar
+            navigationItem.titleView = searchController.searchBar
         }
     }
 

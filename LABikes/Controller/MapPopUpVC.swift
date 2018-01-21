@@ -28,7 +28,7 @@ class MapPopUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 10
-        view.shadow()
+        view.addShadow()
         if let bike = bike {
             configFavorite(isFavorite: bike.isFavorite)
         }

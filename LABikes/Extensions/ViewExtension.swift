@@ -6,11 +6,10 @@
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {
-    func shadow() {
+    func addShadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.08
         layer.shadowRadius = 2.0
