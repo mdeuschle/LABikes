@@ -34,6 +34,7 @@ class RootVC: UIViewController {
         navigationItem.rightBarButtonItem = locationButton
         tabBarController?.tabBar.items?[0].title = TabBarName.map.rawValue
         tabBarController?.tabBar.items?[1].isEnabled = false
+        weatherView.isHidden = true
     }
 
     private func addGestureRecognizers() {
@@ -45,12 +46,14 @@ class RootVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         mapPopUpHeight.constant = 0
+        weatherView.isHidden = true
         view.layoutIfNeeded()
     }
 
     @objc func dismissView() {
         UIView.animate(withDuration: 0.25) {
             self.mapPopUpHeight.constant = 0
+            self.weatherView.isHidden = true
             self.view.layoutIfNeeded()
         }
     }
@@ -102,6 +105,7 @@ extension RootVC: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        weatherView.isHidden = false
         guard let bikeAnnotation = view.annotation as? BikePointAnnotation,
             let bike = bikeAnnotation.bike,
             let popUpVC = mapPopUpVC,
@@ -111,7 +115,7 @@ extension RootVC: MKMapViewDelegate {
         }
         popUpVC.config(bike: bike)
         UIView.animate(withDuration: 0.25, animations: {
-            self.mapPopUpHeight.constant = self.view.bounds.height / 2
+            self.mapPopUpHeight.constant = 240  
             self.view.layoutIfNeeded()
         }, completion: nil)
         let coordinate = CLLocationCoordinate2DMake(latitude - 0.0028, longitude)
