@@ -10,7 +10,7 @@ import UIKit
 
 extension String {
     func emojiToImage() -> UIImage? {
-        let size = CGSize(width: 30, height: 35)
+        let size = CGSize(width: 35, height: 35)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         UIColor.white.set()
         let rect = CGRect(origin: CGPoint(), size: size)

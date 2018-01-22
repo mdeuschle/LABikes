@@ -9,15 +9,21 @@
 import UIKit
 
 class BikeCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var numberOfBikesLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var numberOfBikesLabel: UILabel!
+    @IBOutlet private weak var distanceLabel: UILabel!
+    private var bike: Bike?
 
     func config(bike: Bike) {
         self.nameLabel.text = bike.name
-        self.addressLabel.text = bike.addressStreet
         self.numberOfBikesLabel.text = bike.bikesAvailable.bikeIntToString()
-        self.distanceLabel.text = bike.miles
+        self.distanceLabel.text = "\(bike.miles) miles"
+        self.bike = bike
+    }
+    
+    @IBAction func goButtonTapped(_ sender: UIButton) {
+        if let lat = bike?.latitude, let lon = bike?.longitude {
+            Direction.init(lat: lat, lon: lon).openMaps()
+        }
     }
 }

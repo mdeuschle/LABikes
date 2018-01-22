@@ -115,7 +115,7 @@ extension RootVC: MKMapViewDelegate {
         }
         popUpVC.config(bike: bike)
         UIView.animate(withDuration: 0.25, animations: {
-            self.mapPopUpHeight.constant = 240  
+            self.mapPopUpHeight.constant = 238
             self.view.layoutIfNeeded()
         }, completion: nil)
         let coordinate = CLLocationCoordinate2DMake(latitude - 0.0028, longitude)

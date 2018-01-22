@@ -17,7 +17,7 @@ class BikeDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Details"
+        title = "Station Details"
         tabBarController?.tabBar.isHidden = true
         tableView = UITableView()
         configTableView()

@@ -35,7 +35,7 @@ class Bike: NSObject, NSCoding {
     var miles: String {
         let miles = distance * 0.000621371
         let bikeMiles = Double(round(10 * miles)/10)
-        return "\(bikeMiles) mi"
+        return "\(bikeMiles)"
     }
 
     init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
@@ -94,10 +94,12 @@ class Bike: NSObject, NSCoding {
         kioskStatus = aDecoder.decodeObject(forKey: "kioskStatus") as? String
         kioskPublicStatus = aDecoder.decodeObject(forKey: "kioskPublicStatus") as? String
         kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String
+        latitude = aDecoder.decodeDouble(forKey: "latitude")
+        longitude = aDecoder.decodeDouble(forKey: "longitude")
     }
 
     func encode(with aCoder: NSCoder) {
-        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance, let totalDocks = totalDocks, let addressCity = addressCity, let addressState = addressState, let addressZipCode = addressZipCode, let openTime = openTime, let closeTime = closeTime, let kioskStatus = kioskStatus, let kioskPublicStatus = kioskPublicStatus, let kioskConnectionStatus = kioskConnectionStatus {
+        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance, let totalDocks = totalDocks, let addressCity = addressCity, let addressState = addressState, let addressZipCode = addressZipCode, let openTime = openTime, let closeTime = closeTime, let kioskStatus = kioskStatus, let kioskPublicStatus = kioskPublicStatus, let kioskConnectionStatus = kioskConnectionStatus, let latitude = latitude, let longitude = longitude {
             aCoder.encode(kioskId, forKey: "kioskId")
             aCoder.encode(name, forKey: "name")
             aCoder.encode(addressStreet, forKey: "addressStreet")
@@ -113,6 +115,8 @@ class Bike: NSObject, NSCoding {
             aCoder.encode(kioskStatus, forKey: "kioskStatus")
             aCoder.encode(kioskPublicStatus, forKey: "kioskPublicStatus")
             aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
+            aCoder.encode(latitude, forKey: "latitude")
+            aCoder.encode(longitude, forKey: "longitude")
         }
     }
 

@@ -14,6 +14,10 @@ class MapPopUpVC: UIViewController {
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var favoriteButton: UIButton!
     @IBOutlet private weak var favoriteLabel: UILabel!
+    @IBOutlet private weak var milesLabel: UILabel!
+    @IBOutlet private weak var _milesLabel: UILabel!
+    @IBOutlet private weak var bikesAvailableLabel: UILabel!
+    @IBOutlet private weak var _bikesAvailableLabel: UILabel!
 
     private var bike: Bike? {
         didSet {
@@ -37,6 +41,18 @@ class MapPopUpVC: UIViewController {
     func config(bike: Bike) {
         nameLabel.text = bike.name                                              
         addressLabel.text = bike.addressStreet
+        milesLabel.text = bike.miles
+        if Double(bike.miles) == 1.0 {
+            _milesLabel.text = "Mile"
+        }
+        bikesAvailableLabel.text = String(bike.bikesAvailable)
+        if bike.bikesAvailable == 0 {
+            bikesAvailableLabel.textColor = .red
+            _bikesAvailableLabel.textColor = .red
+        }
+        if bike.bikesAvailable == 1 {
+            _bikesAvailableLabel.text = "Bike"
+        }
         self.bike = bike
     }
 

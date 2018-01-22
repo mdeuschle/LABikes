@@ -92,6 +92,10 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+
     private func getBikesList() -> [Bike] {
         let stateTuple = (isFiltering, isFavorites)
         switch stateTuple {
