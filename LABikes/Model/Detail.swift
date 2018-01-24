@@ -28,7 +28,7 @@ struct Detail {
 
         var bikesAvailable = Detail(bike: bike)
         bikesAvailable.label = "BIKES AVAILABLE"
-        bikesAvailable.detail = "Bikes Available: \(String(bike.bikesAvailable)) / Total Docks: \(String(bike.totalDocks))"
+        bikesAvailable.detail = "Bikes Available: \(String(bike.bikesAvailable)) | Total Docks: \(String(bike.totalDocks))"
         if bike.bikesAvailable <= 0 {
             bikesAvailable.image = "👎".emojiToImage()
         } else {
@@ -58,12 +58,12 @@ struct Detail {
 
         var time = Detail(bike: bike)
         time.label = "OPEN & CLOSE TIMES"
-        time.detail = "OPENS @ \(bike.openTime.twentyFourToTwelve), CLOSES @ \(bike.closeTime.twentyFourToTwelve)"
+        time.detail = "OPENS @ \(bike.openTime.twentyFourToTwelve) | CLOSES @ \(bike.closeTime.twentyFourToTwelve)"
         time.image = "⏰".emojiToImage()
 
         var latAndLon = Detail(bike: bike)
         latAndLon.label = "LATITUDE & LONGITUDE"
-        latAndLon.detail = "LAT: \(String(bike.latitude)), LON: \(String(bike.longitude))"
+        latAndLon.detail = "LAT: \(String(bike.latitude)) | LON: \(String(bike.longitude))"
         latAndLon.image = "🗺".emojiToImage()
 
         var kioskStatus = Detail(bike: bike)
