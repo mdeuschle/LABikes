@@ -10,11 +10,18 @@ import UIKit
 
 class DetailCell: UITableViewCell {
 
-    func config(details: [Detail], indexPathRow: Int) {
-        let cellDetail = details[indexPathRow]
-        self.textLabel?.text = cellDetail.label
-        self.detailTextLabel?.text = cellDetail.detail
-        self.imageView?.image = cellDetail.image
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: "DetailCell")
         self.selectionStyle = .none
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    func config(with detail: Detail) {
+        self.textLabel?.text = detail.label
+        self.detailTextLabel?.text = detail.detail
+        self.imageView?.image = detail.image
     }
 }

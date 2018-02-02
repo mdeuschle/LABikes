@@ -11,19 +11,22 @@ import Foundation
 typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
 
 enum NibName: String {
-    case rootVC = "RootVC"
     case mapPopUpView = "MapPopUpView"
     case bikeDetailView = "BikeDetailView"
     case weatherVC = "WeatherVC"
+    case bikeCell = "BikeCell"
 }
 
 enum ReusableCell: String {
     case bike = "BikeCell"
     case map = "MapCell"
+    case listCell = "ListCell"
 }
 
 enum NavigationTitle: String {
     case laBikes = "LABikes"
+    case favorites = "Favorites"
+    case stationDetails = "Station Details"
 }
 
 enum SegueID: String {

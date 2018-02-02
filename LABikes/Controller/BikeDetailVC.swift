@@ -17,7 +17,7 @@ class BikeDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Station Details"
+        title = NavigationTitle.stationDetails.rawValue
         tabBarController?.tabBar.isHidden = true
         tableView = UITableView()
         configTableView()
@@ -29,6 +29,7 @@ class BikeDetailVC: UIViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = UIColor().customBlack()
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
@@ -52,8 +53,9 @@ extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = DetailCell(style: .subtitle, reuseIdentifier: "detailCell")
-        cell.config(details: details, indexPathRow: indexPath.row)
+        let cell = DetailCell()
+        let detail = details[indexPath.row]
+        cell.config(with: detail)
         return cell
     }
 }

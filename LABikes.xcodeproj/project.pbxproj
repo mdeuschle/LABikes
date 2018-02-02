@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		849944E09E100E92A0CF6357 /* Pods_LABikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */; };
 		A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */; };
 		A80DA2FA1FC9D63C00BC8750 /* BikeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A80DA2F81FC9D63C00BC8750 /* BikeDetailView.xib */; };
 		A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DA2FB1FCA543700BC8750 /* Dao.swift */; };
 		A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85801F9C4C2A008F9A8C /* ListVC.swift */; };
 		A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82D85C41F9D5523008F9A8C /* Main.storyboard */; };
-		A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85CF1FA5435A008F9A8C /* BikeCell.swift */; };
 		A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */; };
 		A84251801FFB5AD800A0B3EC /* WeatherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */; };
 		A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251811FFCA21C00A0B3EC /* WeatherView.swift */; };
@@ -21,6 +19,9 @@
 		A84251CC200DDAC200A0B3EC /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251CB200DDAC200A0B3EC /* Detail.swift */; };
 		A84251D02013C46A00A0B3EC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251CF2013C46A00A0B3EC /* StringExtension.swift */; };
 		A84251D42013C6BA00A0B3EC /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84251D32013C6BA00A0B3EC /* DetailCell.swift */; };
+		A84779CE201CDCCB00A4403E /* BikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84779CC201CDCCB00A4403E /* BikeCell.swift */; };
+		A84779CF201CDCCB00A4403E /* BikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84779CD201CDCCB00A4403E /* BikeCell.xib */; };
+		A8477A05201F80BD00A4403E /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8477A04201F80BC00A4403E /* FavoritesVC.swift */; };
 		A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */; };
 		A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */; };
 		A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA28C1F8077F100F330A5 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEA1FE8E7A600E9249E /* Location.swift */; };
 		A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BED1FEB7BA300E9249E /* APIManager.swift */; };
 		A8ED8BF01FEB8D5F00E9249E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */; };
+		A8F0546420242D3500696757 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0546320242D3500696757 /* ColorExtension.swift */; };
 		A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */; };
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
@@ -61,17 +63,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LABikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-LABikes/Pods-LABikes.release.xcconfig"; sourceTree = "<group>"; };
-		1A2BF6B10FE4837519828247 /* Pods_LABikesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LABikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LABikes/Pods-LABikes.debug.xcconfig"; sourceTree = "<group>"; };
-		9A94BAAF42A3F6DE856A48A4 /* Pods_LABikesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LABikesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDetailVC.swift; sourceTree = "<group>"; };
 		A80DA2F81FC9D63C00BC8750 /* BikeDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeDetailView.xib; sourceTree = "<group>"; };
 		A80DA2FB1FCA543700BC8750 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		A82D85801F9C4C2A008F9A8C /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		A82D85C31F9D5523008F9A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A82D85CF1FA5435A008F9A8C /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
 		A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpVC.swift; sourceTree = "<group>"; };
 		A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherVC.xib; sourceTree = "<group>"; };
 		A84251811FFCA21C00A0B3EC /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -79,6 +75,9 @@
 		A84251CB200DDAC200A0B3EC /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		A84251CF2013C46A00A0B3EC /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A84251D32013C6BA00A0B3EC /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		A84779CC201CDCCB00A4403E /* BikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeCell.swift; sourceTree = "<group>"; };
+		A84779CD201CDCCB00A4403E /* BikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeCell.xib; sourceTree = "<group>"; };
+		A8477A04201F80BC00A4403E /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustFavoriteDelegate.swift; sourceTree = "<group>"; };
 		A8BCA2891F8077F100F330A5 /* LABikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LABikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +99,7 @@
 		A8ED8BEA1FE8E7A600E9249E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8ED8BED1FEB7BA300E9249E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A8F0546320242D3500696757 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -112,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849944E09E100E92A0CF6357 /* Pods_LABikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,9 +135,6 @@
 		143D2350BD91F7D253196C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B6F47518B08C5349C43BD90 /* Pods_LABikes.framework */,
-				9A94BAAF42A3F6DE856A48A4 /* Pods_LABikesTests.framework */,
-				1A2BF6B10FE4837519828247 /* Pods_LABikesUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,6 +152,7 @@
 				A8BCA2CE1F818A3C00F330A5 /* IntExtension.swift */,
 				A8717CE41FA6DF3900B36FB2 /* ViewExtension.swift */,
 				A84251CF2013C46A00A0B3EC /* StringExtension.swift */,
+				A8F0546320242D3500696757 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -176,7 +173,6 @@
 				A8BCA2A01F8077F200F330A5 /* LABikesTests */,
 				A8BCA2AB1F8077F200F330A5 /* LABikesUITests */,
 				A8BCA28A1F8077F100F330A5 /* Products */,
-				C1B29BE410DF4A1174C15DEC /* Pods */,
 				143D2350BD91F7D253196C2F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -233,6 +229,7 @@
 				A8BCA2C61F80BA6E00F330A5 /* RootVC.swift */,
 				A82D85DD1FA642EC008F9A8C /* MapPopUpVC.swift */,
 				A82D85801F9C4C2A008F9A8C /* ListVC.swift */,
+				A8477A04201F80BC00A4403E /* FavoritesVC.swift */,
 				A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */,
 				A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */,
 			);
@@ -243,11 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				A82D85C41F9D5523008F9A8C /* Main.storyboard */,
-				A80DA2F81FC9D63C00BC8750 /* BikeDetailView.xib */,
-				A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */,
-				A84251811FFCA21C00A0B3EC /* WeatherView.swift */,
-				A82D85CF1FA5435A008F9A8C /* BikeCell.swift */,
 				A84251D32013C6BA00A0B3EC /* DetailCell.swift */,
+				A80DA2F81FC9D63C00BC8750 /* BikeDetailView.xib */,
+				A84251811FFCA21C00A0B3EC /* WeatherView.swift */,
+				A842517E1FFB5AD800A0B3EC /* WeatherVC.xib */,
+				A84779CC201CDCCB00A4403E /* BikeCell.swift */,
+				A84779CD201CDCCB00A4403E /* BikeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,15 +284,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		C1B29BE410DF4A1174C15DEC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */,
-				079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,12 +291,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8BCA2B11F8077F200F330A5 /* Build configuration list for PBXNativeTarget "LABikes" */;
 			buildPhases = (
-				4ABA5E5205944D3F22F5240D /* [CP] Check Pods Manifest.lock */,
 				A8BCA2851F8077F100F330A5 /* Sources */,
 				A8BCA2861F8077F100F330A5 /* Frameworks */,
 				A8BCA2871F8077F100F330A5 /* Resources */,
-				052713360DE8EA5D1A634514 /* [CP] Embed Pods Frameworks */,
-				AFFD5E871F0381854A836FC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -407,6 +393,7 @@
 			files = (
 				A84251801FFB5AD800A0B3EC /* WeatherVC.xib in Resources */,
 				A80DA2FA1FC9D63C00BC8750 /* BikeDetailView.xib in Resources */,
+				A84779CF201CDCCB00A4403E /* BikeCell.xib in Resources */,
 				A8BCA2971F8077F100F330A5 /* LaunchScreen.storyboard in Resources */,
 				A82D85C21F9D5523008F9A8C /* Main.storyboard in Resources */,
 				A8BCA2941F8077F100F330A5 /* Assets.xcassets in Resources */,
@@ -429,54 +416,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		052713360DE8EA5D1A634514 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LABikes/Pods-LABikes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4ABA5E5205944D3F22F5240D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AFFD5E871F0381854A836FC8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LABikes/Pods-LABikes-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		A8BCA2851F8077F100F330A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -487,6 +426,7 @@
 				A84251D42013C6BA00A0B3EC /* DetailCell.swift in Sources */,
 				A84251CC200DDAC200A0B3EC /* Detail.swift in Sources */,
 				A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */,
+				A8477A05201F80BD00A4403E /* FavoritesVC.swift in Sources */,
 				A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */,
 				A82D85821F9C4C2A008F9A8C /* ListVC.swift in Sources */,
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
@@ -494,18 +434,19 @@
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
+				A84779CE201CDCCB00A4403E /* BikeCell.swift in Sources */,
 				A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */,
 				A84251C02002E4CE00A0B3EC /* ColorHelper.swift in Sources */,
 				A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */,
 				A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
+				A8F0546420242D3500696757 /* ColorExtension.swift in Sources */,
 				A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */,
 				A8A7702A1FE729A100CD1A89 /* AdjustFavoriteDelegate.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */,
 				A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */,
 				A8BCA28D1F8077F100F330A5 /* AppDelegate.swift in Sources */,
-				A82D85D01FA5435B008F9A8C /* BikeCell.swift in Sources */,
 				A8BCA2C51F80972E00F330A5 /* Constants.swift in Sources */,
 				A8ED8BF01FEB8D5F00E9249E /* DataManager.swift in Sources */,
 			);
@@ -671,7 +612,6 @@
 		};
 		A8BCA2B21F8077F200F330A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5731308579C7A3B611078ABF /* Pods-LABikes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -688,7 +628,6 @@
 		};
 		A8BCA2B31F8077F200F330A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 079EC61468D1FE2A2D9581A4 /* Pods-LABikes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
