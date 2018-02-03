@@ -11,54 +11,65 @@ import CoreLocation
 
 class Bike: NSObject, NSCoding {
 
-    private(set) public var latitude: Double!
-    private(set) public var longitude: Double!
-    private(set) public var addressStreet: String!
-    private(set) public var addressCity: String!
-    private(set) public var addressState: String!
-    private(set) public var addressZipCode: String!
-    private(set) public var bikesAvailable: Int!
-    private(set) public var closeTime: String!
-    private(set) public var kioskId: Int!
-    private(set) public var kioskPublicStatus: String!
-    private(set) public var kioskStatus: String!
-    private(set) public var name: String!
-    private(set) public var openTime: String!
-    private(set) public var totalDocks: Int!
-    private(set) public var trikesAvailable: Int!
-    private(set) public var kioskConnectionStatus: String!
-    private(set) public var coordinate2D: CLLocationCoordinate2D!
-    private(set) public var distance: Double!
+    let latitude: Double
+    let longitude: Double
+    let addressStreet: String
+    let addressCity: String
+    let addressState: String
+    let addressZipCode: String
+    let bikesAvailable: Int
+    let closeTime: String
+    let kioskId: Int
+    let kioskPublicStatus: String
+    let kioskStatus: String
+    let name: String
+    let openTime: String
+    let totalDocks: Int
+    let kioskConnectionStatus: String
+    let coordinate2D: CLLocationCoordinate2D
+    let distance: Double
     private(set) public var isFavorite = false
-    private(set) public var mapIcon: MapIcon!
-
+    let mapIcon: MapIcon
     var miles: String {
         let miles = distance * 0.000621371
         let bikeMiles = Double(round(10 * miles)/10)
         return "\(bikeMiles)"
     }
 
-    init(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
-        let coordDic = coordinatesDic["coordinates"] as? [Double] ?? [0.0, 0.0]
+    init?(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
+        guard let coordDic = coordinatesDic["coordinates"] as? [Double],
+            let addressStreet = propertiesDic["addressStreet"] as? String,
+            let addressCity = propertiesDic["addressCity"] as? String,
+            let addressState = propertiesDic["addressState"] as? String,
+            let addressZipCode = propertiesDic["addressZipCode"] as? String,
+            let bikesAvailable = propertiesDic["bikesAvailable"] as? Int,
+            let closeTime = propertiesDic["closeTime"] as? String,
+            let kioskId = propertiesDic["kioskId"] as? Int,
+            let kioskPublicStatus = propertiesDic["kioskPublicStatus"] as? String,
+            let kioskStatus = propertiesDic["kioskStatus"] as? String,
+            let name = propertiesDic["name"] as? String,
+            let openTime = propertiesDic["openTime"] as? String,
+            let totalDocks = propertiesDic["totalDocks"] as? Int,
+            let kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String else {
+                return nil
+        }
+        self.addressStreet = addressStreet
+        self.addressCity = addressCity
+        self.addressState = addressState
+        self.addressZipCode = addressZipCode
+        self.bikesAvailable = bikesAvailable
+        self.closeTime = closeTime
+        self.kioskId = kioskId
+        self.kioskPublicStatus = kioskPublicStatus
+        self.kioskStatus = kioskStatus
+        self.name = name
+        self.openTime = openTime
+        self.totalDocks = totalDocks
+        self.kioskConnectionStatus = kioskConnectionStatus
         longitude = coordDic[0]
         latitude = coordDic[1]
-        addressStreet = propertiesDic["addressStreet"] as? String ?? ""
-        addressCity = propertiesDic["addressCity"] as? String ?? ""
-        addressState = propertiesDic["addressState"] as? String ?? ""
-        addressZipCode = propertiesDic["addressZipCode"] as? String ?? ""
-        bikesAvailable = propertiesDic["bikesAvailable"] as? Int ?? 0
-        closeTime = propertiesDic["closeTime"] as? String ?? ""
-        kioskId = propertiesDic["kioskId"] as? Int ?? 0
-        kioskPublicStatus = propertiesDic["kioskPublicStatus"] as? String ?? ""
-        kioskStatus = propertiesDic["kioskStatus"] as? String ?? ""
-        name = propertiesDic["name"] as? String ?? ""
-        openTime = propertiesDic["openTime"] as? String ?? ""
-        totalDocks = propertiesDic["totalDocks"] as? Int ?? 0
-        trikesAvailable = propertiesDic["trikesAvailalbe"] as? Int ?? 0
-        kioskConnectionStatus = propertiesDic["kioskConnectionStatus"] as? String ?? ""
         distance = currentLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
         coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        isFavorite = false
         let availablePercentage = Double(bikesAvailable) / Double(totalDocks)
         switch availablePercentage {
         case 0:
@@ -79,45 +90,73 @@ class Bike: NSObject, NSCoding {
     }
 
     required init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObject(forKey: "name") as? String,
+            let addressStreet = aDecoder.decodeObject(forKey: "addressStreet") as? String,
+            let addressCity = aDecoder.decodeObject(forKey: "addressCity") as? String,
+            let addressState = aDecoder.decodeObject(forKey: "addressState") as? String,
+            let addressZipCode = aDecoder.decodeObject(forKey: "addressZipCode") as? String,
+            let openTime = aDecoder.decodeObject(forKey: "openTime") as? String,
+            let closeTime = aDecoder.decodeObject(forKey: "closeTime") as? String,
+            let kioskStatus = aDecoder.decodeObject(forKey: "kioskStatus") as? String,
+            let kioskPublicStatus = aDecoder.decodeObject(forKey: "kioskPublicStatus") as? String,
+            let kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String else {
+                return nil
+        }
+        self.name = name
+        self.addressStreet = addressStreet
+        self.addressCity = addressCity
+        self.addressState = addressState
+        self.addressZipCode = addressZipCode
+        self.openTime = openTime
+        self.closeTime = closeTime
+        self.kioskStatus = kioskStatus
+        self.kioskPublicStatus = kioskPublicStatus
+        self.kioskConnectionStatus = kioskConnectionStatus
+        latitude = aDecoder.decodeDouble(forKey: "latitude")
+        longitude = aDecoder.decodeDouble(forKey: "longitude")
         kioskId = aDecoder.decodeInteger(forKey: "kioskId")
-        name = aDecoder.decodeObject(forKey: "name") as? String
-        addressStreet = aDecoder.decodeObject(forKey: "addressStreet") as? String
         bikesAvailable = aDecoder.decodeInteger(forKey: "bikesAvailable")
         totalDocks = aDecoder.decodeInteger(forKey: "totalDocks")
         distance = aDecoder.decodeDouble(forKey: "distance")
         isFavorite = aDecoder.decodeBool(forKey: "isFavorite")
-        addressCity = aDecoder.decodeObject(forKey: "addressCity") as? String
-        addressState = aDecoder.decodeObject(forKey: "addressState") as? String
-        addressZipCode = aDecoder.decodeObject(forKey: "addressZipCode") as? String
-        openTime = aDecoder.decodeObject(forKey: "openTime") as? String
-        closeTime = aDecoder.decodeObject(forKey: "closeTime") as? String
-        kioskStatus = aDecoder.decodeObject(forKey: "kioskStatus") as? String
-        kioskPublicStatus = aDecoder.decodeObject(forKey: "kioskPublicStatus") as? String
-        kioskConnectionStatus = aDecoder.decodeObject(forKey: "kioskConnectionStatus") as? String
-        latitude = aDecoder.decodeDouble(forKey: "latitude")
-        longitude = aDecoder.decodeDouble(forKey: "longitude")
+        coordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let availablePercentage = Double(bikesAvailable) / Double(totalDocks)
+        switch availablePercentage {
+        case 0:
+            mapIcon = .empty
+        case 0.001..<0.1:
+            mapIcon = .red
+        case 0.1..<0.3:
+            mapIcon = .quarter
+        case 0.3..<0.6:
+            mapIcon = .half
+        case 0.6..<0.9:
+            mapIcon = .threeQuarter
+        case 0.9...1:
+            mapIcon = .full
+        default:
+            mapIcon = .empty
+        }
     }
 
     func encode(with aCoder: NSCoder) {
-        if let kioskId = kioskId, let name = name, let addressStreet = addressStreet, let bikesAvailable = bikesAvailable, let distance = distance, let totalDocks = totalDocks, let addressCity = addressCity, let addressState = addressState, let addressZipCode = addressZipCode, let openTime = openTime, let closeTime = closeTime, let kioskStatus = kioskStatus, let kioskPublicStatus = kioskPublicStatus, let kioskConnectionStatus = kioskConnectionStatus, let latitude = latitude, let longitude = longitude {
-            aCoder.encode(kioskId, forKey: "kioskId")
-            aCoder.encode(name, forKey: "name")
-            aCoder.encode(addressStreet, forKey: "addressStreet")
-            aCoder.encode(bikesAvailable, forKey: "bikesAvailable")
-            aCoder.encode(totalDocks, forKey: "totalDocks")
-            aCoder.encode(distance, forKey: "distance")
-            aCoder.encode(isFavorite, forKey: "isFavorite")
-            aCoder.encode(addressCity, forKey: "addressCity")
-            aCoder.encode(addressState, forKey: "addressState")
-            aCoder.encode(addressZipCode, forKey: "addressZipCode")
-            aCoder.encode(openTime, forKey: "openTime")
-            aCoder.encode(closeTime, forKey: "closeTime")
-            aCoder.encode(kioskStatus, forKey: "kioskStatus")
-            aCoder.encode(kioskPublicStatus, forKey: "kioskPublicStatus")
-            aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
-            aCoder.encode(latitude, forKey: "latitude")
-            aCoder.encode(longitude, forKey: "longitude")
-        }
+        aCoder.encode(kioskId, forKey: "kioskId")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(addressStreet, forKey: "addressStreet")
+        aCoder.encode(bikesAvailable, forKey: "bikesAvailable")
+        aCoder.encode(totalDocks, forKey: "totalDocks")
+        aCoder.encode(distance, forKey: "distance")
+        aCoder.encode(isFavorite, forKey: "isFavorite")
+        aCoder.encode(addressCity, forKey: "addressCity")
+        aCoder.encode(addressState, forKey: "addressState")
+        aCoder.encode(addressZipCode, forKey: "addressZipCode")
+        aCoder.encode(openTime, forKey: "openTime")
+        aCoder.encode(closeTime, forKey: "closeTime")
+        aCoder.encode(kioskStatus, forKey: "kioskStatus")
+        aCoder.encode(kioskPublicStatus, forKey: "kioskPublicStatus")
+        aCoder.encode(kioskConnectionStatus, forKey: "kioskConnectionStatus")
+        aCoder.encode(latitude, forKey: "latitude")
+        aCoder.encode(longitude, forKey: "longitude")
     }
 
     func getFavoriteIndex(favorites: [Bike]) -> Int? {

@@ -29,7 +29,6 @@ class BikeDetailVC: UIViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor().customBlack()
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [

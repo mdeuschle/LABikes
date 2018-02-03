@@ -23,8 +23,12 @@ class DataManager {
                             let propertiesDic = bike["properties"] as? [String: Any],
                             let location = Location.shared.location {
                             let bike = Bike(coordinatesDic: coordinatesDic, propertiesDic: propertiesDic, currentLocation: location)
-                            checkIfFavorite(bike: bike)
-                            bikes.append(bike)
+                            if let bike = bike {
+                                checkIfFavorite(bike: bike)
+                                bikes.append(bike)
+                            } else {
+                                print("Unable to parson JSON")
+                            }
                         } else {
                             print("Unable to parson JSON")
                         }

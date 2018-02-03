@@ -43,7 +43,7 @@ struct Detail {
 
         var addressDetail = Detail(bike: bike)
         addressDetail.label = "ADDRESS"
-        addressDetail.detail = "\(bike.addressStreet ?? ""), \(bike.addressCity ?? "") \(bike.addressState ?? "") \(bike.addressZipCode ?? "")"
+        addressDetail.detail = "\(bike.addressStreet), \(bike.addressCity) \(bike.addressState) \(bike.addressZipCode)"
         addressDetail.image = "🌇".emojiToImage()
 
         var favorite = Detail(bike: bike)
@@ -68,7 +68,7 @@ struct Detail {
 
         var kioskStatus = Detail(bike: bike)
         kioskStatus.label = "KIOSK STATUS"
-        kioskStatus.detail = "\(bike.kioskStatus ?? "") & \(bike.kioskConnectionStatus ?? "")"
+        kioskStatus.detail = "\(bike.kioskStatus) & \(bike.kioskConnectionStatus)"
         if bike.kioskPublicStatus == "Active"{
             kioskStatus.image = "✅".emojiToImage()
         } else {
