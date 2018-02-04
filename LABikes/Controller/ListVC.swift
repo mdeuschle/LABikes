@@ -71,9 +71,6 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         let bikeDetailVC = BikeDetailVC(nibName: NibName.bikeDetailView.rawValue, bundle: nil)
         let bike = bikes[indexPath.row]
         bikeDetailVC.bike = bike
-        let detail = Detail(bike: bike)
-        let details = detail.getDetails()
-        bikeDetailVC.details = details
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 

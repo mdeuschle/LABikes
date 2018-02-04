@@ -22,6 +22,5 @@ class DetailCell: UITableViewCell {
     func config(with detail: Detail) {
         self.textLabel?.text = detail.label
         self.detailTextLabel?.text = detail.detail
-        self.imageView?.image = detail.image
     }
 }
