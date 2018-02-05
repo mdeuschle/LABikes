@@ -13,6 +13,7 @@ class BikeDetailVC: UIViewController {
     var bike: Bike?
     var tableView: UITableView?
     var detail: Detail?
+    var section: Section?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class BikeDetailVC: UIViewController {
         configTableView()
         if let bike = bike {
             detail = Detail(bike: bike)
+            section = Section(detail: detail!)
         }
     }
 
@@ -46,61 +48,19 @@ class BikeDetailVC: UIViewController {
 extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return section?.headers.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let detail = detail else {
-            return 0
-        }
-        switch section {
-        case 0:
-            return detail.stationDetails().count
-        case 1:
-            return detail.statusDetails().count
-        case 2:
-            return detail.locationDetails().count
-        default:
-            return 0
-        }
+        return self.section?.configRowCount(section: section) ?? 0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "STATION"
-        case 1:
-            return "STATUS"
-        case 2:
-            return "LOCATION"
-        default:
-            return ""
-        }
+        return self.section?.headers[section].rawValue
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let stationCell = DetailCell()
-            if let stationDetail = detail?.stationDetails()[indexPath.row] {
-                stationCell.config(with: stationDetail)
-            }
-            return stationCell
-        case 1:
-            let statusCell = DetailCell()
-            if let statusDetail = detail?.statusDetails()[indexPath.row] {
-                statusCell.config(with: statusDetail)
-            }
-            return statusCell
-        case 2:
-            let locationCell = DetailCell()
-            if let locationDetail = detail?.locationDetails()[indexPath.row] {
-                locationCell.config(with: locationDetail)
-            }
-            return locationCell
-        default:
-            return UITableViewCell()
-        }
+        return section?.configCell(indexPath: indexPath) ?? UITableViewCell()
     }
 }
 

@@ -42,6 +42,11 @@ enum TabBarName: String {
     case list = "LIST"
 }
 
+enum SectionHeader: String {
+    case station = "STATION"
+    case status = "STATUS"
+    case location = "LOCATION"
+}
 
 
 

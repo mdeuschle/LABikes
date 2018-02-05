@@ -18,7 +18,7 @@ struct Detail {
         self.bike = bike
     }
 
-    func stationDetails() -> [Detail] {
+    var stationDetails: [Detail] {
 
         var favorite = Detail(bike: bike)
         favorite.label = "FAVORITE?"
@@ -48,7 +48,7 @@ struct Detail {
         return [favorite, name, totalDocks, open, close, kioskID]
     }
 
-    func statusDetails() -> [Detail] {
+    var statusDetails: [Detail] {
 
         var bikesAvailable = Detail(bike: bike)
         bikesAvailable.label = "BIKES AVAILABLE"
@@ -65,7 +65,7 @@ struct Detail {
         return [bikesAvailable, kioskStatus, kioskConnection]
     }
 
-    func locationDetails() -> [Detail] {
+    var locationDetails: [Detail] {
 
         var distance = Detail(bike: bike)
         distance.label = "DISTANCE"
