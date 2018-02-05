@@ -15,12 +15,14 @@ enum NibName: String {
     case bikeDetailView = "BikeDetailView"
     case weatherVC = "WeatherVC"
     case bikeCell = "BikeCell"
+    case detailCell = "DetailCell"
 }
 
 enum ReusableCell: String {
     case bike = "BikeCell"
     case map = "MapCell"
     case listCell = "ListCell"
+    case detailCell = "DetailCell"
 }
 
 enum NavigationTitle: String {

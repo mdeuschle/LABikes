@@ -10,17 +10,12 @@ import UIKit
 
 class DetailCell: UITableViewCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: "DetailCell")
-        self.selectionStyle = .none
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    @IBOutlet private weak var mainLabel: UILabel!
+    @IBOutlet private weak var detailLabel: UILabel!
 
     func config(with detail: Detail) {
-        self.textLabel?.text = detail.label
-        self.detailTextLabel?.text = detail.detail
+        mainLabel.text = detail.label
+        detailLabel.text = detail.detail
+        self.selectionStyle = .none
     }
 }

@@ -21,6 +21,8 @@ class BikeDetailVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         tableView = UITableView()
         configTableView()
+        let nib = UINib(nibName: NibName.detailCell.rawValue, bundle: nil)
+        tableView?.register(nib, forCellReuseIdentifier: ReusableCell.detailCell.rawValue)
         if let bike = bike {
             detail = Detail(bike: bike)
             section = Section(detail: detail!)
@@ -60,7 +62,11 @@ extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return section?.configCell(indexPath: indexPath) ?? UITableViewCell()
+        return section?.configCell(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
     }
 }
 

@@ -30,8 +30,10 @@ struct Section {
         }
     }
 
-    func configCell(indexPath: IndexPath) -> UITableViewCell {
-        let cell = DetailCell()
+    func configCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.detailCell.rawValue, for: indexPath) as? DetailCell else {
+            return UITableViewCell()
+        }
         switch indexPath.section {
         case 0:
             let stationDetail = detail.stationDetails[indexPath.row]

@@ -21,28 +21,28 @@ struct Detail {
     var stationDetails: [Detail] {
 
         var favorite = Detail(bike: bike)
-        favorite.label = "FAVORITE?"
+        favorite.label = "Favorite?"
         let favoriteLabel = bike.isFavorite ? "YES" : "NO"
         favorite.detail = favoriteLabel
 
         var name = Detail(bike: bike)
-        name.label = "NAME"
+        name.label = "Name"
         name.detail = bike.name
 
         var totalDocks = Detail(bike: bike)
-        totalDocks.label = "TOTAL DOCKS"
+        totalDocks.label = "Total Docks"
         totalDocks.detail = "\(bike.totalDocks)"
 
         var open = Detail(bike: bike)
-        open.label = "OPEN TIME"
+        open.label = "Open Time"
         open.detail = "\(bike.openTime.twentyFourToTwelve)"
 
         var close = Detail(bike: bike)
-        close.label = "CLOSE TIME"
+        close.label = "Close Time"
         close.detail = "\(bike.closeTime.twentyFourToTwelve)"
 
         var kioskID = Detail(bike: bike)
-        kioskID.label = "KIOSK ID"
+        kioskID.label = "Kiosk ID"
         kioskID.detail = "\(bike.kioskId)"
 
         return [favorite, name, totalDocks, open, close, kioskID]
@@ -51,15 +51,15 @@ struct Detail {
     var statusDetails: [Detail] {
 
         var bikesAvailable = Detail(bike: bike)
-        bikesAvailable.label = "BIKES AVAILABLE"
+        bikesAvailable.label = "Bikes Available"
         bikesAvailable.detail = "\(bike.bikesAvailable)"
 
         var kioskStatus = Detail(bike: bike)
-        kioskStatus.label = "KIOSK STATUS"
+        kioskStatus.label = "Kiosk Status"
         kioskStatus.detail = "\(bike.kioskStatus)"
 
         var kioskConnection = Detail(bike: bike)
-        kioskConnection.label = "KIOSK CONNECTION"
+        kioskConnection.label = "Kiosk Connection"
         kioskConnection.detail = "\(bike.kioskPublicStatus)"
 
         return [bikesAvailable, kioskStatus, kioskConnection]
@@ -68,20 +68,20 @@ struct Detail {
     var locationDetails: [Detail] {
 
         var distance = Detail(bike: bike)
-        distance.label = "DISTANCE"
+        distance.label = "Distance"
         let miles = bike.miles == String(1.0) ? "\(String(bike.miles)) mile" : "\(String(bike.miles)) miles"
         distance.detail = miles
 
         var address = Detail(bike: bike)
-        address.label = "ADDRESS"
+        address.label = "Address"
         address.detail = "\(bike.addressStreet), \(bike.addressCity) \(bike.addressState) \(bike.addressZipCode)"
 
         var latitude = Detail(bike: bike)
-        latitude.label = "LATITUDE"
+        latitude.label = "Latitude"
         latitude.detail = "\(bike.latitude)"
 
         var longitude = Detail(bike: bike)
-        longitude.label = "LONGITUDE"
+        longitude.label = "Longitude"
         longitude.detail = "\(bike.longitude)"
 
         return [distance, address, latitude, longitude]
