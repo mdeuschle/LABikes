@@ -16,6 +16,11 @@ class FavoritesVC: UIViewController {
     private var filteredFavorites = [Bike]()
     private var isFiltering = false
 
+    enum BarButtonItem {
+        case edit
+        case done
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.delegate = self
@@ -25,6 +30,7 @@ class FavoritesVC: UIViewController {
         self.definesPresentationContext = true
         let nib = UINib(nibName: NibName.bikeCell.rawValue, bundle: nil)
         favoriteTableView.register(nib, forCellReuseIdentifier: ReusableCell.listCell.rawValue)
+        navigationItem.rightBarButtonItem = setBarButtonItem(for: .edit)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +38,24 @@ class FavoritesVC: UIViewController {
         tabBarController?.tabBar.isHidden = false
         favoriteBikes = Dao.shared.unarchiveFavorites()
         favoriteTableView.reloadData()
+    }
+
+    @objc private func editButtonTapped() {
+        if navigationItem.rightBarButtonItem?.title == "Edit" {
+            navigationItem.rightBarButtonItem = setBarButtonItem(for: .done)
+            favoriteTableView.setEditing(true, animated: true)
+        } else {
+            navigationItem.rightBarButtonItem = setBarButtonItem(for: .edit)
+            favoriteTableView.setEditing(false, animated: true)
+        }
+    }
+
+    private func setBarButtonItem(for barButtonItem: BarButtonItem) -> UIBarButtonItem {
+        if barButtonItem == .edit {
+            return UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+        } else {
+            return UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(editButtonTapped))
+        }
     }
 
     private func configureSearch() {
@@ -78,6 +102,21 @@ extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(bikeDetailVC, animated: true)
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+        print("EDITING STYLE: \(editingStyle)")
+
+
+        //        UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //            if editingStyle == .delete {
+        //                // Delete the row from the data source
+        //                meals.remove(at: indexPath.row)
+        //                tableView.deleteRows(at: [indexPath], with: .fade)
+        //            } else if editingStyle == .insert {
+        //                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        //            }
+    }
+
     private var bikes: [Bike] {
         if isFiltering {
             return filteredFavorites
@@ -104,3 +143,6 @@ extension FavoritesVC: UISearchResultsUpdating, UISearchControllerDelegate {
         }
     }
 }
+
+
+
