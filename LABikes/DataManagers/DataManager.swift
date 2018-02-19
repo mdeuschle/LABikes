@@ -27,14 +27,14 @@ class DataManager {
                                 checkIfFavorite(bike: bike)
                                 bikes.append(bike)
                             } else {
-                                print("Unable to parson JSON")
+                                print("Unable to parson JSON 1")
                             }
                         } else {
-                            print("Unable to parson JSON")
+                            print("Unable to parson JSON 2")
                         }
                     }
                 } else {
-                    print("Unable to parson JSON")
+                    print("Unable to parson JSON 3")
                 }
             }
         } catch {

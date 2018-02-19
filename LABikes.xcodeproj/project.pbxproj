@@ -36,6 +36,8 @@
 		A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */; };
 		A8D6662F2027B8F2009D25CF /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6662E2027B8F2009D25CF /* Section.swift */; };
 		A8D666312027FFC0009D25CF /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D666302027FFC0009D25CF /* DetailCell.xib */; };
+		A8D66636202F9685009D25CF /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D66635202F9685009D25CF /* FavoriteService.swift */; };
+		A8D666382030CAF0009D25CF /* AdjustMapFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D666372030CAF0009D25CF /* AdjustMapFavoriteDelegate.swift */; };
 		A8ED8BEB1FE8E7A600E9249E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEA1FE8E7A600E9249E /* Location.swift */; };
 		A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BED1FEB7BA300E9249E /* APIManager.swift */; };
 		A8ED8BF01FEB8D5F00E9249E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */; };
@@ -99,6 +101,8 @@
 		A8BCA2D51F81FA3800F330A5 /* BikePointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikePointAnnotation.swift; sourceTree = "<group>"; };
 		A8D6662E2027B8F2009D25CF /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		A8D666302027FFC0009D25CF /* DetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
+		A8D66635202F9685009D25CF /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
+		A8D666372030CAF0009D25CF /* AdjustMapFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustMapFavoriteDelegate.swift; sourceTree = "<group>"; };
 		A8ED8BEA1FE8E7A600E9249E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8ED8BED1FEB7BA300E9249E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -141,6 +145,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A8421E1220390A29001C2840 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */,
+			);
+			path = DataManagers;
+			sourceTree = "<group>";
+		};
 		A84251C8200D88DF00A0B3EC /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A770291FE729A100CD1A89 /* AdjustFavoriteDelegate.swift */,
+				A8D666372030CAF0009D25CF /* AdjustMapFavoriteDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -191,6 +204,8 @@
 		A8BCA28B1F8077F100F330A5 /* LABikes */ = {
 			isa = PBXGroup;
 			children = (
+				A8421E1220390A29001C2840 /* DataManagers */,
+				A8D66634202F9633009D25CF /* Services */,
 				A8A770241FE6F8AD00CD1A89 /* Protocols */,
 				A8A7701B1FE5B11200CD1A89 /* Extensions */,
 				A8BCA2BF1F807AA400F330A5 /* Utils */,
@@ -269,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				A8BCA2C41F80972E00F330A5 /* Constants.swift */,
-				A8ED8BEF1FEB8D5F00E9249E /* DataManager.swift */,
 				A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */,
 				A8FE71AE1FEE1C5A009D50D1 /* Alert.swift */,
 				A8FE71B81FF1DCBE009D50D1 /* Direction.swift */,
@@ -277,6 +291,15 @@
 				A84251BF2002E4CE00A0B3EC /* ColorHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A8D66634202F9633009D25CF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A8D66635202F9685009D25CF /* FavoriteService.swift */,
+			);
+			name = Services;
+			path = Sevices;
 			sourceTree = "<group>";
 		};
 		A8ED8BEC1FEB7B0600E9249E /* Network */ = {
@@ -428,6 +451,7 @@
 				A8FE71AF1FEE1C5A009D50D1 /* Alert.swift in Sources */,
 				A8ED8BEE1FEB7BA300E9249E /* APIManager.swift in Sources */,
 				A84251D42013C6BA00A0B3EC /* DetailCell.swift in Sources */,
+				A8D66636202F9685009D25CF /* FavoriteService.swift in Sources */,
 				A84251CC200DDAC200A0B3EC /* Detail.swift in Sources */,
 				A80DA2F91FC9D63C00BC8750 /* BikeDetailVC.swift in Sources */,
 				A8477A05201F80BD00A4403E /* FavoritesVC.swift in Sources */,
@@ -436,6 +460,7 @@
 				A8BCA2C11F807CAB00F330A5 /* Bike.swift in Sources */,
 				A84251D02013C46A00A0B3EC /* StringExtension.swift in Sources */,
 				A8BCA2CF1F818A3C00F330A5 /* IntExtension.swift in Sources */,
+				A8D666382030CAF0009D25CF /* AdjustMapFavoriteDelegate.swift in Sources */,
 				A8BCA2C81F80BA6E00F330A5 /* RootVC.swift in Sources */,
 				A8BCA2D61F81FA3800F330A5 /* BikePointAnnotation.swift in Sources */,
 				A84779CE201CDCCB00A4403E /* BikeCell.swift in Sources */,

@@ -19,26 +19,27 @@ class MapPopUpVC: UIViewController {
     @IBOutlet private weak var bikesAvailableLabel: UILabel!
     @IBOutlet private weak var _bikesAvailableLabel: UILabel!
 
-    private var bike: Bike? {
-        didSet {
-            guard let bike = bike else {
-                return
-            }
-            configFavorite(isFavorite: bike.isFavorite)        }
-    }
+    private var bike: Bike?
 
-    var delegate: AdjustFavoriteDelegate?
+    //    private var bike: Bike? {
+    //        didSet {
+    //            guard let bike = bike else {
+    //                return
+    //            }
+    //            configFavorite(isFavorite: bike.isFavorite)        }
+    //    }
+
+//    var delegate: AdjustFavoriteDelegate?
+
+    var adjustMapFavoriteDelegate: AdjustMapFavoriteDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 10
         view.addShadow()
-        if let bike = bike {
-            configFavorite(isFavorite: bike.isFavorite)
-        }
     }
 
-    func config(bike: Bike) {
+    func configBike(bike: Bike) {
         nameLabel.text = bike.name                                              
         addressLabel.text = bike.addressStreet
         milesLabel.text = bike.miles
@@ -57,26 +58,33 @@ class MapPopUpVC: UIViewController {
     }
 
     @IBAction private func buttonTapped(_ sender: UIButton) {
-        guard let bike = bike else {
-            return
+        if let bike = bike {
+            bike.adjustFavorite(isFavorite: !bike.isFavorite)
+            adjustMapFavoriteDelegate?.adjustMapFavorite()
+            FavoritesService.shared.updateFavorites(bike: bike)
+            configFavorite(isFavorite: bike.isFavorite)
+            //            FavoritesService.shared.updateFavorites(bike: bike)
+            //            mapPopUpVC.configFavorite(isFavorite: bike.isFavorite)
+//            NotificationCenter.default.post(name: .favoriteSetNotification, object: nil, userInfo: ["bike" : bike])
         }
-        let isFavorite = !bike.isFavorite
-        configFavorite(isFavorite: isFavorite)
-        var favorites = Dao.shared.unarchiveFavorites()
-        bike.adjustFavorite(isFavorite: !bike.isFavorite)
-        if isFavorite {
-            favorites.append(bike)
-            Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
-        } else {
-            if let index = bike.getFavoriteIndex(favorites: favorites) {
-                favorites.remove(at: index)
-                Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
-            }
-        }
-        delegate?.adjustFavorite()
     }
 
-    private func configFavorite(isFavorite: Bool) {
+    //        let isFavorite = !bike.isFavorite
+    //        configFavorite(isFavorite: isFavorite)
+    //        var favorites = Dao.shared.unarchiveFavorites()
+    //        bike.adjustFavorite(isFavorite: !bike.isFavorite)
+    //        if isFavorite {
+    //            favorites.append(bike)
+    //            Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
+    //        } else {
+    //            if let index = bike.getFavoriteIndex(favorites: favorites) {
+    //                favorites.remove(at: index)
+    //                Dao.shared.acrchiveFavorites(favoriteBikes: favorites)
+    //            }
+    //        }
+    //        delegate?.adjustFavorite()
+
+    func configFavorite(isFavorite: Bool) {
         if isFavorite {
             favoriteButton.setImage(#imageLiteral(resourceName: "redHeart"), for: .normal)
             favoriteLabel.textColor = Color.red.getColor()

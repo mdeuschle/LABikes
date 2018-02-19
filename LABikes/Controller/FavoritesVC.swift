@@ -15,6 +15,7 @@ class FavoritesVC: UIViewController {
     private var favoriteBikes = Dao.shared.unarchiveFavorites()
     private var filteredFavorites = [Bike]()
     private var isFiltering = false
+    var adjustFavoriteDelegate: AdjustFavoriteDelegate?
 
     enum BarButtonItem {
         case edit
@@ -38,6 +39,7 @@ class FavoritesVC: UIViewController {
         tabBarController?.tabBar.isHidden = false
         favoriteBikes = Dao.shared.unarchiveFavorites()
         favoriteTableView.reloadData()
+        print("BIKE COUNT: \(favoriteBikes.count)")
     }
 
     @objc private func editButtonTapped() {
@@ -103,18 +105,31 @@ extension FavoritesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let favoriteBike = favoriteBikes[indexPath.row]
+            guard let index = favoriteBike.getFavoriteIndex(favorites: favoriteBikes) else {
+                print("COULD NOT FIND FAVORITE INDEX")
+                return
+            }
+            favoriteBike.adjustFavorite(isFavorite: false)
 
-        print("EDITING STYLE: \(editingStyle)")
+            print("FAV VC: \(favoriteBike.name) \(favoriteBike.isFavorite)")
+            FavoritesService.shared.updateFavorites(bike: favoriteBike)
+
+            adjustFavoriteDelegate?.adjustFavorite(bike: favoriteBike)
 
 
-        //        UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //            if editingStyle == .delete {
-        //                // Delete the row from the data source
-        //                meals.remove(at: indexPath.row)
-        //                tableView.deleteRows(at: [indexPath], with: .fade)
-        //            } else if editingStyle == .insert {
-        //                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        //            }
+            favoriteBikes.remove(at: index)
+//            Dao.shared.acrchiveFavorites(favoriteBikes: favoriteBikes)
+
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+        }
+    }
+
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
     private var bikes: [Bike] {

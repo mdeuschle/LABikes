@@ -57,7 +57,6 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.listCell.rawValue, for: indexPath) as? BikeCell else {
             return UITableViewCell()
         }

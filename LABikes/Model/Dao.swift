@@ -30,7 +30,6 @@ class Dao {
         }
         return [Bike]()
     }
-
 }
 
 

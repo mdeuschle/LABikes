@@ -8,7 +8,9 @@
 
 import Foundation
 
-typealias BikeHandler = (Bool, [[String: Any]]?) -> Void
+extension Notification.Name {
+    static let favoriteSetNotification = NSNotification.Name("isFavoriteSet")
+}
 
 enum NibName: String {
     case mapPopUpView = "MapPopUpView"
@@ -49,6 +51,7 @@ enum SectionHeader: String {
     case status = "STATUS"
     case location = "LOCATION"
 }
+
 
 
 

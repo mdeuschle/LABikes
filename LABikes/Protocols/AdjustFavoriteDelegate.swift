@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AdjustFavoriteDelegate {
-    func adjustFavorite()
+    func adjustFavorite(bike: Bike)
 }
