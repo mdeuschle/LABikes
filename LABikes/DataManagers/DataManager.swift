@@ -12,7 +12,7 @@ class DataManager {
 
     static let shared = DataManager()
 
-    var bikes = [Bike]()
+    var bikes = [Bike]() 
 
     func convertDataToBikes(data: Data?) {
         do {

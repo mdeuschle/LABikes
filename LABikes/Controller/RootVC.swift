@@ -27,12 +27,6 @@ class RootVC: UIViewController {
         mapView.delegate = self
         if let mapPopUpViewController = childViewControllers.last as? MapPopUpVC {
             mapPopUpVC = mapPopUpViewController
-//            mapPopUpVC?.delegate = self
-        }
-        if let navigationController = tabBarController?.viewControllers?[2] as? UINavigationController {
-            if let favoritesVC = navigationController.viewControllers.first as? FavoritesVC {
-                favoritesVC.adjustFavoriteDelegate = self
-            }
         }
         addGestureRecognizers()
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -40,8 +34,6 @@ class RootVC: UIViewController {
         tabBarController?.tabBar.items?[0].title = TabBarName.map.rawValue
         tabBarController?.tabBar.items?[1].isEnabled = false
         weatherView.isHidden = true
-//        NotificationCenter.default.addObserver(self, selector: #selector(favoriteSet), name: .favoriteSetNotification, object: nil)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,16 +56,6 @@ class RootVC: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-
-//    @objc private func favoriteSet(_ notification: Notification) {
-//        if let bike = notification.userInfo?["bike"] as? Bike,
-//            let mapPopUpVC = mapPopUpVC {
-//            print("FAVORITE SET ROOT VC 2 \(bike.isFavorite)")
-//            FavoritesService.shared.updateFavorites(bike: bike)
-//            mapPopUpVC.configFavorite(isFavorite: bike.isFavorite)
-//            dropPins()
-//        }
-//    }
 }
 
 extension RootVC: CLLocationManagerDelegate {
@@ -130,10 +112,8 @@ extension RootVC: MKMapViewDelegate {
             let longitude = bikeAnnotation.bike?.longitude else {
                 return
         }
-        print("IS FAV: \(bike.isFavorite)")
-
         popUpVC.configBike(bike: bike)
-  //      popUpVC.configFavorite(isFavorite: bike.isFavorite)
+        popUpVC.configFavorite(isFavorite: bike.isFavorite)
         UIView.animate(withDuration: 0.25, animations: {
             self.mapPopUpHeight.constant = 238
             self.view.layoutIfNeeded()
@@ -155,30 +135,10 @@ extension RootVC: MKMapViewDelegate {
     }
 
     private func dropPins() {
-        print("DATA MANAGER BIKE: \(DataManager.shared.bikes.first?.name)")
-
         for bike in DataManager.shared.bikes {
             let annotation = BikePointAnnotation(bike: bike)
             mapView.addAnnotation(annotation)
         }
-    }
-}
-
-extension RootVC: AdjustMapFavoriteDelegate {
-    func adjustMapFavorite() {
-        dropPins()
-    }
-}
-
-extension RootVC: AdjustFavoriteDelegate {
-    func adjustFavorite(bike: Bike) {
-        dropPins()
-
-        print("BIKE: \(bike.name)")
-        print("BIKE ADJUST: \(bike.isFavorite)")
-
-        print("MAP POP UP: \(mapPopUpVC)")
-//        mapPopUpVC?.configFavorite(isFavorite: bike.isFavorite)
     }
 }
 

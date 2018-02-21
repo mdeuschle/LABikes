@@ -28,7 +28,7 @@ class Bike: NSObject, NSCoding {
     let kioskConnectionStatus: String
     let coordinate2D: CLLocationCoordinate2D
     let distance: Double
-    private(set) public var isFavorite = false
+    private(set) public var isFavorite = false 
     let mapIcon: MapIcon
     var miles: String {
         let miles = distance * 0.000621371
