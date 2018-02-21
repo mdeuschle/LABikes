@@ -12,7 +12,6 @@ class Location {
 
     static let shared = Location()
     private init() {}
-
     var location: CLLocation?
 }
 

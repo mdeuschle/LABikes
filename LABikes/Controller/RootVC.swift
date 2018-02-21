@@ -32,7 +32,7 @@ class RootVC: UIViewController {
         let locationButton = MKUserTrackingBarButtonItem(mapView: mapView)
         navigationItem.rightBarButtonItem = locationButton
         tabBarController?.tabBar.items?[0].title = TabBarName.map.rawValue
-        tabBarController?.tabBar.items?[1].isEnabled = false
+        tabsEnabled(false)
         weatherView.isHidden = true
     }
 
@@ -41,6 +41,12 @@ class RootVC: UIViewController {
         mapPopUpHeight.constant = 0
         weatherView.isHidden = true
         view.layoutIfNeeded()
+    }
+
+    private func tabsEnabled(_ isEnabled: Bool) {
+        for i in 1...2 {
+            tabBarController?.tabBar.items?[i].isEnabled = isEnabled
+        }
     }
 
     private func addGestureRecognizers() {
@@ -87,7 +93,7 @@ extension RootVC: CLLocationManagerDelegate {
         APIManager.shared.performAPICall(urlString: APIManager.Router.bikes.path) { (success, data) in
             if success {
                 DispatchQueue.main.async {
-                    self.tabBarController?.tabBar.items?[1].isEnabled = true
+                    self.tabsEnabled(true)
                     DataManager.shared.convertDataToBikes(data: data!)
                     self.dropPins()
                 }
