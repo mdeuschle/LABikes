@@ -18,7 +18,6 @@ class BikeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NavigationTitle.stationDetails.rawValue
-        tabBarController?.tabBar.isHidden = true
         tableView = UITableView()
         configTableView()
         let nib = UINib(nibName: NibName.detailCell.rawValue, bundle: nil)
@@ -27,6 +26,8 @@ class BikeDetailVC: UIViewController {
             detail = Detail(bike: bike)
             section = Section(detail: detail!)
         }
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 64
     }
 
     private func configTableView() {
@@ -65,9 +66,9 @@ extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
         return section?.configCell(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 64
+//    }
 }
 
 

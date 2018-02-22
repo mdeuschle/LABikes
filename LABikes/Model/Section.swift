@@ -38,6 +38,9 @@ struct Section {
         case 0:
             let stationDetail = detail.stationDetails[indexPath.row]
             cell.config(with: stationDetail)
+            if indexPath.row == 0 {
+                cell.favoriteSwtich.isHidden = false
+            }
         case 1:
             let statusDetail = detail.statusDetails[indexPath.row]
             cell.config(with: statusDetail)

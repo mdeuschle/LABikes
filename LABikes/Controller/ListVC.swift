@@ -19,7 +19,7 @@ class ListVC: UIViewController {
         super.viewDidLoad()
         bikeTableView.delegate = self
         bikeTableView.dataSource = self
-        title = NavigationTitle.laBikes.rawValue
+        title = "Stations"
         configureSearch()
         tabBarController?.tabBar.items?[1].title = TabBarName.list.rawValue
         self.definesPresentationContext = true
@@ -29,7 +29,6 @@ class ListVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tabBarController?.tabBar.isHidden = false
         bikeTableView.reloadData()
     }
 

@@ -28,7 +28,7 @@ enum ReusableCell: String {
 }
 
 enum NavigationTitle: String {
-    case laBikes = "LABikes"
+    case laBikes = "LA|Bikes"
     case favorites = "Favorites"
     case stationDetails = "Details"
 }
