@@ -11,9 +11,10 @@ import UIKit
 class BikeDetailVC: UIViewController {
 
     var bike: Bike?
-    var tableView: UITableView?
-    var detail: Detail?
-    var section: Section?
+    private var tableView: UITableView?
+    private var detail: Detail?
+    private var section: Section?
+    private var favoriteCell: UITableViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,11 @@ class BikeDetailVC: UIViewController {
         }
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 64
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        tableView?.reloadData()
     }
 
     private func configTableView() {
@@ -63,13 +69,23 @@ extension BikeDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return section?.configCell(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
+        guard let cell =  section?.configCell(tableView: tableView, indexPath: indexPath) as? DetailCell else {
+            return UITableViewCell()
+        }
+        cell.favoriteSwtich.addTarget(self, action: #selector(favoriteSwitchIsSelected(_:)), for: .valueChanged)
+        return cell
     }
 
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 64
-//    }
+    @objc private func favoriteSwitchIsSelected(_ sender: UISwitch) {
+        if let bike = bike {
+            bike.adjustFavorite(isFavorite: !bike.isFavorite)
+            FavoritesService.shared.updateFavorites(bike: bike)
+            tableView?.reloadData()
+        }
+    }
 }
+
+
 
 
 

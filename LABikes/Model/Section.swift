@@ -40,6 +40,7 @@ struct Section {
             cell.config(with: stationDetail)
             if indexPath.row == 0 {
                 cell.favoriteSwtich.isHidden = false
+                cell.favoriteSwtich.isOn = detail.bike.isFavorite ? true : false
             }
         case 1:
             let statusDetail = detail.statusDetails[indexPath.row]

@@ -12,7 +12,7 @@ struct Detail {
 
     let bike: Bike!
     private(set) public var label: String!
-    private(set) public var detail: String!
+    var detail: String!
 
     init(bike: Bike) {
         self.bike = bike

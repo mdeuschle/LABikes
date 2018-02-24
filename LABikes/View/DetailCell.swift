@@ -11,7 +11,7 @@ import UIKit
 class DetailCell: UITableViewCell {
 
     @IBOutlet private weak var mainLabel: UILabel!
-    @IBOutlet private weak var detailLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var favoriteSwtich: UISwitch!
 
     func config(with detail: Detail) {
