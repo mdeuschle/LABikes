@@ -43,7 +43,6 @@
 		A8FE71B51FF05192009D50D1 /* TemperatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */; };
 		A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71B81FF1DCBE009D50D1 /* Direction.swift */; };
 		A8FE71BF1FF836AD009D50D1 /* MapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */; };
-		A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 		A8FE71B41FF05192009D50D1 /* TemperatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHelper.swift; sourceTree = "<group>"; };
 		A8FE71B81FF1DCBE009D50D1 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		A8FE71BE1FF836AD009D50D1 /* MapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIcon.swift; sourceTree = "<group>"; };
-		A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +231,6 @@
 				A82D85801F9C4C2A008F9A8C /* ListVC.swift */,
 				A8477A04201F80BC00A4403E /* FavoritesVC.swift */,
 				A80DA2F71FC9D63C00BC8750 /* BikeDetailVC.swift */,
-				A8FE71C71FF8C7F6009D50D1 /* LaunchScreenVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				A8D6662F2027B8F2009D25CF /* Section.swift in Sources */,
 				A84251821FFCA21C00A0B3EC /* WeatherView.swift in Sources */,
 				A8717CE51FA6DF3900B36FB2 /* ViewExtension.swift in Sources */,
-				A8FE71C81FF8C7F6009D50D1 /* LaunchScreenVC.swift in Sources */,
 				A82D85DE1FA642EC008F9A8C /* MapPopUpVC.swift in Sources */,
 				A8FE71B91FF1DCBE009D50D1 /* Direction.swift in Sources */,
 				A80DA2FC1FCA543700BC8750 /* Dao.swift in Sources */,

@@ -36,7 +36,7 @@ class Bike: NSObject, NSCoding {
         return "\(bikeMiles)"
     }
 
-    init?(coordinatesDic: [String: Any], propertiesDic: [String: Any], currentLocation: CLLocation) {
+    init?(coordinatesDic: JSON, propertiesDic: JSON, currentLocation: CLLocation) {
         guard let coordDic = coordinatesDic["coordinates"] as? [Double],
             let addressStreet = propertiesDic["addressStreet"] as? String,
             let addressCity = propertiesDic["addressCity"] as? String,

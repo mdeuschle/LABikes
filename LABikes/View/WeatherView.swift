@@ -33,7 +33,7 @@ class WeatherView: UIView {
     }
     
     func downloadWeather() {
-        APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { (success, data) in
+        APIManager.shared.performAPICall(urlString: APIManager.Router.weather.path) { success, data in
             if success {
                 if let temp = DataManager.shared.convertDataToTemperature(data: data!) {
                     DispatchQueue.main.async {
@@ -41,7 +41,7 @@ class WeatherView: UIView {
                     }
                 }
                 if let url = DataManager.shared.convertDataToIconURL(data: data!) {
-                    APIManager.shared.performAPICall(urlString: url, handler: { (iconSuccess, iconData) in
+                    APIManager.shared.performAPICall(urlString: url, handler: { iconSuccess, iconData in
                         if iconSuccess {
                             DispatchQueue.main.async {
                                 self.weatherImageView.image = UIImage(data: iconData!)

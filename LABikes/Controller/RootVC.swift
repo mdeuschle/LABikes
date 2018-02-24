@@ -97,6 +97,8 @@ extension RootVC: CLLocationManagerDelegate {
                     DataManager.shared.convertDataToBikes(data: data!)
                     self.dropPins()
                 }
+            } else {
+                Alert(viewController: self).showAlert()
             }
         }
     }

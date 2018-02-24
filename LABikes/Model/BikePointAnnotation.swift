@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 
 class BikePointAnnotation: NSObject, MKAnnotation {
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var bike: Bike?

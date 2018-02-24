@@ -38,7 +38,7 @@ struct APIManager {
             handler(false, nil)
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if data != nil && error == nil {
                 handler(true, data)
             } else {

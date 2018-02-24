@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias JSON = [String: Any]
+
 extension Notification.Name {
     static let favoriteSetNotification = NSNotification.Name("isFavoriteSet")
 }
@@ -28,7 +30,7 @@ enum ReusableCell: String {
 }
 
 enum NavigationTitle: String {
-    case laBikes = "LA|Bikes"
+    case laBikes = "LABikes"
     case favorites = "Favorites"
     case stationDetails = "Details"
 }

@@ -11,7 +11,6 @@ import Foundation
 class Dao {
 
     var favoritesArchive: String
-
     static let shared = Dao()
 
     init() {

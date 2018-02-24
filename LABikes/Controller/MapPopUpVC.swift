@@ -55,11 +55,11 @@ class MapPopUpVC: UIViewController {
     func configFavorite(isFavorite: Bool) {
         if isFavorite {
             favoriteButton.setImage(#imageLiteral(resourceName: "redHeart"), for: .normal)
-            favoriteLabel.textColor = Color.red.getColor()
+            favoriteLabel.textColor = .customRed
             favoriteLabel.text = "Favorited"
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "blueHeart"), for: .normal)
-            favoriteLabel.textColor = Color.blue.getColor()
+            favoriteLabel.textColor = .customBlue
             favoriteLabel.text = "Favorite"
         }
     }

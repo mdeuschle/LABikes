@@ -11,7 +11,6 @@ import Foundation
 struct FavoritesService {
 
     static let shared = FavoritesService()
-
     func updateFavorites(bike: Bike) {
         var favorites = Dao.shared.unarchiveFavorites()
         if bike.isFavorite {
