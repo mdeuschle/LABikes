@@ -27,21 +27,15 @@ class MapPopUpVC: UIViewController {
     }
 
     func configBike(bike: Bike) {
+        self.bike = bike
         nameLabel.text = bike.name                                              
         addressLabel.text = bike.addressStreet
         milesLabel.text = bike.miles
-        if Double(bike.miles) == 1.0 {
-            _milesLabel.text = "Mile"
-        }
+        _milesLabel.text = Double(bike.miles) == 1.0 ? "Mile" : "Miles"
         bikesAvailableLabel.text = String(bike.bikesAvailable)
-        if bike.bikesAvailable == 0 {
-            bikesAvailableLabel.textColor = .red
-            _bikesAvailableLabel.textColor = .red
-        }
-        if bike.bikesAvailable == 1 {
-            _bikesAvailableLabel.text = "Bike"
-        }
-        self.bike = bike
+        bikesAvailableLabel.textColor = bike.bikesAvailable <= 0 ? .customRed : .customBlue
+        _bikesAvailableLabel.textColor = bike.bikesAvailable <= 0 ? .customRed : .customBlue
+        _bikesAvailableLabel.text = bike.bikesAvailable == 1 ? "Bike" : "Bikes"
     }
 
     @IBAction private func buttonTapped(_ sender: UIButton) {
